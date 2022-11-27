@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Backend\Article;
 use App\Models\Backend\Category;
 use App\Models\Backend\Tag;
+use App\Models\Backend\WebSetting;
 use Illuminate\Http\Request;
 
 class SitemapController extends Controller
@@ -17,9 +18,11 @@ class SitemapController extends Controller
     public function index()
     {
         $static_routes = ["home"];
-        $category = Category::select("slug", "updated_at")->get();
-        $tags = Tag::select("slug", "updated_at")->get();
+        $privacy_policy = WebSetting::where('key','privacy-policy')->first();
+        $about_us = WebSetting::where('key','about-us')->first();
+        $contact_us = WebSetting::where('key','contact-us')->first();
+        $categories = Category::select("slug", "updated_at")->get();
         $articles = Article::select("slug", "updated_at")->get();
-        return response()->view("frontend.pages.sitemap.index", compact("static_routes", "category", "tags", "articles"))->header('Content-Type', 'text/xml');
+        return response()->view("frontend.pages.sitemap.index", compact("static_routes", "categories", "articles", "privacy_policy","contact_us","about_us"))->header('Content-Type', 'text/xml');
     }
 }

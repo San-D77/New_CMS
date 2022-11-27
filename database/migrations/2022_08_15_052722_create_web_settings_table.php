@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("key");
             $table->longText("value");
             $table->string("type");
+            $table->timestamps();
         });
     }
 

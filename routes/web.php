@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('sitemap.xml', [SitemapController::class, 'index']);
+Route::get('sitemap.xml', [SitemapController::class, 'index']);
 
 
 Route::get("/search", [FrontendController::class, "search"])->name("search");
