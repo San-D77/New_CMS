@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             TableSeeder::class,
-            WPSeeder::class,
+            // WPSeeder::class,
             PageSeeder::class,
         ]);
 
