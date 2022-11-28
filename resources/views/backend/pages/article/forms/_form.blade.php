@@ -125,6 +125,7 @@
                         class="form-control {{ isset($errors) && $errors->has('image') ? 'is-invalid' : '' }}"
                         type="file" id="formFile" name="image"
                         onchange="document.getElementById('preview-image').src = window.URL.createObjectURL(this.files[0])">
+                        <input type="text" name="featured_image_alt_text" class="form-control mt-2" value="{{ old('featured_image_alt_text') ? old('featured_image_alt_text') : ( isset($article) ? $article->featured_image_alt_text : '' ) }}" placeholder="Featured image alt-text">
                     @if (isset($errors) && $errors->has('image'))
                         <div class="invalid-feedback">
                             {{ $errors->first('image') }}

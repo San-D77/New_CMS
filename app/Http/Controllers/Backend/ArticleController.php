@@ -139,6 +139,7 @@ class ArticleController extends Controller
      */
     public function update(ArticleRequest $request, Article $article)
     {
+
         $message = 'Article saved by ' . auth()->user()->name;
         $published_at = null;
 
@@ -181,6 +182,8 @@ class ArticleController extends Controller
         if ($request->task_status == 'submitted' && $article->editor_id) {
             $articleArray['task_status'] = 'editing';
         }
+
+
 
         $article->update(array_filter($articleArray));
         Seo::where('seoable_id', $request->id)->update([
