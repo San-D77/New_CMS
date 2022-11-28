@@ -16,7 +16,6 @@ class ImageUpload
         if ($filename == null) {
             $filename = str_slug(explode(".", $file->getClientOriginalName())[0]);
             $path = $path . time() . "_" .  $filename . '.webp';
-            dd($path);
         } else {
             $path = $path .'/'. $filename . '.webp';
 
