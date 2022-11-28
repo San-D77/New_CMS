@@ -15,10 +15,7 @@ $type = isset($type) ? $type : "website";
 
 @stack('head')
 
- <title>{{ Request::url() == url('/') ? (getSettingValue('website_title') . " - " . getSettingValue('slogan')) : ($meta_title . " - " . getSettingValue('website_title') )}}</title>
-
-
-<meta name="title" content="{{ $meta_title }}">
+ <title>{{ Request::url() == url('/') ? (getSettingValue('website_title') . " - " . getSettingValue('slogan')) : ($meta_title)}}</title>
 
 <meta name="description" content="{{ $meta_description }}">
 <meta name="theme-color" content="#111">

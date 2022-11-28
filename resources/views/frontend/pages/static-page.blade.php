@@ -1,4 +1,6 @@
-@extends('frontend.layouts.index')
+@extends('frontend.layouts.index',[
+    'meta_title' =>  unSlug($page->key)
+])
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('') }}frontend/css/static-page.min.css" type="text/css">
