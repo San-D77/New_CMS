@@ -9,14 +9,17 @@ class ImageUpload
     public static function upload($file, $path = null, $filename = null)
     {
         $path = $path ?? ("uploads/" . date("Y/m/d/"));
+
         if (!file_exists($path)) {
             mkdir($path, 0777, true);
         }
         if ($filename == null) {
             $filename = str_slug(explode(".", $file->getClientOriginalName())[0]);
             $path = $path . time() . "_" .  $filename . '.webp';
+            dd($path);
         } else {
-            $path = $path . $filename . '.webp';
+            $path = $path .'/'. $filename . '.webp';
+
         }
         // Intervention
         Image::make($file)->resize(728, 455, function ($constraint) {

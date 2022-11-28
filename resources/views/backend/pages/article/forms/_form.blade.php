@@ -77,8 +77,7 @@
                             <button type="submit" class="btn btn-primary btn-block form-submit" id="save">
                                 {{ isset($article) ? 'Update' : 'Save' }}
                             </button>
-
-                            @if (auth()->user()->role->slug == 'writer')
+                            @if ($article->task_status == 'writing')
                                 <button type="button" class="btn btn-success btn-block form-submit" id="submit">
                                     Submit
                                 </button>

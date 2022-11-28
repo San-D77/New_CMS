@@ -61,7 +61,7 @@
 
 @php
 $tabs = [...['all'], ...config('constants.task_status')];
-if (in_array(auth()->user()->role->title, ['Editor', 'Super Admin'])) {
+if (in_array(auth()->user()->role->title, ['Editor'])) {
     $tabs = array_diff($tabs, ['writing']);
 }
 @endphp
@@ -84,8 +84,8 @@ if (in_array(auth()->user()->role->title, ['Editor', 'Super Admin'])) {
     <div class="card">
         <div class="card-body">
             <ul class="nav nav-tabs nav-primary" role="tablist">
-
                 @foreach ($tabs as $key => $task)
+
                     <li class="nav-item" role="presentation">
                         @if (Request()->task_status)
                             <a class="nav-link {{ Request()->task_status == $task ? 'active' : '' }}"
@@ -109,6 +109,7 @@ if (in_array(auth()->user()->role->title, ['Editor', 'Super Admin'])) {
 
                                 <div class="d-flex align-items-center">
                                     <div class="tab-title">
+
                                         {{ $task == 'submitted' ? (auth()->user()->isWriter ? ucwords($task) : 'Open') : ucwords($task) }}
                                         @if ($key != 0)
                                             <span class="badge badge-primary" style="">

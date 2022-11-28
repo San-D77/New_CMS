@@ -39,7 +39,7 @@ class ArticleDataTable extends DataTable
 
     /**
      * Build DataTable class.
-     *
+     *0
      * @param QueryBuilder $query Results from query() method.
      * @return \Yajra\DataTables\EloquentDataTable
      */
@@ -241,7 +241,7 @@ class ArticleDataTable extends DataTable
                     class='badge badge-success badge-sm mr-2'> <i class='bi bi-pencil-square'></i> Edit</a>";
                 }
             }
-        } else if ($this->role == "super-admin" && $row->task_status != "writing") {
+        } else if ($this->role == "super-admin" ) {
             $td = "<a href='" . route('backend.article-edit', $row) . "'
                     class='badge badge-success badge-sm mr-2'> <i class='bi bi-pencil-square'></i> Edit</a>";
         }

@@ -7,7 +7,7 @@
                 <button class="navbar-toggler btn-menu d-block" id="sidebarBtnOpen" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon">
+                    <span class="navbar-toggler-icon" style="padding-top:5px;">
                         <i class="fa-solid fa-align-left menu-icon"></i>
                     </span>
                 </button>
@@ -16,8 +16,8 @@
                 </a>
             </div>
 
-            <a href="{{ url('/') }}" class="navbar-brand d-lg">
-               <img src=" {{ asset(getSettingValue('logo')) }}" height="45" width="150" alt="">
+            <a href="{{ url('/') }}" class="navbar-brand d-lg" style="padding: 15px 0;">
+               <img src=" {{ asset(getSettingValue('logo')) }}" height="50" width="150" alt="">
             </a>
 
             @php
