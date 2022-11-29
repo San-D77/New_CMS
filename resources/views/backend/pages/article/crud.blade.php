@@ -140,7 +140,7 @@
 
             template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
             template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
-            height: 1000,
+            height: 700,
             image_caption: true,
             quickbars_selection_toolbar: 'quicklink',
             noneditable_noneditable_class: "mceNonEditable",

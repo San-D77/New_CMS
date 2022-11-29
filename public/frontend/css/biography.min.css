@@ -124,10 +124,8 @@ iframe{border:0;}
 .biography{padding:0px 35px;}
 .biography .main-content-section .left-section{position:sticky;top:4rem;}
 .biography .main-content-section .left-section .featured-image{border-radius:5px;margin-bottom:15px;}
-.biography .main-content-section .left-section .featured-image img{border-radius:5px;max-height:455px;min-height:455px;min-width:100%;object-fit:cover;object-position:top;}
-@media (min-width: 825px){
-.biography .main-content-section .left-section .featured-image img{border-radius:5px;max-height:300px;min-height:300px;min-width:425px;max-width:425px;object-fit:cover;object-position:top;}
-}
+.biography .main-content-section .left-section .featured-image .image{border-radius:5px;max-height:455px;min-width:100%;object-fit:cover;object-position:top;}
+
 @media (max-width: 500px){
 .biography .main-content-section .left-section .featured-image img{border-radius:5px;max-height:200px;min-height:200px;min-width:100%;object-fit:cover;object-position:top;}
 }
