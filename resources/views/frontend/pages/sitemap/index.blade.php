@@ -25,13 +25,13 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>{{ route('singleArticle', $contact_us->key) }}</loc>
+
         <lastmod>{{ carbon($contact_us->updated_at)->tz('UTC')->toAtomString() }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        {{ route('singleArticle', $about_us->key) }}
+        <loc>{{ route('singleArticle', $about_us->key) }}</loc>
         <lastmod>{{ carbon($about_us->updated_at)->tz('UTC')->toAtomString() }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
