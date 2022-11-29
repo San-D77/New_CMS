@@ -20,19 +20,19 @@
 
     <url>
         <loc>{{ route('singleArticle', $privacy_policy->key) }}</loc>
-        <lastmod>{{ \Carbon\Carbon::parse($privacy_policy->updated_at)->format('d/m/Y') }}</lastmod>
+        <lastmod>{{ carbon($privacy_policy->updated_at)->tz('UTC')->toAtomString() }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>{{ route('singleArticle', $contact_us->key) }}</loc>
-        <lastmod>{{ \Carbon\Carbon::parse($contact_us->updated_at)->format('d/m/Y') }}</lastmod>
+        <lastmod>{{ carbon($contact_us->updated_at)->tz('UTC')->toAtomString() }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         {{ route('singleArticle', $about_us->key) }}
-        <lastmod>{{ \Carbon\Carbon::parse($about_us->updated_at)->format('d/m/Y') }}</lastmod>
+        <lastmod>{{ carbon($about_us->updated_at)->tz('UTC')->toAtomString() }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
