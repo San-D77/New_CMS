@@ -10,7 +10,7 @@ if (!function_exists('getImageMeta')) {
             return null;
         }
         $url = asset($url);
-        $image = file_get_contents($url);
+        $image = file_get_contents(str_replace(' ','%20',$url));
         [$width, $height] = getimagesizefromstring($image);
         return [
             '@type' => 'ImageObject',
