@@ -22,7 +22,7 @@ class SitemapController extends Controller
         $about_us = WebSetting::where('key','about-us')->first();
         $contact_us = WebSetting::where('key','contact-us')->first();
         $categories = Category::select("slug", "updated_at")->get();
-        $articles = Article::select("slug", "updated_at")->get();
+        $articles = Article::where('status','1')->where('task_status','published')->select('slug','updated_at')->get();
         return response()->view("frontend.pages.sitemap.index", compact("static_routes", "categories", "articles", "privacy_policy","contact_us","about_us"))->header('Content-Type', 'text/xml');
     }
 }
