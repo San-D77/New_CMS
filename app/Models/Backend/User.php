@@ -3,6 +3,8 @@
 namespace App\Models\Backend;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -104,24 +106,35 @@ class User extends Authenticatable
 
     public function getTodayStat($task_status)
     {
-        $data = Article::where('task_status', $task_status)->where('created_at', carbon());
+        $data = Article::where('task_status', $task_status)->whereDate('created_at',  Carbon::today());
+
         if ($this->isEditor) {
             $data = $data->where(function ($q) {
                 $q->where('writer_id', $this->id)->orWhere('editor_id', $this->id);
             });
-        } else {
-            $data = $data->where('writer_id', $this->id);
-        }
 
+        }
+        else {
+            $data = $data->where(function ($q) {
+                $q->where('writer_id', $this->id);
+            });
+        }
         return $data->count();
     }
 
     public function getYesterdayStat($task_status)
     {
-        $data = Article::where('task_status', $task_status)->where('created_at', carbon()->subDay());
+        $data = Article::where('task_status', $task_status)->whereDate('created_at',  Carbon::yesterday());
+
         if ($this->isEditor) {
             $data = $data->where(function ($q) {
                 $q->where('writer_id', $this->id)->orWhere('editor_id', $this->id);
+            });
+
+        }
+        else {
+            $data = $data->where(function ($q) {
+                $q->where('writer_id', $this->id);
             });
         }
         return $data->count();

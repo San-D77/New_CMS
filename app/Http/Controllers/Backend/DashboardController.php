@@ -15,19 +15,30 @@ class DashboardController extends Controller
 {
     public function index()
     {
+
         $writers = User::writer()->get();
+        $user = auth()->user();
         // return ($writers);
-        return view('backend.pages.dashboard.index', [
-            'tables' => [
-                'writers' => $writers,
-                'editors' => User::editor()->get(),
-            ],
-            'todays_posts' => Article::where('created_at', '=', Carbon::today())->count(),
-            'yesterday_posts' => Article::where('created_at', '=', Carbon::yesterday())->count(),
-            'total_posts' => Article::count(),
-            'total_writers' => User::writer()->count(),
-            'total_editors' => User::editor()->count(),
-        ]);
+        if($user->role->slug == 'super-admin'){
+            return view('backend.pages.dashboard.index', [
+                'tables' => [
+                    'writers' => $writers,
+                    'editors' => User::editor()->get(),
+                ],
+                'todays_posts' => Article::whereDate('created_at', '=', Carbon::today())->where('task_status','published')->count(),
+                'yesterday_posts' => Article::whereDate('created_at', '=', Carbon::yesterday())->where('task_status','published')->count(),
+                'total_posts' => Article::where('task_status','published')->count(),
+                'total_writers' => User::writer()->count(),
+                'total_editors' => User::editor()->count(),
+            ]);
+        }
+        else {
+            return view('backend.pages.dashboard.index', [
+                'todays_posts' => Article::where('task_status','published')->whereDate('created_at', '=', Carbon::today())->where('writer_id',$user->id)->orWhere('editor_id',$user->id)->count(),
+                'yesterday_posts' => Article::where('task_status','published')->whereDate('created_at', '=', Carbon::yesterday())->where('writer_id',$user->id)->orWhere('editor_id',$user->id)->count(),
+                'total_posts' => Article::where('task_status','published')->where('writer_id',$user->id)->orWhere('editor_id',$user->id)->count(),
+            ]);
+        }
     }
 
     public function table(){
