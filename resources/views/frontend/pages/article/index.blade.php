@@ -93,8 +93,10 @@
                 .then(res => {
                     document.querySelector('.sidebar-section-wrap').innerHTML = res.data.youMayAlsoLike;
                     document.querySelector('.similar-post-section').innerHTML = res.data.more;
-                    document.querySelector('.table-holder').innerHTML = res.data.tables ?? '';
+                    // document.querySelector('.table-holder').innerHTML = res.data.tables ?? '';
                     // document.querySelector('.view-count').innerHTML = res.value;
+                }).catch(err => {
+                    console.log(err);
                 })
         }, 5000);
     </script>
@@ -177,15 +179,18 @@
         // var pTag = document.querySelectorAll('p');
         var readMoreSection = Math.round(pTag.length / 2);
         fetch("{{ route('ajax.readMoreSectionAjax', $article->id) }}")
-            .then(res => res.json())
-            .then(res => {
-                // remove and replace
-                // get all read more section
-                var readMoreSection = document.querySelectorAll('.readmore');
+        .then(res => res.json())
+        .then(res => {
+            // remove and replace
+            // get all read more section
+            var readMoreSections = document.querySelectorAll('.readmore');
                 // loop through all read more section
-                for (let index = 0; index < readMoreSection.length; index++) {
-                    // remove all read more section
-                    readMoreSection[index].innerHTML = res.readMoreSection;
+                if(readMoreSections.length > 0){
+                    console.log("helloe");
+                    for (let index = 0; index < readMoreSections.length; index++) {
+                        // remove all read more section
+                        readMoreSections[index].innerHTML = res.readMoreSection;
+                    }
                 }
 
                 var splide = document.querySelectorAll("div.splide");
@@ -213,7 +218,7 @@
                     }).mount();
 
                 }
-                // document.querySelector('.read-more-section').innerHTML = res.data.readMore;
+
             })
     </script>
 @endpush

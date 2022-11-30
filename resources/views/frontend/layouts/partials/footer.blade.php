@@ -46,9 +46,6 @@
     </div>
 </footer>
 
-{{-- <script async src="https://cse.google.com/cse.js?cx=d615d410296b9481a">
-</script> --}}
-
 <script>
     function loadScript() {
         var searchIcon = document.querySelector('#search-label');
@@ -66,7 +63,7 @@
     setTimeout(function() {
         const script = document.createElement('script');
         script.src =
-            'https://cse.google.com/cse.js?cx=d615d410296b9481a';
+            'https://cse.google.com/cse.js?cx=c31fcad098972411e';
         document.body.appendChild(script);
 
         script.addEventListener('load', loadScript, false);
