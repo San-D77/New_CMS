@@ -2,7 +2,6 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-
             <div class="d-flex">
                 <button class="navbar-toggler btn-menu d-block" id="sidebarBtnOpen" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -24,7 +23,7 @@
                 $current_url = isset($article) ? route('singleArticle', ['slug' => $article->category?->slug ?? 'nu']) : Request::url();
             @endphp
 
-            <div class="collapse navbar-collapse d-none d-lg-block" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse d-none d-lg-block menu-items" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto text-uppercase">
                     <li class="nav-item">
                         <a class="nav-link {{ $current_url == url('/') ? 'active' : '' }}"

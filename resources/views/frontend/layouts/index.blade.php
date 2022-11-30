@@ -22,10 +22,20 @@
         p {
             text-align: justify !important;
         }
+        .menu-items{
+            padding-top:10px;
+        }
+        .fa-magnifying-glass{
+                padding-top: 15px;
+            }
 
-        @media(max-width: 480px) {
+        @media(max-width: 820px) {
             p {
                 text-align: left !important;
+            }
+            .navbar-brand{
+                padding: 0 !important;
+                margin: 0 !important;
             }
         }
 
