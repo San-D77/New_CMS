@@ -62,7 +62,7 @@
                 .then(({
                     data
                 }) => {
-                    console.log(data)
+
                     document.getElementById('more-category-section').innerHTML = data.category_section_html;
                     document.getElementById('born-today').innerHTML = data.born_today;
                     document.getElementById('died-today').innerHTML = data.died_today;

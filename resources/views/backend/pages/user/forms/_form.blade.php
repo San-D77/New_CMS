@@ -147,7 +147,7 @@
                         _token: "{{ csrf_token() }}"
                     },
                     success: function(data) {
-                        console.log(data);
+
                         select2.val(data).trigger('change');
 
                     }
@@ -159,8 +159,8 @@
                 callApi(role_id);
             });
 
-            console.log(select2.val(window.data).trigger('change'));
-            console.log(window.data);
+
+
 
 
         });

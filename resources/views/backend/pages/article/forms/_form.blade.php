@@ -368,7 +368,7 @@
                                                                 <option value="">Select Month</option>
                                                                 @foreach (getMonths() as $month)
                                                                     <option value="{{ $month }}"
-                                                                        {{ $value == str_slug($month) ? 'selected' : '' }}>
+                                                                        {{ $value === $month ? 'selected' : '' }}>
                                                                         {{ $month }} </option>
                                                                 @endforeach
                                                             </select>
@@ -591,7 +591,6 @@
         });
 
         $(document).on("click", ".copy-link", function() {
-            console.log("copy link");
             const url = $(this).data('url');
             var $temp = $("<input>");
             $("body").append($temp);

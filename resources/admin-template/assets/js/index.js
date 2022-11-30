@@ -1,7 +1,7 @@
 $(function() {
 
     // chart1
-    var ctx = document.getElementById('chart1').getContext('2d');
+
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -72,7 +72,7 @@ $(function() {
 
 
       // chart2
-      var ctx = document.getElementById('chart2').getContext('2d');
+    //   var ctx = document.getElementById('chart2').getContext('2d');
       var myChart = new Chart(ctx, {
           type: 'pie',
           data: {
@@ -95,7 +95,7 @@ $(function() {
                     display: false,
                 }
             }
-             
+
           }
       });
 
@@ -127,7 +127,7 @@ var myChart = new Chart(ctx, {
             display: false,
         }
     }
-        
+
     }
 });
 
@@ -177,7 +177,7 @@ var myChart = new Chart(ctx, {
 			opacity: 0.65
 		  }
 		},
-		dataLabels: { 
+		dataLabels: {
 		  showOn: 'always',
 		  name: {
 			offsetY: -20,
@@ -589,7 +589,7 @@ var options = {
 
 
 
-  
+
 
 // worl map
 
@@ -622,7 +622,7 @@ jQuery('#geographic-map').vectorMap(
 		markers : [{
 			latLng : [21.00, 78.00],
 			name : 'Lorem Ipsum Dollar'
-		  
+
 		  }],
 		hoverOpacity: null,
 		normalizeFunction: 'linear',
@@ -634,6 +634,6 @@ jQuery('#geographic-map').vectorMap(
 
 
 
-  
-    
+
+
 });

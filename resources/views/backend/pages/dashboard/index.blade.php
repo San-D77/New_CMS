@@ -21,7 +21,6 @@
         fetch("{{ route('backend.dashboard_table') }}").then(response => response.json()).then(r => {
 
             $("#table-holder").html(r.body);
-            console.log(r.body)
         })
     </script>
 @endpush
