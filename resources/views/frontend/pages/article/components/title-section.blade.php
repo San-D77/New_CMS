@@ -18,7 +18,7 @@
         </div>
         <div class="social-share">
             <a href="https://www.facebook.com/sharer/sharer.php?u={{ Request::url() }}" target="_blank"><i class="fa-brands fa-facebook facebook"></i></a>
-            <a href="https://twitter.com/intent/tweet?url={{ Request::url() }}"><i class="fa-brands fa-twitter twitter"></i></a>
+            <a href="https://twitter.com/intent/tweet?url={{ Request::url() }}" target="_blank"><i class="fa-brands fa-twitter twitter"></i></a>
             <a href="https://pinterest.com/pin-builder/?url={{ Request::url() }}/&media={{ $article->image }}&description={{ $article->meta_description}}" target="_blank"><i class="fa-brands fa-pinterest pinterest"></i></a>
         </div>
     </div>

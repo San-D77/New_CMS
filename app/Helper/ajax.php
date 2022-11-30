@@ -8,7 +8,7 @@ if (!function_exists('getYouMayAlsoLike')) {
     function getYouMayAlsoLike($article)
 
     {
-        $tables = view("frontend.pages.article.components.facts", compact('article'))->render();
+        // $tables = view("frontend.pages.article.components.facts", compact('article'))->render();
 
         $keyword = $article->seo->meta_keywords;
         $articles = Article::where(function ($q) {
@@ -68,7 +68,7 @@ if (!function_exists('getYouMayAlsoLike')) {
         return [
             'youMayAlsoLike' => $youMayAlsoLike,
             'more' => $more,
-            "tables" => $tables
+            // "tables" => $tables
         ];
     }
 }
