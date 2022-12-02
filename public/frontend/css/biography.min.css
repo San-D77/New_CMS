@@ -121,7 +121,7 @@ iframe{border:0;}
 
 .meta-section{display:flex;justify-content:space-between;}
 .meta-property,.meta-property a{flex:1;margin:15px 0;color:#555657;font-weight:700;padding:5px 0px;margin:0px;font-size:11px;}
-.biography{padding:0px 15px;}
+.biography{padding:20px 20px;}
 .biography .main-content-section .left-section{position:sticky;top:4rem;}
 .biography .main-content-section .left-section .featured-image{border-radius:5px;margin-bottom:15px;}
 .biography .main-content-section .left-section .featured-image .image{border-radius:5px;max-height:455px;min-width:100%;object-fit:cover;object-position:top;}

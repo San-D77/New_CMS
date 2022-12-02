@@ -20,13 +20,14 @@ if (!function_exists('getYouMayAlsoLike')) {
             ->get();
 
         if (!$articles->count()) {
+            $num = $articles->count()>11 ? 12 : $articles->count();
             // get random articles
             $articles = Article::where(function ($q) {
                 $q->where('task_status', 'published')->where('status', 1);
             })
                 ->where('id', '!=', $article->id)
                 ->get()
-                ->random(12);
+                ->random($num);
         }
 
         $youMayAlsoLike = '';

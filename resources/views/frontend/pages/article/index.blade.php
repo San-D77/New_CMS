@@ -89,7 +89,7 @@
     <script>
         setTimeout(() => {
             fetch("{{ route('ajax.youMayAlsoLike', $article->id) }}")
-                .then(res => res.json())
+                .then(r => r.json())
                 .then(res => {
                     document.querySelector('.sidebar-section-wrap').innerHTML = res.data.youMayAlsoLike;
                     document.querySelector('.similar-post-section').innerHTML = res.data.more;
@@ -186,7 +186,6 @@
             var readMoreSections = document.querySelectorAll('.readmore');
                 // loop through all read more section
                 if(readMoreSections.length > 0){
-                    console.log("helloe");
                     for (let index = 0; index < readMoreSections.length; index++) {
                         // remove all read more section
                         readMoreSections[index].innerHTML = res.readMoreSection;
