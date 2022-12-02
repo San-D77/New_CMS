@@ -9,7 +9,7 @@ $factsOrder = ['full-name', 'popular-name', 'birth-place', 'birth-day', 'death-d
 
 
 <main>
-    <div class="row">
+
         <div class="col-12 biography">
             <div class="row">
                 <div class="col-lg-9 col-md-12 main-content-section">
@@ -77,5 +77,5 @@ $factsOrder = ['full-name', 'popular-name', 'birth-place', 'birth-day', 'death-d
             <div class="similar-post-section">
             </div>
         </div>
-    </div>
+
 </main>

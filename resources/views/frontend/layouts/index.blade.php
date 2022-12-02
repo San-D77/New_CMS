@@ -15,6 +15,7 @@
     {!! getSettingValue('org_schema') !!}
     @stack('schema')
     <style>
+
         body a {
             color: #111;
         }
