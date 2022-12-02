@@ -61,9 +61,9 @@ if (!function_exists('getYouMayAlsoLike')) {
             ->limit(12)
             ->get();
 
-        // foreach ($moreArticles as $article) {
-        //     $more .= view('frontend.pages.article.components.more', compact('article'))->render();
-        // }
+        foreach ($moreArticles as $article) {
+            $more .= view('frontend.pages.article.components.more', compact('article'))->render();
+        }
 
         $more .= '</div>';
 
