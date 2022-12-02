@@ -13,21 +13,23 @@ if (!function_exists('getYouMayAlsoLike')) {
         $keyword = $article->seo->meta_keywords;
         $articles = Article::where(function ($q) {
             $q->where('task_status', 'published')->where('status', 1);
-        })
-            ->where('id', '!=', $article->id)
-            ->where('title', 'like', '%' . $keyword . '%')
-            ->limit(8)
-            ->get();
+        })->where('id', '!=', $article->id)
+        ->where('body', 'like', '%' . $keyword . '%')
+        ->limit(10)
+        ->get();
 
-        if (!$articles->count()) {
-            $num = $articles->count()>11 ? 12 : $articles->count();
+        if ($articles->count() < 10) {
+            $num = 10 - $articles->count();
             // get random articles
-            $articles = Article::where(function ($q) {
+            $article =  Article::where(function ($q) {
                 $q->where('task_status', 'published')->where('status', 1);
             })
-                ->where('id', '!=', $article->id)
-                ->get()
-                ->random($num);
+            ->where('id', '!=', $article->id)
+            ->where('body', 'not like', '%' . $keyword . '%')
+            ->limit($num)
+            ->get();
+
+            $articles = $articles->merge($article);
         }
 
         $youMayAlsoLike = '';
@@ -53,11 +55,11 @@ if (!function_exists('getYouMayAlsoLike')) {
         $more .= '</div>';
         $more .= '<div class="row" id="scroll-content">';
 
-        // $moreArticles = Article::where('category_id', $article->category->id)
-        //     ->where('id', '!=', $article->id)
-        //     ->whereNotIn('id', $articles->pluck('id')->toArray())
-        //     ->limit(8)
-        //     ->get();
+        $moreArticles = Article::where('category_id', $article->category->id)
+            ->where('id', '!=', $article->id)
+            ->whereNotIn('id', $articles->pluck('id')->toArray())
+            ->limit(12)
+            ->get();
 
         // foreach ($moreArticles as $article) {
         //     $more .= view('frontend.pages.article.components.more', compact('article'))->render();
@@ -68,8 +70,7 @@ if (!function_exists('getYouMayAlsoLike')) {
 
         return [
             'youMayAlsoLike' => $youMayAlsoLike,
-            'more' => $more,
-            // "tables" => $tables
+            'more' => $more
         ];
     }
 }
