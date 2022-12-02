@@ -56,6 +56,8 @@ if (!function_exists('getYouMayAlsoLike')) {
         $more .= '<div class="row" id="scroll-content">';
 
         $moreArticles = Article::where('category_id', $article->category->id)
+            ->where('task_status','published')
+            ->where('status',1)
             ->where('id', '!=', $article->id)
             ->whereNotIn('id', $articles->pluck('id')->toArray())
             ->limit(12)
