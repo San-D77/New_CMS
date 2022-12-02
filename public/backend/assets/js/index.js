@@ -95,7 +95,7 @@ $(function() {
                     display: false,
                 }
             }
-             
+
           }
       });
 
@@ -103,7 +103,7 @@ $(function() {
 
 
 // chart3
-var ctx = document.getElementById('chart3').getContext('2d');
+var ctx = document.getElementById('chart3').getContext('2d')             ;
 
 var myChart = new Chart(ctx, {
     type: 'pie',
@@ -127,7 +127,7 @@ var myChart = new Chart(ctx, {
             display: false,
         }
     }
-        
+
     }
 });
 
@@ -142,7 +142,7 @@ var myChart = new Chart(ctx, {
 	  toolbar: {
 		show: false
 	  }
-	},
+        	},
 	plotOptions: {
 	  radialBar: {
 		//startAngle: -135,
@@ -177,7 +177,7 @@ var myChart = new Chart(ctx, {
 			opacity: 0.65
 		  }
 		},
-		dataLabels: { 
+		dataLabels: {
 		  showOn: 'always',
 		  name: {
 			offsetY: -20,
@@ -187,7 +187,7 @@ var myChart = new Chart(ctx, {
 		  },
 		  value: {
 			formatter: function (val) {
-					  return val + "%";
+					  return val +  "%";
 				  },
 			color: '#212529',
 			fontSize: '35px',
@@ -589,7 +589,7 @@ var options = {
 
 
 
-  
+
 
 // worl map
 
@@ -622,8 +622,8 @@ jQuery('#geographic-map').vectorMap(
 		markers : [{
 			latLng : [21.00, 78.00],
 			name : 'Lorem Ipsum Dollar'
-		  
-		  }],
+
+		    }],
 		hoverOpacity: null,
 		normalizeFunction: 'linear',
 		scaleColors: ['#b6d6ff', '#005ace'],
@@ -634,6 +634,6 @@ jQuery('#geographic-map').vectorMap(
 
 
 
-  
-    
+
+
 });

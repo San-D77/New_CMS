@@ -89,7 +89,7 @@ class Article extends Model
             ->where('id', '!=', $this->id)
             ->select(DB::raw("title , CONCAT('$url',slug) as value , image"));
         if ($search) {
-            $articles->where('title', 'like', "%$search%")->get();
+            $articles->where('body', 'like', "%$search%")->get();
         } else {
             $articles->where('title', 'like', '%' . $keyword . '%');
         }

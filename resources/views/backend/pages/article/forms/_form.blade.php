@@ -530,15 +530,15 @@
                 let html = '';
                 articles.forEach(article => {
                     html += `<li
-            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center copy-link"
-            data-url="${article.url}">
-            <div class="flex-column">
-                ${article.title}
-            </div>
-            <div class="image-parent">
-                <img src="${article.image}" class="img-fluid" alt="quixote" width="100px">
-            </div>
-        </li>`;
+                                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center copy-link"
+                                data-url="${article.value}">
+                                <div class="flex-column">
+                                    ${article.title}
+                                </div>
+                                <div class="image-parent">
+                                    <img src="${article.image}" class="img-fluid" alt="quixote" width="100px">
+                                </div>
+                            </li>`;
                 });
                 return html;
 
@@ -595,7 +595,7 @@
             var $temp = $("<input>");
             $("body").append($temp);
             $temp.val(url).select();
-            document.execCommand("copy");
+            navigator.clipboard.writeText(url);
             $temp.remove();
         })
     </script>
