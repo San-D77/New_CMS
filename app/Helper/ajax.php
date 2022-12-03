@@ -5,15 +5,15 @@ use App\Models\Backend\Category;
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 
 if (!function_exists('getYouMayAlsoLike')) {
-    function getYouMayAlsoLike($article)
+    function getYouMayAlsoLike($originalArticle)
 
     {
         // $tables = view("frontend.pages.article.components.facts", compact('article'))->render();
 
-        $keyword = $article->seo->meta_keywords;
+        $keyword = $originalArticle->seo->meta_keywords;
         $articles = Article::where(function ($q) {
             $q->where('task_status', 'published')->where('status', 1);
-        })->where('id', '!=', $article->id)
+        })->where('id', '!=', $originalArticle->id)
         ->where('body', 'like', '%' . $keyword . '%')
         ->limit(10)
         ->get();
@@ -21,15 +21,15 @@ if (!function_exists('getYouMayAlsoLike')) {
         if ($articles->count() < 10) {
             $num = 10 - $articles->count();
             // get random articles
-            $article =  Article::where(function ($q) {
+            $extraArticle =  Article::where(function ($q) {
                 $q->where('task_status', 'published')->where('status', 1);
             })
-            ->where('id', '!=', $article->id)
+            ->where('id', '!=', $originalArticle->id)
             ->where('body', 'not like', '%' . $keyword . '%')
             ->limit($num)
             ->get();
 
-            $articles = $articles->merge($article);
+            $articles = $articles->merge($extraArticle);
         }
 
         $youMayAlsoLike = '';
@@ -46,28 +46,31 @@ if (!function_exists('getYouMayAlsoLike')) {
 
         $youMayAlsoLike .= '</div>';
 
-        $more = '';
+        // More article of same category
 
-        $more .= '<div class="heading mt-4 mb-4">';
-        $more .= '<div class="category-segment">';
-        $more .= '<span>More on ' . $article->category->title . '</span>';
-        $more .= '</div>';
-        $more .= '</div>';
-        $more .= '<div class="row" id="scroll-content">';
-
-        $moreArticles = Article::where('category_id', $article->category->id)
+        $moreArticles = Article::where('category_id', $originalArticle->category_id)
             ->where('task_status','published')
             ->where('status',1)
-            ->where('id', '!=', $article->id)
+            ->where('id', '!=', $originalArticle->id)
             ->whereNotIn('id', $articles->pluck('id')->toArray())
             ->limit(12)
             ->get();
 
-        foreach ($moreArticles as $article) {
-            $more .= view('frontend.pages.article.components.more', compact('article'))->render();
-        }
+        $more = '';
+        if($moreArticles->count() > 0){
+            $more .= '<div class="heading mt-4 mb-4">';
+            $more .= '<div class="category-segment">';
+            $more .= '<span>More on ' . $originalArticle->category->title . '</span>';
+            $more .= '</div>';
+            $more .= '</div>';
+            $more .= '<div class="row" id="scroll-content">';
 
-        $more .= '</div>';
+            foreach ($moreArticles as $article) {
+                $more .= view('frontend.pages.article.components.more', compact('article'))->render();
+            }
+
+            $more .= '</div>';
+        }
 
 
         return [
