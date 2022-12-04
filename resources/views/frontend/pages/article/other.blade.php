@@ -32,7 +32,7 @@
 
             <div class="featured-image">
                 <img src="{{ $article->image }}" class=""
-                    alt="{{ $article->title }}" width="750" height="500">
+                alt="{{ $article->featured_image_alt_text }}" width="750" height="500">
             </div>
             @include('frontend.pages.article.components.table_of_content')
             <div class="content-detail">

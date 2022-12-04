@@ -88,6 +88,7 @@ if (in_array(auth()->user()->role->title, ['Editor'])) {
 
                     <li class="nav-item" role="presentation">
                         @if (Request()->task_status)
+
                             <a class="nav-link {{ Request()->task_status == $task ? 'active' : '' }}"
                                 href="{{ route('backend.article-view', ['task_status' => $task == 'all' ? '' : $task]) }}">
 
@@ -97,7 +98,7 @@ if (in_array(auth()->user()->role->title, ['Editor'])) {
                                         {{ $task == 'submitted' ? (auth()->user()->isWriter ? ucwords($task) : 'Open') : ucwords($task) }}
                                         @if ($key != 0)
                                             <span class="badge badge-primary" style="">
-                                                {{ array_key_exists($task, $counts) ? $counts[$task]['count'] : 0 }}
+                                                {{ array_key_exists($task, $counts)? $counts[$task]['count'] : 0 }}
                                             </span>
                                         @endif
                                     </div>

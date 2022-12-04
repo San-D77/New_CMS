@@ -33,7 +33,7 @@
                                 <div class="col-12 mb-2">
 
                                     <label for="" class="form-label">Body</label>
-                                    <textarea data-validation="required" name="body" id="editor" class="form-control editor" rows="10">{{ old('body') ? old('body') : ( isset($article) ? $article->body : '' ) }}</textarea>
+                                    <textarea name="body" id="editor" class="form-control editor" rows="10">{{ old('body') ? old('body') : ( isset($article) ? $article->body : '' ) }}</textarea>
                                 </div>
 
                                 <div class="col-12 mb-2">
@@ -116,8 +116,6 @@
                 @endif
             </div>
 
-
-
             <div class="row mb-1" style="position:sticky; top:20rem;">
                 <div>
                     <label for="formFile" class="form-label">Featured Image</label>
@@ -125,7 +123,7 @@
                         class="form-control {{ isset($errors) && $errors->has('image') ? 'is-invalid' : '' }}"
                         type="file" id="formFile" name="image"
                         onchange="document.getElementById('preview-image').src = window.URL.createObjectURL(this.files[0])">
-                        <input type="text" name="featured_image_alt_text" class="form-control mt-2" value="{{ old('featured_image_alt_text') ? old('featured_image_alt_text') : ( isset($article) ? $article->featured_image_alt_text : '' ) }}" placeholder="Featured image alt-text">
+                        <input type="text" name="featured_image_alt_text" class="form-control mt-2 mb-2" value="{{ old('featured_image_alt_text') ? old('featured_image_alt_text') : ( isset($article) ? $article->featured_image_alt_text : '' ) }}" placeholder="Featured image alt-text">
                     @if (isset($errors) && $errors->has('image'))
                         <div class="invalid-feedback">
                             {{ $errors->first('image') }}
@@ -145,7 +143,7 @@
                     </div>
                 </div>
 
-                <div class="col-12 mb-2 mt-2">
+                <div class="col-12 mb-2 mt-2" style="position:sticky; top:25;">
                     <label class="form-label">Tag *</label>
 
                     <select class="form-control tag-select" id="tags" multiple="multiple" name="tags[]"
@@ -158,16 +156,16 @@
                 <div class="col-12 mb-2 mt-2">
                     <label style="display:block;" class="form-label">Features</label>
                     <button type="button" data-target=".bd-example-modal-lg" data-bs-toggle="modal"
-                        href="#facts-modal" class="btn btn-md btn-secondary col-md-4">
+                        href="#facts-modal" class="btn btn-md btn-secondary col-md-5 mb-1">
                         Add Facts
                     </button>
 
 
-                    <a data-bs-toggle="modal" href="#more-article" class="btn btn-md btn-primary">
+                    <a data-bs-toggle="modal" href="#more-article" class="btn btn-md btn-primary col-md-5 mb-1">
                         Read More
                     </a>
 
-                    <a data-bs-toggle="modal" href="#linkable-article" class="btn btn-md btn-secondary">
+                    <a data-bs-toggle="modal" href="#linkable-article" class="btn btn-md btn-secondary col-md-5 mb-1">
                         Find Links
                     </a>
                 </div>

@@ -101,8 +101,9 @@ class ArticleTitleController extends Controller
 
     public function pick(ArticleTitle $article_title)
     {
+
         if (auth()->user()->allArticles()->where("task_status", "writing")->count() > 2) {
-            return redirect()->route("backend.article_title-view")->with("error", "You can't pick more than 2 articles.");
+            return redirect()->route("backend.article_title-view")->with("error", "You can't pick more than three articles at a time.");
         }
         $article = Article::create([
             "title" => $article_title->title,

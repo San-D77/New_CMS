@@ -144,8 +144,14 @@ class ArticleDataTable extends DataTable
         if ($this->role == "writer") {
             $model->where("writer_id", $this->user->id);
         } elseif ($this->role == "editor") {
-            $model->where("editor_id", $this->user->id)
-                ->orWhereNull("editor_id");
+            if(request("task_status") == "submitted"){
+                $model->where("task_status","submitted");
+            }elseif(request("task_status")==""){
+                $model->where("editor_id", $this->user->id)->orWhere("task_status","submitted");
+            }
+            else{
+                $model->where("editor_id", $this->user->id);
+            }
         }
         if (request()->search && is_array(request()->search)) {
 
@@ -242,8 +248,10 @@ class ArticleDataTable extends DataTable
                 }
             }
         } else if ($this->role == "super-admin" ) {
+           if( $row->task_status == 'published' || $this->user->id == $row->writer_id){
             $td = "<a href='" . route('backend.article-edit', $row) . "'
-                    class='badge badge-success badge-sm mr-2'> <i class='bi bi-pencil-square'></i> Edit</a>";
+            class='badge badge-success badge-sm mr-2'> <i class='bi bi-pencil-square'></i> Edit</a>";
+           }
         }
         return $td;
     }

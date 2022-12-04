@@ -28,7 +28,7 @@ class ArticleController extends Controller
         $counts = Article::selectRaw("count(*) as count,task_status")->groupBy("task_status");
         if ($user->isEditor) {
             $counts = $counts->where(function ($q) use ($user) {
-                $q->where('writer_id', $user->id)->orWhere('editor_id', $user->id);
+                $q->where('writer_id', $user->id)->orWhere('editor_id', $user->id)->orWhere('task_status','submitted');
             });
         } else if ($user->isWriter) {
             $counts = $counts->where('writer_id', $user->id);
