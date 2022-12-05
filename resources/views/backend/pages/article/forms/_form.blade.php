@@ -77,7 +77,7 @@
                             <button type="submit" class="btn btn-primary btn-block form-submit" id="save">
                                 {{ isset($article) ? 'Update' : 'Save' }}
                             </button>
-                            @if ($article->task_status == 'writing')
+                            @if ($article->task_status == 'writing' || $article->task_status == 'modifying' )
                                 <button type="button" class="btn btn-success btn-block form-submit" id="submit">
                                     Submit
                                 </button>

@@ -211,6 +211,7 @@ class ArticleDataTable extends DataTable
                 ->class("text-center"));
             array_push($columns, Column::make("outgoing")
                 ->title('<i class="bi bi-box-arrow-up-right" style="font-size:18px"></i>')
+                ->data("outgoing")
                 ->width(60)
                 ->class("text-center"));
         }
@@ -248,7 +249,7 @@ class ArticleDataTable extends DataTable
                 }
             }
         } else if ($this->role == "super-admin" ) {
-           if( $row->task_status == 'published' || $this->user->id == $row->writer_id){
+           if( $row->task_status == 'published' || $row->task_status == 'submitted' || $this->user->id == $row->writer_id || $this->user->id == $row->editor_id){
             $td = "<a href='" . route('backend.article-edit', $row) . "'
             class='badge badge-success badge-sm mr-2'> <i class='bi bi-pencil-square'></i> Edit</a>";
            }

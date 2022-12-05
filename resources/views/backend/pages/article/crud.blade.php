@@ -55,6 +55,8 @@
             };
         });
 
+
+
         const image_upload_handler_callback = (blobInfo, progress) => new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             xhr.withCredentials = false;
@@ -102,7 +104,7 @@
         tinymce.init({
             selector: 'textarea.editor',
 
-            plugins: 'readmore preview advlist autolink importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap emoticons',
+            plugins: 'readmore preview advlist link importcss searchreplace autosave save directionality code visualblocks visualchars fullscreen image media template codesample table charmap pagebreak nonbreaking anchor insertdatetime lists wordcount help charmap emoticons',
 
             imagetools_cors_hosts: ['picsum.photos'],
             image_caption: true,
@@ -113,6 +115,26 @@
             menubar: '',
 
             toolbar: 'blocks code bold italic underline insertfile image media link blockquote alignleft aligncenter alignjustify save numlist bullist charmap fullscreen table preview readmore',
+
+            link_context_toolbar: true,
+            link_rel_list:[
+                {
+                    title: 'Follow',
+                    value: ''
+                },
+                {
+                    title: 'No Follow',
+                    value: 'nofollow'
+                },
+                {
+                    title: 'Sponsored',
+                    value: 'sponsored'
+                },
+                {
+                    title: 'Combined',
+                    value: 'nofollow sponsored'
+                }
+            ],
 
             toolbar_sticky: true,
             autosave_ask_before_unload: true,

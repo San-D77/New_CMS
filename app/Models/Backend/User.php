@@ -106,7 +106,15 @@ class User extends Authenticatable
 
     public function getTodayStat($task_status)
     {
-        $data = Article::where('task_status', $task_status)->whereDate('created_at',  Carbon::today());
+
+        if($task_status == "writing"){
+            $condition = 'created_at';
+        }elseif($task_status == "published"){
+            $condition = 'published_at';
+        }else{
+            $condition = 'updated_at';
+        }
+        $data = Article::where('task_status', $task_status)->whereDate($condition,  Carbon::today());
 
         if ($this->isEditor) {
             $data = $data->where(function ($q) {
@@ -124,7 +132,14 @@ class User extends Authenticatable
 
     public function getYesterdayStat($task_status)
     {
-        $data = Article::where('task_status', $task_status)->whereDate('created_at',  Carbon::yesterday());
+        if($task_status == "writing"){
+            $condition = 'created_at';
+        }elseif($task_status == "published"){
+            $condition = 'published_at';
+        }else{
+            $condition = 'updated_at';
+        }
+        $data = Article::where('task_status', $task_status)->whereDate($condition,  Carbon::yesterday());
 
         if ($this->isEditor) {
             $data = $data->where(function ($q) {
@@ -142,7 +157,14 @@ class User extends Authenticatable
 
     public function getThisWeekStat($task_status)
     {
-        $data = Article::where('task_status', $task_status)->where('created_at', '>=', carbon()->startOfWeek());
+        if($task_status == "writing"){
+            $condition = 'created_at';
+        }elseif($task_status == "published"){
+            $condition = 'published_at';
+        }else{
+            $condition = 'updated_at';
+        }
+        $data = Article::where('task_status', $task_status)->whereDate($condition, '>=', carbon()->startOfWeek(Carbon::SUNDAY));
         if ($this->isEditor) {
             $data = $data->where(function ($q) {
                 $q->where('writer_id', $this->id)->orWhere('editor_id', $this->id);
@@ -157,18 +179,25 @@ class User extends Authenticatable
 
     public function getLastWeekStat($task_status)
     {
+        if($task_status == "writing"){
+            $condition = 'created_at';
+        }elseif($task_status == "published"){
+            $condition = 'published_at';
+        }else{
+            $condition = 'updated_at';
+        }
         $data = Article::where('task_status', $task_status)
             ->whereBetween(
-                'created_at',
+                $condition,
 
                 [
                     carbon()
                         ->subWeek()
-                        ->startOfWeek(),
+                        ->startOfWeek(Carbon::SUNDAY),
 
                     carbon()
                         ->subWeek()
-                        ->endOfWeek()
+                        ->endOfWeek(Carbon::SATURDAY)
                 ]
             );
 
@@ -186,8 +215,15 @@ class User extends Authenticatable
 
     public function getThisMonthStat($task_status)
     {
+        if($task_status == "writing"){
+            $condition = 'created_at';
+        }elseif($task_status == "published"){
+            $condition = 'published_at';
+        }else{
+            $condition = 'updated_at';
+        }
         $data = Article::where('task_status', $task_status)
-            ->where('created_at', '>=', carbon()->startOfMonth());
+            ->whereDate($condition, '>=', carbon()->startOfMonth());
         if ($this->isEditor) {
             $data = $data->where(function ($q) {
                 $q->where('writer_id', $this->id)->orWhere('editor_id', $this->id);
@@ -202,9 +238,16 @@ class User extends Authenticatable
 
     public function getLastMonthStat($task_status)
     {
+        if($task_status == "writing"){
+            $condition = 'created_at';
+        }elseif($task_status == "published"){
+            $condition = 'published_at';
+        }else{
+            $condition = 'updated_at';
+        }
         $data = Article::where('task_status', $task_status)
             ->whereBetween(
-                'created_at',
+                $condition,
                 [
                     carbon()
                         ->subMonth()

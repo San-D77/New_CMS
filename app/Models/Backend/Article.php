@@ -89,7 +89,8 @@ class Article extends Model
             ->where('id', '!=', $this->id)
             ->select(DB::raw("title , CONCAT('$url',slug) as value , image"));
         if ($search) {
-            $articles->where('body', 'like', "%$search%")->get();
+            $articles->where('body', 'like', "%$search%")
+            ->orWhere('title', 'like', "%$search%")->get();
         } else {
             $articles->where('title', 'like', '%' . $keyword . '%');
         }
@@ -105,16 +106,13 @@ class Article extends Model
 
     public function getOutgoingLinkAttribute()
     {
-        $match = [];
-        preg_match_all('/<a [^>]*href="(.+)"/', $this->body, $match);
-        if ($match && isset($match[1])) {
-            return count(
-                array_filter($match[1], function ($item) {
-                    return strpos($item, 'news-portal.test') ? $item : null;
-                }),
-            );
-        }
+        $n = 'href="'.env("APP_URL");
+        $count =  substr_count($this->body,    $n);
+    if($count){
+        return $count;
+    }else{
         return 0;
+    }
     }
 
     public function more()
