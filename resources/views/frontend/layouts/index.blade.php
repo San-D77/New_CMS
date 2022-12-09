@@ -85,6 +85,48 @@
             font-weight: 400;
             font-size: 27px;
         }
+        .navbar-nav .nav-item{
+            position: relative;
+            text-transform: uppercase;
+        }
+        .navbar-nav .nav-link:hover > ul{
+            display: block;
+        }
+        .parent:hover > .fa-caret-down{
+            transform: rotate(90deg);
+        }
+        .navbar-nav .dropdown-list{
+            list-style: none;
+            display:none;
+            position: absolute;
+            background: #3A3B3C;
+            top: 90%;
+            left: 0;
+            border-radius: 0 0 7px 7px;
+            min-width: 300px;
+            padding: 20px 0px;
+        }
+        .navbar-nav .dropdown-list li{
+            float: none;
+            padding: 15px 10px;
+        }
+        .navbar-nav .dropdown-list li a{
+            color: white;
+        }
+        li .nav-item, .nav-item:hover, .nav-item:active{
+            background: transparent !important;
+        }
+        .dropdown-mobile{
+            list-style: none;
+            display: none;
+        }
+
+        .display-menu{
+            display: block;
+        }
+        .rotate-icon{
+            transform: rotate(90deg);
+        }
     </style>
 </head>
 
@@ -134,6 +176,19 @@
         setTimeout(() => {
             loadImage();
         }, 1000)
+
+        // dropdown categories
+
+        var el = document.querySelectorAll('.sidebar .dropdown-trigger');
+        el.forEach(element => {
+            element.addEventListener('click', () =>{
+                var dd = element.parentElement.querySelector('.dropdown-mobile');
+                var caret = element.parentElement.querySelector('.fa-caret-down');
+                caret.classList.toggle('rotate-icon');
+                dd.classList.toggle('display-menu');
+            })
+        })
+
     </script>
 </body>
 

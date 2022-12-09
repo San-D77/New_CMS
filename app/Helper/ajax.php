@@ -125,29 +125,31 @@ if (!function_exists('getHomePageAjax')) {
             $section['second']['title'] = 'Just Published';
             $section['second']['articles'] = $just_published;
         }
+        if(isset($section)){
 
-        $category_section_html = view('frontend.pages.home.components.category-section', compact('section'))->render();
+            $category_section_html = view('frontend.pages.home.components.category-section', compact('section'))->render();
+            $today = carbon()->format('M d');
+            return [
+                'category_section_html' => $category_section_html,
+                'born_today' => view('frontend.pages.home.components.born-today', [
+                    'born_today' => Article::activeAndPublish()
+                        ->with(['category', 'writer'])
+                        ->where('task_status', 'published')
+                        ->where('tables->Quick Facts->birthday->value', 'LIKE', "%$today%")
+                        ->limit(config('constants.article_limit', 8))
+                        ->get(),
+                ])->render(),
+                'died_today' => view('frontend.pages.home.components.died-today', [
+                    'died_today' => Article::activeAndPublish()
+                        ->with(['category', 'writer'])
+                        ->where('task_status', 'published')
+                        ->where('tables->Quick Facts->death_day->value', 'LIKE', "%$today%")
+                        ->limit(config('constants.article_limit', 8))
+                        ->get(),
+                ])->render(),
+            ];
+        }
 
-        $today = carbon()->format('M d');
-        return [
-            'category_section_html' => $category_section_html,
-            'born_today' => view('frontend.pages.home.components.born-today', [
-                'born_today' => Article::activeAndPublish()
-                    ->with(['category', 'writer'])
-                    ->where('task_status', 'published')
-                    ->where('tables->Quick Facts->birthday->value', 'LIKE', "%$today%")
-                    ->limit(config('constants.article_limit', 8))
-                    ->get(),
-            ])->render(),
-            'died_today' => view('frontend.pages.home.components.died-today', [
-                'died_today' => Article::activeAndPublish()
-                    ->with(['category', 'writer'])
-                    ->where('task_status', 'published')
-                    ->where('tables->Quick Facts->death_day->value', 'LIKE', "%$today%")
-                    ->limit(config('constants.article_limit', 8))
-                    ->get(),
-            ])->render(),
-        ];
     }
 }
 

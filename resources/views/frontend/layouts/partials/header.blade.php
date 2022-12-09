@@ -1,3 +1,25 @@
+@php
+
+    $parentCategories = [];
+    $childCategories = [];
+    $soloCategories = [];
+
+    foreach ($categories as $category){
+        foreach ($categories as $cat){
+            if ($category->id == $cat->parent_id){
+                array_push($parentCategories, $category);
+                break;
+            }
+        }
+        if($category->parent_id == null){
+            array_push($soloCategories, $category);
+        }else{
+            array_push($childCategories, $category);
+        }
+    }
+    $soloCategories = array_diff($soloCategories, $parentCategories);
+
+@endphp
 <header>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
@@ -29,7 +51,7 @@
                         <a class="nav-link {{ $current_url == url('/') ? 'active' : '' }}"
                             href="{{ url('/') }}">Home</a>
                     </li>
-                    @foreach ($categories as $category)
+                    @foreach ($soloCategories as $category)
                         <li class="nav-item">
                             <a class="nav-link {{ $current_url == route('singleArticle', ['slug' => $category->slug]) ? 'active' : '' }}"
                                 href="{{ route('singleArticle', ['slug' => $category->slug]) }}">
@@ -37,6 +59,30 @@
                             </a>
                         </li>
                     @endforeach
+                    @foreach ($parentCategories as $cat)
+                        <li class="nav-item">
+
+                            <div class="nav-link parent">
+                                {{ $cat->title }} <i style="font-size:18px;" class="fa-solid fa-caret-down">
+                                 </i>
+                                 <ul class="dropdown-list">
+                                    @foreach ($childCategories as $c)
+                                        @if ($cat->id == $c->parent_id)
+                                            <li >
+                                                <a class=" {{ $current_url == route('singleArticle', ['slug' => $c->slug]) ? 'active' : '' }}"
+                                                    href="{{ route('singleArticle', ['slug' => $c->slug]) }}">
+                                                    {{ $c->title }}
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+
+
+                        </li>
+                    @endforeach
+
                 </ul>
             </div>
 
@@ -52,12 +98,31 @@
                             href="{{ url('/') }}">Home</a>
                     </li>
 
-                    @foreach ($categories as $category)
+                    @foreach ($soloCategories as $category)
                         <li class="nav-item">
                             <a class="nav-link {{ $current_url == route('singleArticle', ['slug' => $category->slug]) ? 'active' : '' }}"
                                 href="{{ route('singleArticle', ['slug' => $category->slug]) }}">
                                 {{ $category->title }}
                             </a>
+                        </li>
+                    @endforeach
+                    @foreach ($parentCategories as $cat)
+                        <li class="nav-item">
+                            <span id="{{ $cat->slug }}" class="nav-link dropdown-trigger text-uppercase">
+                                {{ $cat->title }} <i style="font-size:18px;" class="fa-solid fa-caret-down"></i>
+                            </span>
+                            <ul class="dropdown-mobile text-uppercase">
+                                @foreach ($childCategories as $c)
+                                    @if ($cat->id == $c->parent_id)
+                                        <li >
+                                            <a class=""
+                                                href="{{ route('singleArticle', ['slug' => $c->slug]) }}">
+                                                {{ $c->title }}
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul>
                         </li>
                     @endforeach
                 </ul>

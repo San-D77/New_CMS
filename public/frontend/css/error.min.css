@@ -199,6 +199,7 @@ header .navbar .navbar-nav .nav-item .nav-link:hover{background-color:#3A3B3C;bo
 .fa-align-left:before{content:"\f036";}
 .fa-arrow-up:before{content:"\f062";}
 .fa-magnifying-glass:before{content:"\f002";}
+.fa-caret-down:before{content:"\f0d7";}
 .fa-xmark:before{content:"\f00d";}
 .fa-brands{font-family:"Font Awesome 6 Brands";font-weight:400;}
 .fa-facebook:before{content:"\f09a";}
