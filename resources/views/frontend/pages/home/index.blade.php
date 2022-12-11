@@ -25,7 +25,7 @@
             }
         }
 
-        setTimeout(() => {
+        window.addEventListener("load", () => {
             var slider = document.querySelector("div.splide");
             if (slider) {
                 document.getElementById("slider").style.display = "";
@@ -49,27 +49,22 @@
 
             }
             loadImages();
-        }, 5000)
-
-        setTimeout(() => {
-
             fetch("{{ route('ajax.getHomePageAjax') }}")
-                .then(response => response.json())
-                .then(({
-                    data
-                }) => {
+            .then(response => response.json())
+            .then(({
+                data
+            }) => {
 
-                   if(data){
-                    document.getElementById('more-category-section').innerHTML = data.category_section_html;
-                    document.getElementById('born-today').innerHTML = data.born_today;
-                    document.getElementById('died-today').innerHTML = data.died_today;
-                    loadImages();
-                   }
-                });
+                if(data){
+                document.getElementById('more-category-section').innerHTML = data.category_section_html;
+                document.getElementById('born-today').innerHTML = data.born_today;
+                document.getElementById('died-today').innerHTML = data.died_today;
+                loadImages();
+                }
+            });
+        }
 
-
-
-        }, 5000);
+        );
     </script>
 @endpush
 
