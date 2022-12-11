@@ -20,6 +20,7 @@ class FrontendController extends Controller
     {
         return view("frontend.pages.home.index", [
             "data" => getHomePageCache(),
+            "schema" => getHomePageSchema()
         ]);
     }
 
@@ -38,8 +39,10 @@ class FrontendController extends Controller
     {
         $article = Article::activeAndPublish()->where("slug", $slug)->where("task_status", "published")->first();
         if ($article) {
+
             return view("frontend.pages.article.index", [
                 "article" => $article,
+                "schema" => getArticleSchema($article)
             ]);
         }
         if (getSetting($slug)) {
@@ -50,6 +53,7 @@ class FrontendController extends Controller
         if ($category) {
             return view("frontend.pages.category.index", [
                 "category" => $category,
+                "schema" => getCategorySchema($category)
             ]);
         }
 
@@ -61,6 +65,7 @@ class FrontendController extends Controller
         if ($tag) {
             return view("frontend.pages.tag.index", [
                 "tag" => $tag,
+                "schema" => getTagSchema($tag)
             ]);
         } else {
             return abort(404);

@@ -1,7 +1,9 @@
 @extends('frontend.layouts.index')
 @push('styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/homepage.min.css') }}">
-
+@endpush
+@push('schema')
+    {!! $schema !!}
 @endpush
 
 @push('scripts')

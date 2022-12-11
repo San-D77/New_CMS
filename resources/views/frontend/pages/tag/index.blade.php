@@ -4,6 +4,10 @@
     <link rel="stylesheet" href="{{ asset('') }}frontend/css/category.min.css" type="text/css">
 @endpush
 
+@push('schema')
+    {!! $schema !!}
+@endpush
+
 @section('content')
     <main class="container">
         <!-- BreadCrumb -->

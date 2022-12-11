@@ -4,6 +4,7 @@ return [
 
     "enable_2fa" => false,
     "article_limit" => 6,
+    "homepage_category" =>'',
     "task_status" => [
         "writing",
         "submitted",

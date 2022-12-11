@@ -58,18 +58,18 @@ class HomePageCache implements ShouldQueue
 
             $ids = array_merge($ids, $editor_choice->pluck('id')->toArray());
 
-            // $just_pubished = Article::activeAndPublish()->with(["category", "writer"])
-            //     ->where("task_status", "published")
-            //     ->limit(config("constants.article_limit", 8))
-            //     ->whereNotIn("id", $ids)
-            //     ->get();
-
-            // $ids = array_merge($ids, $just_pubished->pluck("id")->toArray());
-
             $category_section = [];
 
+            if(config('constants.homepage_category')){
+                $parameter = 'slug';
+                $value = config('constants.homepage_category');
+            }else{
+                $parameter = 'id';
+                $value = 1;
+            }
+
             foreach (
-                Category::where('id', 1)
+                Category::where($parameter, $value)
                     ->where('status', 1)
                     ->get()
                 as $key => $category
@@ -100,12 +100,6 @@ class HomePageCache implements ShouldQueue
                     $category_section[$category->slug]['second']['title'] = 'Editor Choice';
                     $category_section[$category->slug]['second']['articles'] = $editor_choice;
                 }
-                // else if ($key == 1) {
-                //     $category_section[$category->slug]["second"]["title"] = "Just Published";
-                //     $category_section[$category->slug]["second"]["articles"] = $just_pubished;
-                // }
-
-                // dd($ids);
             }
             $today = carbon()->format('M d');
             return [

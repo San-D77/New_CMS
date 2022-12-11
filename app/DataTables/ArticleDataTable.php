@@ -155,7 +155,7 @@ class ArticleDataTable extends DataTable
         }
         if (request()->search && is_array(request()->search)) {
 
-            $model->where('title', 'like', "%" . request()->search['value'] . "%");
+            $model->where('body', 'like', "%" . request()->search['value'] . "%");
         }
         return $model;
     }

@@ -12,7 +12,6 @@
 
     @include('frontend.layouts.partials.head')
     @stack('styles')
-    {!! getSettingValue('org_schema') !!}
     @stack('schema')
     <style>
 

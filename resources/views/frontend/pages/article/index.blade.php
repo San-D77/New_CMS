@@ -8,7 +8,7 @@
 
 
 @push('schema')
-    {!! $article->schema !!}
+    {!! $schema !!}
 @endpush
 
 @push('head')
