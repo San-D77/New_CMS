@@ -26,7 +26,8 @@
         }
 
         window.addEventListener("load", () => {
-            var slider = document.querySelector("div.splide");
+            setTimeout(() => {
+                var slider = document.querySelector("div.splide");
             if (slider) {
                 document.getElementById("slider").style.display = "";
                 new Splide('.splide', {
@@ -49,6 +50,7 @@
 
             }
             loadImages();
+
             fetch("{{ route('ajax.getHomePageAjax') }}")
             .then(response => response.json())
             .then(({
@@ -62,6 +64,7 @@
                 loadImages();
                 }
             });
+            }, 2000);
         }
 
         );
