@@ -135,10 +135,10 @@ class ArticleDataTable extends DataTable
      */
     public function query(Article $model): QueryBuilder
     {
-        $model = $model->orderBy("published_at", "desc")->newQuery();
+        $model = $model->newQuery();
 
         if (request("task_status")) {
-            $model->where("task_status", request("task_status"));
+             $model->where("task_status", request("task_status"));
         }
 
         if ($this->role == "writer") {
@@ -153,9 +153,16 @@ class ArticleDataTable extends DataTable
                 $model->where("editor_id", $this->user->id);
             }
         }
-        if (request()->search && is_array(request()->search)) {
+        if($this->role == 'superadmin'){
+            if (request()->search && is_array(request()->search)) {
 
-            $model->where('title', 'like', "%" . request()->search['value'] . "%")->orWhere('body', 'like', "%" . request()->search['value'] . "%");
+                $model->where('title', 'like', "%" . request()->search['value'] . "%")->orWhere('body', 'like', "%" . request()->search['value'] . "%");
+            }
+        }else{
+            if (request()->search && is_array(request()->search)) {
+
+                $model->where('title', 'like', "%" . request()->search['value'] . "%");
+            }
         }
         return $model;
     }

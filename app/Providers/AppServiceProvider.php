@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        date_default_timezone_set('Asia/Kathmandu');
         if (Schema::hasTable("web_settings") && Schema::hasTable("categories")) {
             $settings = WebSetting::get()->groupBy("type");
             view()->share(["categories" => Category::all(), "web_settings" => $settings]);

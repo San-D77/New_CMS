@@ -36,9 +36,9 @@ class OrgSchema implements ShouldQueue
     public function handle()
     {
         if ($this->article) {
-            $this->article->update([
-                'schema' => getArticleSchema($this->article),
-            ]);
+            // $this->article->update([
+            //     'schema' => getArticleSchema($this->article),
+            // ]);
         } else {
             WebSetting::updateOrCreate(
                 [

@@ -22,8 +22,9 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ArticleDataTable $datatable)
+    public function index(ArticleDataTable $datatable, Article $article)
     {
+
         $user = auth()->user();
         $counts = Article::selectRaw("count(*) as count,task_status")->groupBy("task_status");
         if ($user->isEditor) {
@@ -99,8 +100,9 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
+
         $url = url('/') . '/';
-        $articles = Article::whereNotIn('id', [$article->id])
+        $articles = Article::where('task_status','published')->whereNotIn('id', [$article->id])
             ->select(DB::raw('title , image, id '))
             ->get();
 

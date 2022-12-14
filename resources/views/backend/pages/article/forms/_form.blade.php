@@ -553,7 +553,6 @@
                         _token: "{{ csrf_token() }}"
                     },
                     success: function(data) {
-
                         // $("#search-append").empty();
                         $("#search-append").html(articleHtmlStyle(data));
                     }
@@ -564,6 +563,7 @@
 
             const debounce = (func, wait, immediate) => {
                 var timeout;
+
                 return function() {
                     var context = this,
                         args = arguments;

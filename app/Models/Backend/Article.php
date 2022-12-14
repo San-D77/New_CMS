@@ -90,9 +90,9 @@ class Article extends Model
             ->select(DB::raw("title , CONCAT('$url',slug) as value , image"));
         if ($search) {
             $articles->where('body', 'like', "%$search%")
-            ->orWhere('title', 'like', "%$search%")->get();
+            ->get();
         } else {
-            $articles->where('title', 'like', '%' . $keyword . '%');
+            $articles->where('body', 'like', '%' . $keyword . '%');
         }
         return $articles->get();
     }
@@ -131,7 +131,7 @@ class Article extends Model
 
     public function readMoreArticles()
     {
-        return $this->belongsToMany(Article::class, ReadMoreArticle::class, 'article_id', 'read_more_article_id')->activeAndPublish();
+        return $this->belongsToMany(Article::class, ReadMoreArticle::class, 'article_id', 'read_more_article_id')->ActiveAndPublish();
     }
 
     // public function getBodyAttribute($value)

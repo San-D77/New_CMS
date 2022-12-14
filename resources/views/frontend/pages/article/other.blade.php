@@ -1,5 +1,8 @@
 @push('styles')
-    <link rel="stylesheet" defer href="{{ asset('') }}frontend/css/article.min.css" type="text/css">
+<link rel="stylesheet" defer href="{{ asset('') }}frontend/css/article.min.css" type="text/css">
+{{-- <link rel="stylesheet" defer href="{{ asset('') }}frontend/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" defer href="{{ asset('') }}frontend/css/style.css" type="text/css"> --}}
+
 @endpush
 
 
