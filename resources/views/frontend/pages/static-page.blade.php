@@ -3,7 +3,7 @@
 ])
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('') }}frontend/css/static-page.min.css" type="text/css">
+    @include('frontend.assets.css.static-page')
 @endpush
 
 

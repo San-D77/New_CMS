@@ -28,9 +28,10 @@ class FrontendController extends Controller
     public function search(Request $request)
     {
         return view("frontend.pages.search.index", [
-            "article" => Article::activeAndPublish()->where("title", "like", "%" . $request->query . "%")
-                ->orWhere("body", "like", "%" . $request->query . "%")
-                ->limit(8)
+            "search_for" => $request->q,
+            "articles" => Article::activeAndPublish()->where("title", "like", "%" . $request->q . "%")
+                ->orWhere("body", "like", "%" . $request->q . "%")
+                ->limit(15)
                 ->get(),
         ]);
     }
@@ -85,7 +86,7 @@ class FrontendController extends Controller
 
     public function categoryArticles(Category $category)
     {
-        $limit = 9;
+        $limit = 12;
         $page = request()->get("page", 1);
         if (request()->ajax()) {
             $articles = $category->articles()

@@ -153,17 +153,13 @@ class ArticleDataTable extends DataTable
                 $model->where("editor_id", $this->user->id);
             }
         }
-        if($this->role == 'superadmin'){
-            if (request()->search && is_array(request()->search)) {
 
-                $model->where('title', 'like', "%" . request()->search['value'] . "%")->orWhere('body', 'like', "%" . request()->search['value'] . "%");
-            }
-        }else{
-            if (request()->search && is_array(request()->search)) {
-
-                $model->where('title', 'like', "%" . request()->search['value'] . "%");
+        if ((request()->search['value'] )) {
+            if ($this->role != "writer") {
+                $model->where('title', 'like', "%" . request()->search['value'] . "%")->orWhere('body','like','%'.request()->search['value'].'%');
             }
         }
+
         return $model;
     }
 

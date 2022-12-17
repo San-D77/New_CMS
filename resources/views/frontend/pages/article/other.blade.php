@@ -1,8 +1,5 @@
 @push('styles')
-<link rel="stylesheet" defer href="{{ asset('') }}frontend/css/article.min.css" type="text/css">
-{{-- <link rel="stylesheet" defer href="{{ asset('') }}frontend/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" defer href="{{ asset('') }}frontend/css/style.css" type="text/css"> --}}
-
+    @include('frontend.assets.css.article')
 @endpush
 
 
@@ -51,6 +48,12 @@
             @include('frontend.pages.article.components.tags')
         </div>
     </div>
-    <div class="similar-post-section ">
+    <div class="heading mt-4 mb-4">
+        <div class="category-segment">
+            <span>More on  {{$article->category->title}}</span>
+        </div>
+    </div>
+    <div class="similar-post-section">
+
     </div>
 </main>

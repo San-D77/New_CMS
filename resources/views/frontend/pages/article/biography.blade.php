@@ -3,7 +3,7 @@ $factsOrder = ['full-name', 'popular-name', 'birth-place', 'birth-day', 'death-d
 @endphp
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('') }}frontend/css/biography.min.css" type="text/css">
+    @include('frontend.assets.css.biography')
 @endpush
 
 
@@ -47,8 +47,7 @@ $factsOrder = ['full-name', 'popular-name', 'birth-place', 'birth-day', 'death-d
                                     <div class="image">
                                         <figure class="m-0">
                                             <img src="{{ asset($article->image) }}" alt="{{ $article->featured_image_alt_text }}"
-                                                class="image_img img-fluid" width="425" height="300">
-
+                                                class="image_img" width="425" height="300">
                                         </figure>
                                     </div>
                                 </div>
@@ -74,7 +73,13 @@ $factsOrder = ['full-name', 'popular-name', 'birth-place', 'birth-day', 'death-d
                     </div>
                 </div>
             </div>
+            <div class="heading mt-4 mb-4">
+                <div class="category-segment">
+                    <span>More on  {{$arrticle->category->title}}</span>
+                </div>
+            </div>
             <div class="similar-post-section">
+
             </div>
         </div>
 

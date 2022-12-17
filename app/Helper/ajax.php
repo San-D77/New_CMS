@@ -4,12 +4,8 @@ use App\Models\Backend\Article;
 use App\Models\Backend\Category;
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 
-if (!function_exists('getYouMayAlsoLike')) {
-    function getYouMayAlsoLike($originalArticle)
-
-    {
-        // $tables = view("frontend.pages.article.components.facts", compact('article'))->render();
-
+if(!function_exists('getArticles')){
+    function getArticles($originalArticle){
         $keyword = $originalArticle->seo->meta_keywords;
         $articles = Article::where(function ($q) {
             $q->where('task_status', 'published')->where('status', 1);
@@ -31,7 +27,14 @@ if (!function_exists('getYouMayAlsoLike')) {
 
             $articles = $articles->merge($extraArticle);
         }
+        return $articles;
+    }
+}
+if (!function_exists('getYouMayAlsoLike')) {
+    function getYouMayAlsoLike($originalArticle)
 
+    {
+        $articles = getArticles($originalArticle);
         $youMayAlsoLike = '';
         $youMayAlsoLike .= '<div class="heading">';
         $youMayAlsoLike .= '<div class="category-segment">';
@@ -46,23 +49,27 @@ if (!function_exists('getYouMayAlsoLike')) {
 
         $youMayAlsoLike .= '</div>';
 
+        return [
+            'youMayAlsoLike' => $youMayAlsoLike,
+        ];
+    }
+}
+if(!function_exists('getMoreArticles')){
+    function getMoreArticles($originalArticle, $page){
         // More article of same category
-
+        $articles = getArticles($originalArticle);
         $moreArticles = Article::where('category_id', $originalArticle->category_id)
             ->where('task_status','published')
             ->where('status',1)
             ->where('id', '!=', $originalArticle->id)
             ->whereNotIn('id', $articles->pluck('id')->toArray())
+            ->skip(($page-1)*12)
             ->limit(12)
+            ->orderBy('published_at','desc')
             ->get();
 
         $more = '';
         if($moreArticles->count() > 0){
-            $more .= '<div class="heading mt-4 mb-4">';
-            $more .= '<div class="category-segment">';
-            $more .= '<span>More on ' . $originalArticle->category->title . '</span>';
-            $more .= '</div>';
-            $more .= '</div>';
             $more .= '<div class="row" id="scroll-content">';
 
             foreach ($moreArticles as $article) {
@@ -72,11 +79,7 @@ if (!function_exists('getYouMayAlsoLike')) {
             $more .= '</div>';
         }
 
-
-        return [
-            'youMayAlsoLike' => $youMayAlsoLike,
-            'more' => $more
-        ];
+        return $more;
     }
 }
 

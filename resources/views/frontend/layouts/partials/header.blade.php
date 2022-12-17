@@ -1,5 +1,4 @@
 @php
-
     $parentCategories = [];
     $childCategories = [];
     $soloCategories = [];
@@ -40,7 +39,6 @@
             <a href="{{ url('/') }}" class="navbar-brand d-lg" style="padding: 15px 0;">
                <img src=" {{ asset(getSettingValue('logo')) }}" height="50" width="150" alt="">
             </a>
-
             @php
                 $current_url = isset($article) ? route('singleArticle', ['slug' => $article->category?->slug ?? 'nu']) : Request::url();
             @endphp
@@ -161,18 +159,14 @@
             <div class="search">
                 <i class="fa-solid fa-magnifying-glass" id="search-label"></i>
                 <div id="search-container">
-                        <p class="close-search">X</p>
-                    <div id="search-box">
-                        <gcse:search enablehistory="false"></gcse:search>
-                    </div>
+                    <form action="/search/" method="get">
+                        <input type="text" name="q" id="" class="form-control search-box">
+                        <span class="close-search">X</span>
+                    </form>
                 </div>
             </div>
 
         </div>
     </nav>
 </header>
-{{--
-     <div class="search-container" style="">
 
-                </div>
-     --}}

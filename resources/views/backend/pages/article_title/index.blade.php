@@ -35,7 +35,7 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
-                <table id="" class="table table-striped table-bordered">
+                <table id="example2" class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>Title</th>
@@ -78,10 +78,6 @@
                                                 <a href="{{ route('backend.article_title-edit', $article_title->id) }}"
                                                     class="btn btn-warning btn-sm">Edit</a>
                                             @endif
-                                            @if (hasPermission('backend.article_title-delete'))
-                                                <a href="{{ route('backend.article_title-delete', $article_title->id) }}"
-                                                    class="btn btn-danger btn-sm">Delete</a>
-                                            @endif
 
                                             @if (hasPermission('backend.article_title-pick'))
                                                 @if (!$article_title->article_id)
@@ -109,7 +105,7 @@
                             @if (hasPermission('backend.article_title-edit') ||
                                 hasPermission('backend.article_title-delete') ||
                                 hasPermission('backend.article_title-pick'))
-                                <th>Action 1</th>
+                                <th>Action</th>
                             @endif
                         </tr>
                     </tfoot>
