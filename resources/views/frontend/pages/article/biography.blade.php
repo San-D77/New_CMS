@@ -75,7 +75,7 @@ $factsOrder = ['full-name', 'popular-name', 'birth-place', 'birth-day', 'death-d
             </div>
             <div class="heading mt-4 mb-4">
                 <div class="category-segment">
-                    <span>More on  {{$arrticle->category->title}}</span>
+                    <span>More on  {{$article->category->title}}</span>
                 </div>
             </div>
             <div class="similar-post-section">
