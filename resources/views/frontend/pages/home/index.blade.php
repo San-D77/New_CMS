@@ -1,6 +1,7 @@
 @extends('frontend.layouts.index')
 @push('styles')
     @include('frontend.assets.css.homepage')
+    @include('frontend.assets.css.splide')
 @endpush
 @push('schema')
     {!! $schema !!}
