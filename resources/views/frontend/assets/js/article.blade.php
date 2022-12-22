@@ -60,7 +60,7 @@
 																				page
 																})
 												}).then(e => e.json()).then(t => {
-                                                    
+
 												t.data && t.data.length > 0 && (e.insertAdjacentHTML("beforeend", t.data), page++, loading = 0)
 								}).catch(e => {
 												console.log(e)
@@ -70,6 +70,23 @@
 								if (t.length > 0)
 												for (let n = 0; n < t.length; n++) t[n].innerHTML = e.readMoreSection
 				});
+
+
+                document.addEventListener('copy', () => {
+                    var selObj = window.getSelection();
+                    if(selObj != ''){
+                        pagelink = " Read more at: " + document.location.href;
+                        copytext = selObj + pagelink;
+                        var textArea = document.createElement('textarea');
+                        textArea.value = copytext;
+                        document.body.appendChild(textArea);
+                        textArea.style.opacity = 0;
+                        textArea.select();
+                        selObj.deleteFromDocument();
+                        navigator.clipboard.writeText(textArea);
+                        textArea.remove();
+                    }
+                })
 
 				if (document.querySelectorAll(".instagram-media").length) {
 								var tag = document.createElement('script');

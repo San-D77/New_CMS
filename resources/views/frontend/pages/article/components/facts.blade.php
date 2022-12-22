@@ -190,8 +190,31 @@
                                                     </a>
                                                 @endif
                                             @else
-                                                {{ $articleTable['death-month']['value'] }}&nbsp;{{ $articleTable['death-day']['value'] }},&nbsp;{{ $articleTable['death-year']['value'] }}
+                                                {{-- From Here --}}
+                                                @if(isset($articleTable['death-day']) && isset($articleTable['death-month']))
 
+                                                    @if (isset($articleTable['death-year']))
+
+                                                        {{ $articleTable['death-month']['value']}}&nbsp;{{ $articleTable['death-day']['value']}},
+
+                                                    @else
+
+                                                        {{ $articleTable['death-month']['value']}}&nbsp;{{ $articleTable['death-day']['value']}}
+
+                                                    @endif
+                                                @elseif (!isset($articleTable['death-day']) && isset($articleTable['death-month']))
+
+                                                    {{ $articleTable['death-month']['value']}}
+
+                                                @endif
+
+                                                @if (isset($articleTable['death-year']))
+
+                                                    {{ $articleTable['death-year']['value']}}
+
+                                                @endif
+
+                                                {{-- Till Here --}}
                                             @endif
                                         @endif
                                     @endforeach
