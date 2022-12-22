@@ -82,8 +82,8 @@
                         document.body.appendChild(textArea);
                         textArea.style.opacity = 0;
                         textArea.select();
+                        navigator.clipboard.writeText(textArea.value);
                         selObj.deleteFromDocument();
-                        navigator.clipboard.writeText(textArea);
                         textArea.remove();
                     }
                 })
