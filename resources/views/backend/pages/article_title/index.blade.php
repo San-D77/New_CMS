@@ -52,6 +52,7 @@
                     </thead>
                     <tbody>
                         @foreach ($article_titles as $article_title)
+
                             <tr>
                                 <td>{{ $article_title->title }}</td>
 

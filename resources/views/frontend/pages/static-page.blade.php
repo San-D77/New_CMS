@@ -3,7 +3,7 @@
 ])
 
 @push('styles')
-    @include('frontend.assets.css.static-page')
+    @include('frontend.assets.css.statitc-page_min')
 @endpush
 
 

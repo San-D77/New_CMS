@@ -7,7 +7,7 @@
 ])
 
 @push('styles')
-    @include('frontend.assets.css.category')
+    @include('frontend.assets.css.category_min')
 @endpush
 
 @push('schema')

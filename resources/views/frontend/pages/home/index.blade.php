@@ -1,7 +1,8 @@
 @extends('frontend.layouts.index')
 @push('styles')
-    @include('frontend.assets.css.homepage')
-    @include('frontend.assets.css.splide')
+    {{-- @include('frontend.assets.css.homepage')
+    @include('frontend.assets.css.splide') --}}
+     @include('frontend.assets.css.homepage_min')
 @endpush
 @push('schema')
     {!! $schema !!}

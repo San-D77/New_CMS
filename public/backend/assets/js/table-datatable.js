@@ -2,13 +2,17 @@ $(function() {
 	"use strict";
 
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#example').DataTable({
+            "order":[],
+            "aaSorting": []
+        });
       } );
 
 
       $(document).ready(function() {
         var table = $('#example2').DataTable( {
-            // lengthChange: true,
+            "order": [],
+            "aaSorting":[]
 
         } );
     } );

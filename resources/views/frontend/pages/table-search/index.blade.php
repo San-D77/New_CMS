@@ -1,14 +1,23 @@
 @php
-function getTitle($value)
+function getTitle($field,$value)
 {
     $path = explode('/', Request::path())[2];
-    switch ($path) {
+    switch ($field) {
         case 'birth-year':
+            return "Celebrities born in <span class='colored'>$value</span>";
         case 'birth-month':
             return "Celebrities born in <span class='colored'>$value</span>";
+        case 'birth-place':
+            return "Celebrities from <span class='colored'>$value</span>";
         case 'birth-day':
             return "Celebrities born on <span class='colored'>$value</span>";
-            case 'nationality':
+        case 'death-year':
+            return "Celebrities died in <span class='colored'>$value</span>";
+        case 'death-month':
+            return "Celebrities died in <span class='colored'>$value</span>";
+        case 'death-day':
+            return "Celebrities died on <span class='colored'>$value</span>";
+        case 'nationality':
             return "<span class='colored'>$value</span> Celebrities";
         default:
             return "Celebrites of <span class='colored'>$value</span>";
@@ -25,7 +34,7 @@ function getTitle($value)
 ] --}}
 
 @push('styles')
-    @include('frontend.assets.css.category')
+    @include('frontend.assets.css.category_min')
 @endpush
 
 
@@ -35,7 +44,7 @@ function getTitle($value)
 
         <section class="category-div">
             <div class="container category-title">
-                <h1 class="text-capitalize">{!! getTitle($value) !!}
+                <h1 class="text-capitalize">{!! getTitle($field,$value) !!}
 
                 </h1>
             </div>
@@ -52,5 +61,5 @@ function getTitle($value)
 @endsection
 
 @push('scripts')
-    @include('frontend.assets.js.category')
+    {{-- @include('frontend.assets.js.category') --}}
 @endpush

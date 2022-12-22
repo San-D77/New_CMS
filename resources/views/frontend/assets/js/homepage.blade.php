@@ -1,3 +1,18 @@
 <script>
-    const loadImages=()=>{if("loading"in HTMLImageElement.prototype){let e=document.querySelectorAll("img");e.forEach(e=>{e.dataset.src&&(e.src=e.dataset.src)})}else{let t=document.createElement("script");t.src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js",document.body.appendChild(t)}};window.addEventListener("load",()=>{setTimeout(()=>{var e;document.querySelector("div.splide")&&(document.getElementById("slider").style.display="",new Splide(".splide",{type:"loop",perPage:4,gap:"5px",autoplay:!0,perMove:1,breakpoints:{820:{perPage:2,gap:"10px"},480:{perPage:1,gap:"10px"}}}).mount()),loadImages(),fetch("{{ route('ajax.getHomePageAjax') }}").then(e=>e.json()).then(({data:e})=>{e&&(document.getElementById("more-category-section").innerHTML=e.category_section_html,document.getElementById("born-today").innerHTML=e.born_today,document.getElementById("died-today").innerHTML=e.died_today,loadImages())})},4e3)});
+   ((document.getElementById("slider").style.display = ""),
+            new Splide(".splide", {
+                type: "loop", perPage: 4, gap: "10px", autoplay: !0, perMove: 1, breakpoints: { 820: { perPage: 2, gap: "10px" }, 480: { perPage: 1, gap: "10px" } } }).mount()),
+window.addEventListener('scroll', () => {
+    var moreCategory = document.getElementById("more-category-section");
+    if((moreCategory && (window.innerHeight + window.scrollY > moreCategory.offsetTop && window.innerHeight + window.scrollY < moreCategory.offsetTop+100) && moreCategory.innerText == '')){
+        fetch("{{ route('ajax.getHomePageAjax') }}")
+        .then((e) => e.json())
+        .then(({ data: e }) => {
+            moreCategory.innerHTML = e.category_section_html
+            document.getElementById("born-today").innerHTML = e.born_today
+            document.getElementById("died-today").innerHTML = e.died_today
+        });
+    }
+}, {capture: true,passive: true})
+
 </script>

@@ -27,5 +27,13 @@
         </div>
     @empty
     @endforelse
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-center load">
+                <a href="{{ route('facts.search', ['death', str_slug(($article['tables']['quick-facts']['death-month']['value'].' '.$article['tables']['quick-facts']['death-day']['value']))]) }}" class="btn">View
+                    All</a>
+            </h2>
+        </div>
+    </div>
 </section>
 @endif

@@ -101,20 +101,22 @@ class HomePageCache implements ShouldQueue
                     $category_section[$category->slug]['second']['articles'] = $editor_choice;
                 }
             }
-            $today = carbon()->format('M d');
+            $today = explode(" ",carbon()->format('F d'));
             return [
                 'featured_articles' => $featured_articles,
                 'category_section' => $category_section,
                 'born_today' => Article::activeAndPublish()
                     ->with(['category', 'writer'])
                     ->where('task_status', 'published')
-                    ->where('tables->Quick Facts->birthday->value', 'LIKE', "%$today%")
+                    ->where('tables->quick-facts->birth-month->value', '=', $today[0])
+                    ->where('tables->quick-facts->birth-day->value', '=', $today[1])
                     ->limit(config('constants.article_limit', 8))
                     ->get(),
                 'died_today' => Article::activeAndPublish()
                     ->with(['category', 'writer'])
                     ->where('task_status', 'published')
-                    ->where('tables->Quick Facts->death_day->value', 'LIKE', "%$today%")
+                    ->where('tables->quick-facts->death-month->value', '=', $today[0])
+                    ->where('tables->quick-facts->death-day->value', '=', $today[1])
                     ->limit(config('constants.article_limit', 8))
                     ->get(),
             ];

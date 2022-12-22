@@ -1,9 +1,5 @@
-@php
-$factsOrder = ['full-name', 'popular-name', 'birth-place', 'birth-day', 'death-day', 'death-cause', 'nationality', 'ethnicity', 'father', 'mother', 'siblings', 'profession', 'net-worth', 'height', 'weight', 'body-measurement', 'gender-identity', 'marital-status', 'spouse', 'children'];
-@endphp
-
 @push('styles')
-    @include('frontend.assets.css.biography')
+    @include('frontend.assets.css.biography_min')
 @endpush
 
 
