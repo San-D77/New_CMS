@@ -6,8 +6,8 @@ return [
     "homepage_category" =>'',
     "images" => [
         'featured' => [
-            'width' => 728,
-            'height' => 455,
+            'width' => 1200,
+            'height' => 900,
             'quality' => 70,
         ],
         'medium' => [
