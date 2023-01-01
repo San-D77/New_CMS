@@ -18,7 +18,7 @@
             <ul class="breadcrumb-container">
                 <li class="breadcrumb">
                     <a href="{{ url('/') }}">
-                        <span>Home</span>
+                        <i class="fa fa-solid fa-home"></i>
                     </a>
                 </li>
                 ⇢

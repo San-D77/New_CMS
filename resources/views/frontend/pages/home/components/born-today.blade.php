@@ -11,8 +11,8 @@
             <div class="col-md-4">
                 <figure class="textover">
                     <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
-                        <img src="{{ asset($article->image) }}"
-                            loading="lazy" alt="{{ $article->title }}" class="image_img img-fluid">
+                        <img src="{{ asset('/uploads/medium/'.$article->image) }}"
+                            alt="{{ $article->title }}" class="image_img img-fluid">
                     </a>
                     <figcaption>
                         <a class="text-white" href="{{ route('singleArticle', ['slug' => $article->slug]) }}">

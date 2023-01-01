@@ -10,28 +10,30 @@
                 <ul class="breadcrumb-container">
                     <li class="breadcrumb">
                         <a href="{{ url('/') }}">
-                            Home
+                            <i class="fa fa-solid fa-home"></i>
                         </a>
                     </li>
                     ⇢
                     <li class="breadcrumb">
-                        <a href="{{ route('singleArticle', $article->category->slug) }}">
-                            {{ $article->category->title }}
+                        <a href="{{ route('singleArticle', $article->category->slug) }}"
+                            class="text-capitalize">
+                            {{ $article->category->slug }}
                         </a>
                     </li>
                     ⇢
-                    <li class="breadcrumb active">
-                        <span class="text-capitalize">
+                    <li class="breadcrumb active text-capitalize">
+                        <span>
                             {{ $article->title }}
                         </span>
                     </li>
                 </ul>
+
             </div>
 
             @include('frontend.pages.article.components.title-section')
 
             <div class="featured-image">
-                <img src="{{ $article->image }}" class=""
+                <img data-src="{{ asset('/uploads/featured/'.$article->image) }}" src="{{ asset('/uploads/thumbnail/'.$article->image) }}" class=""
                 alt="{{ $article->featured_image_alt_text }}" width="750" height="500">
             </div>
             @include('frontend.pages.article.components.table_of_content')

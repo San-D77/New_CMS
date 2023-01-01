@@ -80,12 +80,10 @@ if (in_array(auth()->user()->role->title, ['Editor'])) {
         {{-- </div> --}}
     </div>
 
-
     <div class="card">
         <div class="card-body">
             <ul class="nav nav-tabs nav-primary" role="tablist">
                 @foreach ($tabs as $key => $task)
-
                     <li class="nav-item" role="presentation">
                         @if (Request()->task_status)
 
@@ -95,11 +93,24 @@ if (in_array(auth()->user()->role->title, ['Editor'])) {
 
                                 <div class="d-flex align-items-center">
                                     <div class="tab-title">
-                                        {{ $task == 'submitted' ? (auth()->user()->isWriter ? ucwords($task) : 'Open') : ucwords($task) }}
-                                        @if ($key != 0)
+                                        @if($task == 'autopublish')
+                                            @if (in_array('autopublish',auth()->user()->permission['permissions']))
+
+                                                Autopublish
+                                                @if ($key != 0)
+                                                    <span class="badge badge-primary" style="">
+                                                        {{ array_key_exists($task, $counts) ? $counts[$task]['count'] : 0 }}
+                                                    </span>
+                                                @endif
+
+                                            @endif
+                                        @else
+                                            {{ $task == 'submitted' ? (auth()->user()->isWriter ? ucwords($task) : 'Open') : ucwords($task) }}
+                                            @if ($key != 0)
                                             <span class="badge badge-primary" style="">
                                                 {{ array_key_exists($task, $counts)? $counts[$task]['count'] : 0 }}
                                             </span>
+                                            @endif
                                         @endif
                                     </div>
                                 </div>
@@ -111,11 +122,25 @@ if (in_array(auth()->user()->role->title, ['Editor'])) {
                                 <div class="d-flex align-items-center">
                                     <div class="tab-title">
 
-                                        {{ $task == 'submitted' ? (auth()->user()->isWriter ? ucwords($task) : 'Open') : ucwords($task) }}
-                                        @if ($key != 0)
+                                        @if($task == 'autopublish')
+                                            @if (in_array('autopublish',auth()->user()->permission['permissions']))
+
+                                                Autopublish
+                                                @if ($key != 0)
+                                                    <span class="badge badge-primary" style="">
+                                                        {{ array_key_exists($task, $counts) ? $counts[$task]['count'] : 0 }}
+                                                    </span>
+                                                @endif
+
+                                            @endif
+                                        @else
+
+                                            {{ $task == 'submitted' ? (auth()->user()->isWriter ? ucwords($task) : 'Open') : ucwords($task) }}
+                                            @if ($key != 0)
                                             <span class="badge badge-primary" style="">
                                                 {{ array_key_exists($task, $counts) ? $counts[$task]['count'] : 0 }}
                                             </span>
+                                            @endif
                                         @endif
                                     </div>
                                 </div>

@@ -18,6 +18,11 @@
 								font-size: 11px
 				}
 
+                .meta-section{
+                    display:flex;
+                    margin-bottom: 10px;
+                }
+
 				.featured-image img {
 								border-radius: 5px;
 								margin-bottom: 15px;
@@ -60,9 +65,8 @@
 				}
 
 				.content-detail figure {
-								max-width: 470px;
+								max-width: 100%;
 								display: block;
-								margin: 10px auto;
 								text-align: center;
 								border: 1px solid #ddd8d8;
 								padding: 10px;
@@ -70,8 +74,7 @@
 				}
 
 				.content-detail figure.image img {
-								max-width: 100%;
-								min-width: 100%
+                    width: 100%;
 				}
 
 				.content-detail figure figcaption {
@@ -79,14 +82,16 @@
 								font-size: .85rem;
 								font-weight: 300;
 								margin: auto;
-								max-width: 450px;
+								width: 95%;
 								text-align: center;
 								font-style: italic
 				}
 
 				.content-detail img {
-								max-width: 100%;
-								height: auto
+								width: 100%;
+								height: auto;
+                                object-fit: cover;
+                                object-position: top
 				}
 
 				.content-detail {
@@ -335,13 +340,15 @@
 				.head-2 {
 								padding-left: 0;
 								font-size: 1rem;
-								font-weight: 600
+								font-weight: 600;
+                                margin-bottom:10px;
 				}
 
 				.head-3 {
 								margin-left: 30px;
 								font-weight: 500;
-								font-size: 1rem
+								font-size: 1rem;
+                                margin-bottom: 10px;
 				}
 
 				.head-4 {

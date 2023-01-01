@@ -5,6 +5,7 @@
 
 				.instagram-media {
 								margin: 0 auto !important;
+
 				}
 
 				.content-detail a,
@@ -23,7 +24,7 @@
 				.sidebar-post .sidebar-post-title h2,
 				.similar-post-title .title {
 								overflow: hidden;
-								-webkit-line-clamp: 2;
+								-webkit-line-clamp: 3;
 								-webkit-box-orient: vertical
 				}
 
@@ -36,6 +37,11 @@
 								padding: 5px 0;
 								font-size: 11px
 				}
+
+                .meta-section{
+                    display:flex;
+                    margin-bottom: 10px;
+                }
 
 				.biography {
 								margin: 25px 0;
@@ -54,20 +60,30 @@
 
 				.biography .main-content-section .left-section .featured-image img {
 								border-radius: 5px;
-								height: 300px;
+								max-height: 250px;
 								width: 100%;
 								object-fit: cover;
 								object-position: top
 				}
 
+                @media(min-width:520px) and (max-width: 820px){
+                    .biography .main-content-section .left-section .featured-image img {
+                        border-radius: 5px;
+                        min-height: 400px;
+                        width: 100%;
+                        object-fit: cover;
+                        object-position: top
+                    }
+                }
+
 				@media(min-width:825px) {
-								.biography .main-content-section .left-section .featured-image img {
-												border-radius: 5px;
-												height: 300px;
-												width: 100%;
-												object-fit: cover;
-												object-position: top
-								}
+                    .biography .main-content-section .left-section .featured-image img {
+                                    border-radius: 5px;
+                                    height: 300px;
+                                    width: 100%;
+                                    object-fit: cover;
+                                    object-position: top
+                    }
 				}
 
 				.biography .main-content-section .left-section .facts .fact-title {
@@ -79,14 +95,14 @@
 								text-transform: capitalize
 				}
 
-				.biography .main-content-section .right-section .content-title h1 {
-								font-size: 2rem;
+				h1 {
+								font-size: 2.2rem;
 								font-weight: 600;
-								max-width: 728px
+								max-width: 100%;
 				}
 
 				.content-detail figure {
-								max-width: 470px;
+								max-width: 100%;
 								display: block;
 								margin: 10px auto;
 								text-align: center;
@@ -176,15 +192,16 @@
 								font-size: .85rem;
 								font-weight: 300;
 								margin: auto;
-								max-width: 450px;
+								width: 95%;
 								text-align: left;
 								font-style: italic
 				}
 
 				.biography .main-content-section .right-section .content-detail img {
-								max-width: 100%;
-								height: auto;
-								margin: auto
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: top;
 				}
 
 				.social-share {
@@ -213,6 +230,8 @@
 												margin-right: 0
 								}
 				}
+
+
 
 				.social-share .facebook {
 								color: #2374e1
@@ -248,8 +267,8 @@
 				}
 
 				.sidebar-section .sidebar-post .image_img {
-								min-width: 100%;
-								height: 90px;
+								width: 100%;
+								max-height: 90px;
 								object-fit: cover;
 								object-position: top;
 								border-radius: 5px
@@ -365,13 +384,15 @@
 				.head-2 {
 								padding-left: 0;
 								font-size: 1rem;
-								font-weight: 600
+								font-weight: 600;
+                                margin-bottom:10px;
 				}
 
 				.head-3 {
 								margin-left: 30px;
 								font-weight: 500;
-								font-size: 1rem
+								font-size: 1rem;
+                                margin-bottom: 10px;
 				}
 
 				.head-4 {
@@ -416,4 +437,5 @@
 								font-weight: 700;
 								color: #c41111
 				}
+
 </style>

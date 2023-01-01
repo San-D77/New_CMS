@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\ArticleRequest;
 use App\Jobs\Backend\ArticleLogJob;
 use App\Models\Backend\Article;
+use App\Models\Backend\ArticleLog;
 use App\Models\Seo;
 use App\Services\ImageUpload;
 use Illuminate\Http\Request;
@@ -74,7 +75,7 @@ class ArticleController extends Controller
     public function upload_image(Request $request)
     {
         $file = $request->file;
-        $path =  ("uploads/" . date("Y/m/d/"));
+        $path =  ("uploads/content/" . date("Y/m/d/"));
         if (!file_exists($path)) {
             mkdir($path, 0777, true);
         }
@@ -83,7 +84,7 @@ class ArticleController extends Controller
         $path = $path . time() . "_" .  $filename . '.webp';
 
         // Intervention
-        Image::make($file)->resize(450, null, function ($constraint) {
+        Image::make($file)->resize(config('constants.content_image_width',450), null, function ($constraint) {
             $constraint->aspectRatio();
         })->encode('webp', 50)->save(($path));
 
@@ -100,6 +101,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
+        $articleLog = ArticleLog::where('article_id',$article->id)->get();
 
         $url = url('/') . '/';
         $articles = Article::where('task_status','published')->whereNotIn('id', [$article->id])
@@ -129,6 +131,7 @@ class ArticleController extends Controller
             'categories' => \App\Models\Backend\Category::all(),
             'tags' => \App\Models\Backend\Tag::all(),
             'articles' => $articles,
+            'articleLog' => $articleLog
         ]);
     }
 
@@ -165,7 +168,7 @@ class ArticleController extends Controller
 
         if ($request->task_status == 'submitted') {
             if ($article->editor_id) {
-                $message = 'Article Resubmitted and assign to ' . auth()->user()->name . ' for editing';
+                $message = 'Article Resubmitted and assigned to ' . auth()->user()->name . ' for editing';
             } else {
                 $message = 'Article is submitted and open for editor';
             }
@@ -178,7 +181,7 @@ class ArticleController extends Controller
                 unset($articleArray['published_at']);
             }
         } elseif ($request->task_status == 'modifying') {
-            $message = auth()->user()->name . ' send Article for modification';
+            $message = auth()->user()->name . ' sent Article for modification';
         }
 
         if ($request->task_status == 'submitted' && $article->editor_id) {
@@ -187,15 +190,29 @@ class ArticleController extends Controller
 
 
 
-        $article->update(array_filter($articleArray));
-        Seo::where('seoable_id', $request->id)->update([
+
+        $article->seo()->updateOrCreate(
+            [
+            'seoable_id' => $request->id,
+            'seoable_type' => get_class($article)
+            ],
+            [
             'meta_title' => $request->meta_title ?? '',
             'meta_description' => $request->meta_description ?? '',
             'meta_keywords' => $request->meta_keywords ?? ''
+            ]
+        );
+
+        $article->update(array_filter($articleArray));
+
+        $schemaObj = getArticleSchema($article);
+        $article->update([
+            'schema' => $schemaObj
         ]);
 
         $article->tags()->sync($request->tags);
         if ($message) {
+
             ArticleLogJob::dispatch($article, $message, $request->discussion ?? '');
         }
 
@@ -302,5 +319,15 @@ class ArticleController extends Controller
 
         // dd($article );
         return back()->with('success', "Article " . $article->editor_choice ? 'added to' : 'removed from' . " editor choice list");
+    }
+
+
+    public function revisions($revision_article){
+        $articleLog = ArticleLog::where('id', $revision_article)->first();
+        $prevLog = ArticleLog::where('id', "<", $revision_article)->orderBy('id','desc')->first();
+        return view($this->path . 'revisions', [
+            'articleLog' => $articleLog,
+            'previous' => $prevLog
+        ]);
     }
 }

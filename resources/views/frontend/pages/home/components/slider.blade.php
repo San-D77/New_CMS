@@ -7,7 +7,7 @@
                         <li class="splide__slide">
                             <figure class="slider-image">
                                 <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
-                                    <img src="{{ asset($article->image) }}"
+                                    <img src="{{ asset('/uploads/medium/'.$article->image) }}"
                                         alt="{{ $article->title }}" class="slider-image-img">
                                 </a>
                                 <p class="slider-category">

@@ -16,8 +16,9 @@ trait SeoTrait
     public static function bootSeoTrait()
     {
 
+
         static::created(function ($model) {
-           if (request()->meta_title && request()->meta_description && request()->meta_keywords) {
+           if (request()->meta_title || request()->meta_description || request()->meta_keywords) {
                 $model->seo()->updateOrCreate(
                     [
                         "seoable_id" => $model->id,
@@ -33,6 +34,7 @@ trait SeoTrait
         });
 
         static::updated(function ($model) {
+
             if (request()->meta_title || request()->meta_description || request()->meta_keywords) {
 
                 $model->seo()->updateOrCreate(

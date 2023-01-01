@@ -5,7 +5,7 @@
      @include('frontend.assets.css.homepage_min')
 @endpush
 @push('schema')
-    {!! $schema !!}
+    {!! getSettingValue('org_schema') !!}
 @endpush
 
 @push('scripts')

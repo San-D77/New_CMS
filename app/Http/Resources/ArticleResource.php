@@ -17,7 +17,7 @@ class ArticleResource extends JsonResource
         return [
             "title" => $this->title,
             "url" => route("singleArticle", $this->slug),
-            "image" => asset($this->image),
+            "image" => asset('/uploads/medium/'.$this->image),
             "category" => [
                 "name" => $this->category->title,
                 "url" => route("categoryArticles", $this->category->slug),

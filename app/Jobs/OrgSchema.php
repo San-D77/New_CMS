@@ -35,20 +35,16 @@ class OrgSchema implements ShouldQueue
      */
     public function handle()
     {
-        if ($this->article) {
-            // $this->article->update([
-            //     'schema' => getArticleSchema($this->article),
-            // ]);
-        } else {
-            WebSetting::updateOrCreate(
-                [
-                    'key' => 'org_schema',
-                    'type' => 'branding',
-                ],
-                [
-                    'value' => getOrganizationSchema(),
-                ],
-            );
-        }
+
+        WebSetting::updateOrCreate(
+            [
+                'key' => 'org_schema',
+                'type' => 'branding',
+            ],
+            [
+                'value' => getHomePageSchema(),
+            ],
+        );
+
     }
 }

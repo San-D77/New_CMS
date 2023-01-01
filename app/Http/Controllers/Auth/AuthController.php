@@ -25,8 +25,8 @@ class AuthController extends Controller
 
     public function postLogin(LoginRequest $request)
     {
-
         if (auth()->attempt($request->only('email', 'password'))) {
+
             if (config("constants.enable_2fa")) {
                 if (!auth()->user()->google2fa_secret) {
                     // setup 2fa

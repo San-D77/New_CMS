@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\WebSettingController;
 use App\Http\Controllers\PageController;
 use App\Models\Backend\Article;
+use App\Models\Backend\ArticleTitle;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
@@ -86,6 +87,8 @@ Route::group(['prefix' => 'article', "as" => "article-"], function () {
     Route::get("/featured/{article}", [ArticleController::class, "featured"])->name('featured');
 
     Route::get("/editor-choice/{article}", [ArticleController::class, "editor_choice"])->name('editor_choice');
+
+    Route::get("/compare/{version}",  [ArticleController::class, "revisions"])->name('revisions');
 });
 
 
@@ -97,9 +100,14 @@ Route::group(['prefix' => 'article-title', "as" => "article_title-"], function (
     Route::post("/update/{article_title}", [ArticleTitleController::class, "update"])->name("update");
     Route::get("/delete/{article_title}", [ArticleTitleController::class, "destroy"])->name("delete");
 
+    Route::get('/create-and-publish', [ArticleTitleController::class, "create_and_publish"])->name("create_and_publish");
+    Route::post('/create-and-publish', [ArticleTitleController::class, "start_writing"])->name("start_writing");
+
     Route::get("/status-update/{article_title}", [ArticleTitleController::class, "updateStatus"])->name("update_status");
 
     Route::get("/pick/{article_title}", [ArticleTitleController::class, "pick"])->name("pick");
+
+    Route::post("/assign/{article_title}", [ArticleTitleController::class, "assign"])->name("assign");
 
     // import xlsx
 

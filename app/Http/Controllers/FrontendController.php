@@ -22,7 +22,6 @@ class FrontendController extends Controller
 
         return view("frontend.pages.home.index", [
             "data" => getHomePageCache(),
-            "schema" => getHomePageSchema()
         ]);
     }
 
@@ -48,10 +47,8 @@ class FrontendController extends Controller
     {
         $article = Article::activeAndPublish()->where("slug", $slug)->where("task_status", "published")->first();
         if ($article) {
-
             return view("frontend.pages.article.index", [
                 "article" => $article,
-                "schema" => getArticleSchema($article)
             ]);
         }
         if (getSetting($slug)) {

@@ -115,7 +115,7 @@ class WebSettingController extends Controller
                 $old->delete();
             }
         }
-        // OrgSchema::dispatch();
+        OrgSchema::dispatch();
         clearSettingCache();
 
         return redirect()

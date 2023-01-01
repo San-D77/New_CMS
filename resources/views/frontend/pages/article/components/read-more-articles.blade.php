@@ -4,7 +4,7 @@
         <div class="readmore-article col-6 col-md-3">
             <div class="readmore-image">
                 <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
-                    <img src="{{ asset($article->image) }}" alt="{{ $article->title }}"
+                    <img src="{{ asset('/uploads/thumbnail/'.$article->image) }}" alt="{{ $article->title }}"
                         class="readmore-image-img" width="190" height="120">
                 </a>
                 <p class="readmore-title">

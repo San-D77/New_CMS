@@ -23,10 +23,12 @@ class ArticleDataTable extends DataTable
         "published",
         "editing",
         "submitted",
+        "autopublish"
     ];
 
     private $editor_hide_condition = [
         "modifying",
+        "autopublish"
     ];
 
     public function __construct()
@@ -68,7 +70,7 @@ class ArticleDataTable extends DataTable
                     $td .= "<span> Editor:</span> <span> <b> {$row->editor?->name} </b> </span><br/>";
                 }
                 if ($row->task_status == "published") {
-                    $td .= "<span> Published:</span> <span> <b> " . carbon($row->published_at)->format("M d,Y H:m") . " </b> </span><br/>";
+                    $td .= "<span> Published:</span> <span> <b> " . carbon($row->published_at). " </b> </span><br/>";
                 }
 
                 return $td;

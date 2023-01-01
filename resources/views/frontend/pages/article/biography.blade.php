@@ -24,9 +24,9 @@
                                 </a>
                             </li>
                             ⇢
-                            <li class="breadcrumb active">
+                            <li class="breadcrumb active text-capitalize">
                                 <span>
-                                    {{ $article->slug }}
+                                    {{ $article->title }}
                                 </span>
                             </li>
                         </ul>
@@ -42,7 +42,7 @@
                                 <div class="featured-image">
                                     <div class="image">
                                         <figure class="m-0">
-                                            <img src="{{ asset($article->image) }}" alt="{{ $article->featured_image_alt_text }}"
+                                            <img src="{{ asset('/uploads/featured/'.$article->image) }}" alt="{{ $article->featured_image_alt_text }}"
                                                 class="image_img" width="425" height="300">
                                         </figure>
                                     </div>

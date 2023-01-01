@@ -27,6 +27,7 @@ class PageController extends Controller
 
     public function update(Request $request, $key)
     {
+
         $page = WebSetting::where("key", $key)->where("type", "pages")->first();
         $page->update($request->only(["value"]));
         if ($request->meta_title || $request->meta_description || $request->meta_keywords) {

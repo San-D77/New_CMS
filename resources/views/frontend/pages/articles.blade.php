@@ -5,7 +5,7 @@
                 <div class="image">
                     <figure class="m-0">
                         <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
-                            <img src="{{ asset($article->image) }}" alt="" class="image_img img-fluid">
+                            <img src="{{ asset('/uploads/medium/'.$article->image) }}" alt="" class="image_img">
                         </a>
                     </figure>
                 </div>

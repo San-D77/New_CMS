@@ -2,7 +2,7 @@
     <div class="image">
         <figure class="m-0">
             <a href="{{ route('singleArticle', $article->slug) }}">
-                <img src="{{ asset($article->image) }}" alt="{{ $article->title }}" class="image_img">
+                <img src="{{ asset('/uploads/thumbnail/'.$article->image) }}" alt="{{ $article->title }}" class="image_img">
             </a>
         </figure>
     </div>

@@ -32,9 +32,9 @@
     font-weight: 600;
     hyphens: auto;
     display: -webkit-box;
-    overflow: hidden;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 				#glider .splide__slide .slider-image-img {

@@ -53,6 +53,16 @@ function getHomePageSchema(){
             ]
     ];
 
+    $search = [
+        "@type"=> "WebSite",
+        "url"=> route('home'),
+        "potentialAction"=> [
+            "@type"=> "SearchAction",
+            "target"=> route('home')."/search/?q={search_term_string}",
+            "query-input"=> "required name=search_term_string"
+        ]
+    ];
+
     $schemaObj = [[
         "@context" => "https://schema.org",
         "@graph" => [
@@ -60,6 +70,7 @@ function getHomePageSchema(){
             $breadCrumb,
             isset($navigationSchema)?$navigationSchema:'',
             getWebSchema(),
+            $search
         ]
     ]];
 
@@ -77,8 +88,8 @@ function getArticleSchema($article){
         ],
         "headline"=> $article->seo->meta_title,
         "description"=> $article->seo->meta_description,
-        "datePublished"=>$article->published_at->tz('UTC')->toAtomString(),
-        "dateModified" =>$article->updated_at?carbon($article->updated_at)->tz('UTC')->toAtomString():$article->published_at->tz('UTC')->toAtomString(),
+        "datePublished"=>$article->published_at?carbon($article->published_at)->tz('UTC')->toAtomString():'',
+        "dateModified" =>$article->updated_at?carbon($article->updated_at)->tz('UTC')->toAtomString():'',
         "author"=>[
             "@type"=> "Person",
             "name"=> $article->author->alias_name,
@@ -86,7 +97,7 @@ function getArticleSchema($article){
         ],
         "image"=> [
             '@type' => 'ImageObject',
-            'url' => asset($article->image),
+            'url' => asset('/uploads/featured/'.$article->image),
             'width' => 728,
             'height' => 455,
         ],

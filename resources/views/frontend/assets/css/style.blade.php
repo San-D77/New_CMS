@@ -40,15 +40,17 @@
 								text-transform: uppercase
 				}
 
-				.display-menu,
-				.navbar-nav .nav-link:hover>ul {
-								display: block
-				}
+
 
 				.dropdown-mobile,
 				.navbar-nav .dropdown-list {
 								display: none;
 								list-style: none
+				}
+
+                .display-menu,
+				.navbar-nav .nav-link:hover>ul {
+								display: block
 				}
 
 				.parent:hover>.fa-caret-down,
@@ -182,7 +184,10 @@
 
 
 				.bc {
-								-webkit-line-clamp: 1
+                    display: -webkit-box;
+                    overflow: hidden;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical
 				}
 
 				.breadcrumb-container {
@@ -198,12 +203,12 @@
 								font-size: 15px;
 								line-height: 30px;
 								font-weight: 600;
-								color: #555657
+								color: #555657;
 				}
 
 				.breadcrumb-container li a {
 								color: #3535b1;
-								position: relative
+								position: relative;
 				}
 
 				.article-author a:hover,

@@ -15,7 +15,7 @@
                                  <div class="col-4 image">
                                      <figure class="m-0">
                                          <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
-                                             <img src="{{ asset($article->image) }}"
+                                             <img src="{{ asset('/uploads/thumbnail/'.$article->image) }}"
                                                  alt="{{ $article->title }}" class="image_img">
                                          </a>
                                      </figure>
@@ -51,7 +51,7 @@
                      <a class="text-white" href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
                          <figure class="textover">
                              <img width="50" height="50"
-                                 src="{{ asset($article->image) }}" alt="{{ $article->title }}"
+                             src="{{ asset('/uploads/medium/'.$article->image) }}" alt="{{ $article->title }}"
                                  class="image_img">
                              <figcaption>
                                  {{ $article->title }}
@@ -85,7 +85,7 @@
                              <figure class="m-0">
                                  <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
                                      <img width="50" height="50"
-                                         src="{{ asset($article->image) }}" alt="{{ $article->title }}"
+                                     src="{{ asset('/uploads/thumbnail/'.$article->image) }}" alt="{{ $article->title }}"
                                          class="image_img">
                                  </a>
                              </figure>

@@ -9,6 +9,7 @@ use App\Jobs\Backend\ArticleLogJob;
 use App\Models\Backend\Article;
 use App\Models\Backend\ArticleTitle;
 use App\Models\Backend\Category;
+use App\Models\Backend\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -22,13 +23,15 @@ class ArticleTitleController extends Controller
      */
     public function index()
     {
+        $users = User::all();
         if (auth()->user()->role->title == "Writer") {
             $article_title = ArticleTitle::whereNull("article_id")->orderBy("created_at", "desc")->get();
         } else {
             $article_title = ArticleTitle::orderBy("created_at", "desc")->get();
         }
         return view($this->path . "index", [
-            "article_titles" => $article_title
+            "article_titles" => $article_title,
+            "users" => $users
         ]);
     }
 
@@ -42,6 +45,27 @@ class ArticleTitleController extends Controller
         return view($this->path . "crud", [
             "categories" => \App\Models\Backend\Category::all(),
         ]);
+    }
+
+    public function create_and_publish(){
+        return view($this->path . "create_and_publish", [
+            "categories" => \App\Models\Backend\Category::all(),
+        ]);
+    }
+
+    public function start_writing( Request $request){
+        $article = Article::create([
+            "title" => $request->title,
+            "slug" => Str::slug($request->title),
+            "task_status" => 'autopublish',
+            "category_id" => $request->category_id ?? 1, // TODO remove default 1
+            "writer_id" => auth()->user()->id,
+        ]);
+
+
+        ArticleLogJob::dispatchAfterResponse($article, "Article writing by " . auth()->user()->name);
+
+        return redirect()->route("backend.article-edit", ["article" => $article]);
     }
 
     /**
@@ -122,6 +146,25 @@ class ArticleTitleController extends Controller
         return redirect()->route("backend.article-edit", ["article" => $article]);
     }
 
+    public function assign(Request $request, $articleTitle){
+        $article_title = ArticleTitle::where('id', $articleTitle)->first();
+        $user = User::where('id', $request->assigned_user)->first();
+        $article = Article::create([
+            "title" => $article_title->title,
+            "slug" => Str::slug($article_title->title),
+            "category_id" => $article_title->category_id ?? 1,
+            "writer_id" => $request->assigned_user,
+            "task_status" => "writing"
+        ]);
+
+        $article_title->update([
+            "article_id" => $article->id,
+        ]);
+
+
+        ArticleLogJob::dispatchAfterResponse($article, "Article assigned to " . $user->name. " by ". auth()->user()->name);
+        return back();
+    }
 
 
     public function import(Request $request)

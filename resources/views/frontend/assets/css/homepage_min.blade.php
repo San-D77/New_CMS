@@ -11,6 +11,7 @@ h2{font-size:2rem;}
 p{margin-top:0;margin-bottom:1rem;}
 ul{padding-left:2rem;}
 ul{margin-top:0;margin-bottom:1rem;}
+ul ul{margin-bottom:0;}
 a:hover{color:#0a58ca;}
 figure{margin:0 0 1rem;}
 img,svg{vertical-align:middle;}
@@ -128,6 +129,7 @@ button{text-transform:none;}
 .fa-align-left:before{content:"\f036";}
 .fa-arrow-up:before{content:"\f062";}
 .fa-magnifying-glass:before{content:"\f002";}
+.fa-caret-down:before{content:"\f0d7";}
 .fa-xmark:before{content:"\f00d";}
 .fa-solid{font-family:"Font Awesome 6 Free";font-weight:900;}
 /*! CSS Used from: Embedded */
@@ -141,7 +143,12 @@ p{text-align:justify!important;}
 #search-container form{display:flex;gap:10px;padding-top:10px;}
 .close-search{padding-top:5px;font-weight:400;font-size:20px;}
 .navbar-nav .nav-item{position:relative;text-transform:uppercase;}
-.links{color:#fff;}
+.dropdown-mobile,.navbar-nav .dropdown-list{display:none;list-style:none;}
+.display-menu,.navbar-nav .nav-link:hover>ul{display:block;}
+.parent:hover>.fa-caret-down,.rotate-icon{transform:rotate(90deg);}
+.navbar-nav .dropdown-list{position:absolute;background:#3a3b3c;top:90%;left:0;border-radius:0 0 7px 7px;min-width:300px;padding:20px 0;}
+.navbar-nav .dropdown-list li{float:none;padding:15px 10px;}
+.links,.navbar-nav .dropdown-list li a{color:#fff;}
 .nav-item:active,.nav-item:hover{background:0 0!important;}
 ::-moz-selection{background:#012835;color:#d2d2d4;}
 ::selection{background:#012835;color:#d2d2d4;}

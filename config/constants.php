@@ -1,17 +1,35 @@
 <?php
 
 return [
-
     "enable_2fa" => false,
     "article_limit" => 6,
     "homepage_category" =>'',
+    "images" => [
+        'featured' => [
+            'width' => 728,
+            'height' => 455,
+            'quality' => 70,
+        ],
+        'medium' => [
+            'width' => 300,
+            'height' => 187,
+            'quality' => 60,
+        ],
+        'thumbnail' =>[
+            'width' => 165,
+            'height' => 100,
+            'quality' => 50
+        ]
+    ],
+    "content_image_width" => 728,
     "task_status" => [
         "writing",
         "submitted",
         "editing",
         "modifying",
         "published",
-        "reviewing"
+        "reviewing",
+        "autopublish"
     ],
     "web_setting_tabs" => ['branding', 'social-media', 'secret', 'seo', 'analytics'],
     "social_media" => [
@@ -50,6 +68,8 @@ return [
         "assign_permission",
         "role-view",
         "role-manage",
+        "autopublish",
+        "assign_task"
     ],
     "writer_permissions" => [
         "category-view",
