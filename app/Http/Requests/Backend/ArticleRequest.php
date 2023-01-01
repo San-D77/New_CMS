@@ -21,7 +21,7 @@ class ArticleRequest extends FormRequest
 
             'summary' => 'required|string',
             'body' => 'required|string',
-            "image" => "required_without:id|image|mimes:jpeg,png,jpg,gif,svg|max:100",
+            "image" => "required_without:id|image|mimes:jpeg,png,jpg,gif,svg",
             'category_id' => 'required|exists:categories,id',
         ];
 
@@ -31,7 +31,7 @@ class ArticleRequest extends FormRequest
             'summary' => 'nullable|string|',
             'body' => 'nullable|string',
             'featured_image_alt_text'=>'nullable|string',
-            'image' => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:100",
+            'image' => "nullable|image|mimes:jpeg,png,jpg,gif,svg",
             'category_id' => 'nullable|exists:categories,id',
             'writer_id' => 'nullable|exists:users,id',
             'editor_id' => 'nullable|exists:users,id',
