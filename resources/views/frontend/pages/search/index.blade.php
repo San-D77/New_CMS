@@ -25,7 +25,7 @@
             <div class="single-article">
                 <div class="image-section">
                     <a href="/{{ $article->slug}}">
-                        <img src="{{asset($article->image)}}" width="300" alt="">
+                        <img src="{{asset('/uploads/medium/'.$article->image)}}" width="300" alt="">
                     </a>
                 </div>
                 <div class="title-section">

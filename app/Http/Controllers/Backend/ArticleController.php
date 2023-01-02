@@ -148,6 +148,7 @@ class ArticleController extends Controller
         $message = 'Article saved by ' . auth()->user()->name;
         $published_at = null;
 
+
         if ($request->hasFile('image')) {
             $articleArray = array_merge(
                 collect($request->validated())
@@ -158,7 +159,7 @@ class ArticleController extends Controller
                 ],
             );
         } else {
-            if (!$article->image && $request['task_status'] === 'submitted') {
+            if (!$article->image && ($request['task_status'] === 'submitted' || $request['task_status'] === 'published')) {
                 return back()->with('error', 'There is no featured image')->withInput();
             }
             $articleArray = collect($request->validated())
@@ -205,10 +206,12 @@ class ArticleController extends Controller
 
         $article->update(array_filter($articleArray));
 
-        $schemaObj = getArticleSchema($article);
-        $article->update([
-            'schema' => $schemaObj
-        ]);
+        if($article->task_status == 'published'){
+            $schemaObj = getArticleSchema($article);
+            $article->update([
+                'schema' => $schemaObj
+            ]);
+        }
 
         $article->tags()->sync($request->tags);
         if ($message) {

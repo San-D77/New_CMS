@@ -42,7 +42,7 @@
                                 <div class="featured-image">
                                     <div class="image">
                                         <figure class="m-0">
-                                            <img src="{{ asset('/uploads/featured/'.$article->image) }}" alt="{{ $article->featured_image_alt_text }}"
+                                            <img data-src="{{ asset('/uploads/featured/'.$article->image) }}" src="{{ asset('/uploads/thumbnail/'.$article->image) }}" alt="{{ $article->featured_image_alt_text }}"
                                                 class="image_img" width="425" height="300">
                                         </figure>
                                     </div>
