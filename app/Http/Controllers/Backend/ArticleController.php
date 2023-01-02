@@ -86,7 +86,7 @@ class ArticleController extends Controller
         // Intervention
         Image::make($file)->resize(config('constants.content_image_width',450), null, function ($constraint) {
             $constraint->aspectRatio();
-        })->encode('webp', 50)->save(($path));
+        })->encode('webp')->save(($path),config('constants.content_image_quality'));
 
 
 

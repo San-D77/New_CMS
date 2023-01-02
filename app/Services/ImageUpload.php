@@ -39,7 +39,7 @@ class ImageUpload
                 Image::make($file)->resize($dimension['width'], $dimension['height'], function ($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
-                })->encode('webp', $dimension['quality'])->save(("uploads/$image_category/".$dateStr. $timeStamp . "_" .  $filename . '.webp'));
+                })->encode('webp')->save(("uploads/$image_category/".$dateStr. $timeStamp . "_" .  $filename . '.webp'),$dimension['quality']);
             };
             return $dateStr.$timeStamp."_".$filename.".webp";
         }

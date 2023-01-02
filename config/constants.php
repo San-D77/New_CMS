@@ -8,12 +8,12 @@ return [
         'featured' => [
             'width' => 1200,
             'height' => 900,
-            'quality' => 70,
+            'quality' => 50,
         ],
         'medium' => [
             'width' => 300,
             'height' => 187,
-            'quality' => 60,
+            'quality' => 50,
         ],
         'thumbnail' =>[
             'width' => 165,
@@ -22,6 +22,7 @@ return [
         ]
     ],
     "content_image_width" => 728,
+    "content_image_quality" => 50,
     "task_status" => [
         "writing",
         "submitted",
