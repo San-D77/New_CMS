@@ -58,67 +58,29 @@ class HomePageCache implements ShouldQueue
 
             $ids = array_merge($ids, $editor_choice->pluck('id')->toArray());
 
-            $category_section = [];
 
-            if(config('constants.homepage_category')){
-                $parameter = 'slug';
-                $value = config('constants.homepage_category');
-            }else{
-                $parameter = 'id';
-                $value = 1;
-            }
 
+            $category_articles = [];
             foreach (
-                Category::where($parameter, $value)
-                    ->where('status', 1)
-                    ->get()
-                as $key => $category
+                config('constants.homepage_categories')
+                 as $category_slug
             ) {
-                $category_section[$category->slug]['category'] = $category;
-
-                $articles1 = $category
+                $cat = Category::where('slug',$category_slug)->where('status',1)->first();
+                if($cat){
+                    array_push($category_articles, $cat
                     ->articles()
                     ->with(['category', 'writer'])
                     ->where('task_status', 'published')
                     ->limit(config('constants.article_limit', 7))
                     ->whereNotIn('id', $ids)
-                    ->get();
-
-                $ids = array_merge($ids, $articles1->pluck('id')->toArray());
-
-                $articles2 = $category
-                    ->articles()
-                    ->with(['category', 'writer'])
-                    ->where('task_status', 'published')
-                    ->limit(2)
-                    ->whereNotIn('id', $ids)
-                    ->get();
-                $ids = array_merge($ids, $articles2->pluck('id')->toArray());
-
-                $category_section[$category->slug]['articles'] = [$articles1, $articles2];
-                if ($key == 0) {
-                    $category_section[$category->slug]['second']['title'] = 'Editor Choice';
-                    $category_section[$category->slug]['second']['articles'] = $editor_choice;
+                    ->get());
                 }
             }
-            $today = explode(" ",carbon()->format('F d'));
             return [
                 'featured_articles' => $featured_articles,
-                'category_section' => $category_section,
-                'born_today' => Article::activeAndPublish()
-                    ->with(['category', 'writer'])
-                    ->where('task_status', 'published')
-                    ->where('tables->quick-facts->birth-month->value', '=', $today[0])
-                    ->where('tables->quick-facts->birth-day->value', '=', $today[1])
-                    ->limit(config('constants.article_limit', 8))
-                    ->get(),
-                'died_today' => Article::activeAndPublish()
-                    ->with(['category', 'writer'])
-                    ->where('task_status', 'published')
-                    ->where('tables->quick-facts->death-month->value', '=', $today[0])
-                    ->where('tables->quick-facts->death-day->value', '=', $today[1])
-                    ->limit(config('constants.article_limit', 8))
-                    ->get(),
+                'editor_choice' => $editor_choice,
+                'category_articles' => $category_articles
+
             ];
         });
     }

@@ -28,7 +28,7 @@ $type = isset($type) ? $type : "website";
 <meta property="og:title" content="{{ $meta_title }}">
 
 <meta property="og:description" content="{{ $meta_description }}">
-<meta property="og:image" content="{{ $image }}">
+<meta property="og:image" content="{{ asset('/uploads/featured/'.$image) }}">
 <meta property="og:image:alt" content="{{ $meta_title }}">
 <meta property="twitter:title" content="{{ $meta_title }}">
 <meta property="twitter:description" content="{{ $meta_description }}">

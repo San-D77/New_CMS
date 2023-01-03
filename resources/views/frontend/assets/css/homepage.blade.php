@@ -40,9 +40,19 @@
 				#glider .splide__slide .slider-image-img {
 								border-radius: 6px;
 								margin: 0;
-								max-width: 100%;
-								height: auto
+								width: 100%;
+								height: 200px;
+                                object-fit: cover;
+								object-position: top;
+
 				}
+
+                @media(max-width: 500px){
+                    #glider .splide__slide .slider-image-img {
+                        width: 100%;
+                        height: 240px;
+                    }
+                }
 
 				#glider .splide__slide .slider-image .slider-category {
 								position: absolute;
@@ -294,6 +304,7 @@
 				.textover figcaption {
 								display: -webkit-box;
 								overflow: hidden;
+                                -webkit-line-clamp: 2;
 								-webkit-box-orient: vertical;
 								color: #fff
 				}
@@ -327,16 +338,23 @@
 				.textover figcaption {
 								position: absolute;
 								left: 0;
-								width: 100%
+								width: 100%;
+								color: rgb(209, 209, 209)
 				}
+                .textover figcaption a{
+                    display: -webkit-box;
+								overflow: hidden;
+                                -webkit-line-clamp: 2;
+								-webkit-box-orient: vertical;
+                }
 
 				.textover figcaption {
-								bottom: 0;
-								padding: 10px 15px;
-								background-color: rgba(0, 0, 0, .8);
-								border-bottom-left-radius: 15px;
-								border-bottom-right-radius: 15px;
-								-webkit-line-clamp: 2
+                    bottom: 0;
+                    padding: 10px 15px;
+                    background-color: rgba(0, 0, 0, .8);
+                    border-bottom-left-radius: 15px;
+                    border-bottom-right-radius: 15px;
+
 				}
 
 				.image_overlay {

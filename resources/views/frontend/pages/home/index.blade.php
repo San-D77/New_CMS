@@ -1,8 +1,8 @@
 @extends('frontend.layouts.index')
 @push('styles')
-    {{-- @include('frontend.assets.css.homepage')
-    @include('frontend.assets.css.splide') --}}
-     @include('frontend.assets.css.homepage_min')
+    @include('frontend.assets.css.homepage')
+    @include('frontend.assets.css.splide')
+     {{-- @include('frontend.assets.css.homepage_min') --}}
 @endpush
 @push('schema')
     {!! getSettingValue('org_schema') !!}
@@ -22,13 +22,20 @@
             @include('frontend.pages.home.components.slider')
         @endif
 
-        @foreach ($data['category_section'] as $key => $section)
-            @include('frontend.pages.home.components.category-section', [
-                'section' => $section,
-            ])
+
+        @include('frontend.pages.home.components.first-section', [
+            'section' => $data['category_articles'][0],
+            'second' => $data['editor_choice']
+
+        ])
+
+        @foreach ($data['category_articles'] as $section)
+            @if ($loop->iteration > 1)
+                @include('frontend.pages.home.components.category-section', [
+                    'section' => $section,
+                ])
+            @endif
         @endforeach
-        <div id="more-category-section">
-        </div>
 
         <section id="born-today">
         </section>

@@ -87,6 +87,10 @@
 								font-style: italic
 				}
 
+                .html5-video-player{
+                    height: 450px;
+                }
+
 				.content-detail img {
 								width: 100%;
 								height: auto;

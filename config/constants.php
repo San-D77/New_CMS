@@ -2,8 +2,14 @@
 
 return [
     "enable_2fa" => false,
-    "article_limit" => 6,
-    "homepage_category" =>'',
+    "article_limit" => 8,
+    "homepage_categories" =>[
+        'biography',
+        'relationship',
+        'family',
+        'webs-most-searched',
+        'net-worth'
+    ],
     "images" => [
         'featured' => [
             'width' => 1200,

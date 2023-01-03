@@ -15,9 +15,9 @@
 
 
     {{-- Common Css --}}
-    {{-- @include('frontend.assets.css.bootstrap')
+    @include('frontend.assets.css.bootstrap')
     @include('frontend.assets.css.fontawesome')
-    @include('frontend.assets.css.style') --}}
+    @include('frontend.assets.css.style')
     @stack('styles')
     @stack('schema')
 </head>

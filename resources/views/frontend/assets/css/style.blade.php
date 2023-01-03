@@ -122,7 +122,7 @@
 
 				.instagram-media,
 				.twitter-tweet {
-								margin: auto !important
+								margin: auto !important;
 				}
 
 				.meta,
@@ -134,8 +134,9 @@
 
 				.adver img,
 				iframe {
-								width: 100%
-				}
+                    width: 100%;
+                }
+
 
 				html {
 								font-size: 100%;
