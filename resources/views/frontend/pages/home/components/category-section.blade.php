@@ -1,5 +1,6 @@
 
 
+@if (count($section)>0)
 <section class="row outer-section">
     <div class="heading mt-4 mb-4">
         <div class="category-segment">
@@ -41,3 +42,4 @@
         </div>
     </div>
 </section>
+@endif
