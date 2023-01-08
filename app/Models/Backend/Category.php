@@ -32,4 +32,5 @@ class Category extends Model
     {
         return $this->belongsToMany(TableSet::class, TableSetCategory::class);
     }
+
 }

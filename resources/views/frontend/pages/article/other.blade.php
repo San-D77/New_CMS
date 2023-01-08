@@ -1,5 +1,5 @@
 @push('styles')
-    @include('frontend.assets.css.article_min')
+    @include('frontend.assets.css.article')
 @endpush
 
 

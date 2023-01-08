@@ -413,6 +413,13 @@
 								font-size: .7rem
 				}
 
+                .readmore-container{
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    padding: 10px;
+                    background: #e9f8fa;
+                }
+
 				.readmore-title,
 				.readmore-title a,
 				.readmore-title a:visited {
@@ -426,16 +433,24 @@
 				}
 
                 .readmore-title{
-                    display: -webkit-box;
-                    overflow: hidden;
-                    -webkit-line-clamp: 1;
-                    -webkit-box-orient: vertical
+                    margin:0px;
+                    padding: 0px;
                 }
 				.readmore-text {
-								margin-left: 8px;
-								font-size: 22px;
-								font-weight: 700;
-								color: #c41111
+                    margin-left: 2px;
+                    font-size: 22px;
+                    font-weight: 700;
+                    color: #c41111;
 				}
 
+                .readmore-image{
+                    display:flex;
+                    flex-direction: row;
+                    gap: 10px;
+                    margin-bottom:10px;
+                }
+                .readmore-image-img{
+                    width: 190px !important;
+                    height: 120px !important;
+                }
 </style>

@@ -1,3 +1,21 @@
+@php
+
+    $parentCategories = [];
+    $childCategories = [];
+    $allCategories = [];
+
+    foreach ($categories as $category){
+        array_push($allCategories, $category);
+        foreach ($categories as $cat){
+            if ($category->id == $cat->parent_id){
+                array_push($parentCategories, $category);
+                break;
+            }
+        }
+    }
+    $writableCategories = array_diff($allCategories, $parentCategories);
+@endphp
+
 <form class="row g-3" method="POST"
     action="{{ isset($article) ? route('backend.article-update', ['article' => $article]) : route('backend.article-store') }}"
     enctype="multipart/form-data" id="article_form">
@@ -121,12 +139,11 @@
 
             <div class="mb-4 mt-2" style="position:sticky; top:15rem;">
                 <label class="form-label mx-2">Category *</label>
-                <select name="category_id" class="form-control"
-                    {{ isset($article) && auth()->user()->role->slug != 'super-admin' ? 'readonly=readonly' : '' }}>
+                <select name="category_id" class="form-control">
                     <option value="" disabled>Select Category</option>
-                    @foreach ($categories as $category)
+                    @foreach ($writableCategories as $category)
                         <option value="{{ $category->id }}"
-                            {{ isset($article) && $article->category_id == $category->id ? 'selected' : '' }}>
+                            {{ isset($article_title) && $article_title->category_id == $category->id ? 'selected' : '' }}>
                             {{ $category->title }}
                         </option>
                     @endforeach
