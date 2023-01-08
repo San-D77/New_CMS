@@ -149,6 +149,7 @@ class ArticleController extends Controller
         $published_at = null;
 
 
+
         if ($request->hasFile('image')) {
             $articleArray = array_merge(
                 collect($request->validated())
@@ -327,7 +328,7 @@ class ArticleController extends Controller
 
     public function revisions($revision_article){
         $articleLog = ArticleLog::where('id', $revision_article)->first();
-        $prevLog = ArticleLog::where('id', "<", $revision_article)->orderBy('id','desc')->first();
+        $prevLog = ArticleLog::where('article_id', $articleLog->article_id)->where('id', "<", $revision_article)->orderBy('id','desc')->first();
         return view($this->path . 'revisions', [
             'articleLog' => $articleLog,
             'previous' => $prevLog

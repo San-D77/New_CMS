@@ -4,7 +4,7 @@
             <img src="{{ asset(getSettingValue('favicon')) }}" class="logo-icon" alt="logo icon">
         </div>
         <div>
-            <img style="width: 160px; padding: 10px;" src="{{ asset(getSettingValue('logo'))}} " alt="">
+            <img style="width: 160px; height:60px; padding: 10px;" src="{{ asset(getSettingValue('logo'))}} " alt="">
         </div>
         <div class="toggle-icon ms-auto">
             <ion-icon name="menu-sharp"></ion-icon>
