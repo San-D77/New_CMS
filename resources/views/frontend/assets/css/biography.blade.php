@@ -102,7 +102,7 @@
 				}
 
 				.content-detail figure {
-								max-width: 100%;
+								max-width: 80%;
 								display: block;
 								margin: 10px auto;
 								text-align: center;
@@ -110,6 +110,13 @@
 								padding: 10px;
 								border-radius: 5px
 				}
+
+                @media(max-width:525px){
+                    .content-detail figure {
+                                    width: 100%;
+                                    margin: 10px 0px;
+                                }
+                }
 
 				.content-detail h2,
 				.content-detail h3,
@@ -416,6 +423,7 @@
                 .readmore-container{
                     border: 1px solid #ccc;
                     border-radius: 5px;
+                    margin: 0px 0px 15px 0px;
                     padding: 10px;
                     background: #e9f8fa;
                 }

@@ -39,6 +39,8 @@
 												width: 100%;
 												height: 250px
 								}
+
+
 				}
 
 				@media(min-width:825px) {
@@ -65,13 +67,21 @@
 				}
 
 				.content-detail figure {
-								max-width: 100%;
+								width: 80%;
+                                margin: 10px auto;
 								display: block;
 								text-align: center;
 								border: 1px solid #ddd8d8;
 								padding: 10px;
-								border-radius: 5px
+								border-radius: 5px;
 				}
+
+                @media(max-width:525px){
+                    .content-detail figure {
+                                    width: 100%;
+                                    margin: 10px 0px;
+                                }
+                }
 
 				.content-detail figure.image img {
                     width: 100%;

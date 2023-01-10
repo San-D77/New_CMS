@@ -21,6 +21,8 @@ p{margin-top:0;margin-bottom:1rem;}
 ul{padding-left:2rem;}
 ul{margin-top:0;margin-bottom:1rem;}
 ul ul{margin-bottom:0;}
+blockquote{margin:0 0 1rem;}
+strong{font-weight:bolder;}
 a:hover{color:#0a58ca;}
 a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none;}
 figure{margin:0 0 1rem;}
@@ -35,6 +37,7 @@ button{text-transform:none;}
 ::-moz-focus-inner{padding:0;border-style:none;}
 iframe{border:0;}
 .img-fluid{max-width:100%;height:auto;}
+.figure{display:inline-block;}
 .container{width:100%;padding-right:var(--bs-gutter-x,.75rem);padding-left:var(--bs-gutter-x,.75rem);margin-right:auto;margin-left:auto;}
 @media (min-width:576px){
 .container{max-width:540px;}
@@ -53,10 +56,8 @@ iframe{border:0;}
 }
 .row{--bs-gutter-x:1.5rem;--bs-gutter-y:0;display:flex;flex-wrap:wrap;margin-top:calc(var(--bs-gutter-y) * -1);margin-right:calc(var(--bs-gutter-x)/ -2);margin-left:calc(var(--bs-gutter-x)/ -2);}
 .row>*{flex-shrink:0;width:100%;max-width:100%;padding-right:calc(var(--bs-gutter-x)/ 2);padding-left:calc(var(--bs-gutter-x)/ 2);margin-top:var(--bs-gutter-y);}
-.col-6{flex:0 0 auto;width:50%;}
 .col-12{flex:0 0 auto;width:100%;}
 @media (min-width:768px){
-.col-md-3{flex:0 0 auto;width:25%;}
 .col-md-4{flex:0 0 auto;width:33.3333333333%;}
 .col-md-6{flex:0 0 auto;width:50%;}
 .col-md-12{flex:0 0 auto;width:100%;}
@@ -164,6 +165,7 @@ p{text-align:justify!important;}
 .navbar-nav .dropdown-list li{float:none;padding:15px 10px;}
 .links,.navbar-nav .dropdown-list li a{color:#fff;}
 .nav-item:active,.nav-item:hover{background:0 0!important;}
+blockquote{position:relative;}
 .panel-title:active,.panel-title:focus,.panel-title:hover{text-decoration:none;}
 ::-moz-selection{background:#012835;color:#d2d2d4;}
 ::selection{background:#012835;color:#d2d2d4;}
@@ -171,6 +173,8 @@ p{text-align:justify!important;}
 .meta{margin:0;}
 iframe{width:100%;}
 body{font-family:Helvetica, Sans-serif;letter-spacing:.3px;}
+blockquote{background:linear-gradient(to right, #9f9f9f, #c4c3c3 50%, #eee 100%)!important;font-style:italic;font-weight:500;font-size:1.15rem;margin:25px;padding:10px 20px 10px 24px;border-top-right-radius:20px;border-bottom-right-radius:5px;max-width:85%;}
+blockquote::before{content:"";left:0;position:absolute;height:100%;bottom:0;width:6px;background:rgba(39, 37, 36, .8)!important;border-radius:20px;}
 .meta{padding:0;text-align:right;display:block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
 .bc{display:-webkit-box;overflow:hidden;-webkit-line-clamp:1;-webkit-box-orient:vertical;}
 .breadcrumb-container{text-transform:uppercase;display:inline;margin:10px 0;padding:0;list-style:none;}
@@ -210,7 +214,13 @@ p{text-align:left!important;}
 header .navbar .navbar-brand{padding:0;font-size:26px;line-height:125%;font-weight:500;color:#d4d2d2!important;align-items:center;text-align:center;text-transform:uppercase;letter-spacing:3px;transition:.3s;}
 }
 header .navbar .navbar-brand:hover{font-weight:500;color:#878787!important;text-transform:uppercase;letter-spacing:3px;}
-header .navbar .navbar-brand img{width:130px;height:auto;}
+header .navbar .navbar-brand img{width:130px;height:40px;margin-top:10px;}
+@media (max-width: 500px){
+header .navbar .navbar-brand img{width:130px;height:45px;margin-top:5px;}
+}
+@media (min-width: 505px) and (max-width: 820px){
+header .navbar .navbar-brand img{width:130px;height:40px;margin-top:10px;}
+}
 header .navbar .navbar-nav .nav-item{padding:0 .5rem;}
 header .navbar .navbar-nav .nav-item .nav-link{font-size:15px!important;font-weight:700!important;line-height:20px!important;color:#d4d2d2!important;letter-spacing:1px;position:relative;}
 header .navbar .navbar-nav .nav-item .active,header .navbar .navbar-nav .nav-item .nav-link:hover{background-color:#3a3b3c;border-radius:5px;}
@@ -265,9 +275,12 @@ input{z-index:130;}
 }
 h1{text-transform:capitalize;}
 h1{font-size:2.2rem;font-weight:600;max-width:100%;}
-.content-detail figure{max-width:100%;display:block;margin:10px auto;text-align:center;border:1px solid #ddd8d8;padding:10px;border-radius:5px;}
+.content-detail figure{max-width:80%;display:block;margin:10px auto;text-align:center;border:1px solid #ddd8d8;padding:10px;border-radius:5px;}
+@media (max-width:525px){
+.content-detail figure{width:100%;margin:10px 0px;}
+}
 .content-detail h2,.content-detail h3{margin:1rem 0;max-width:728px;line-height:2.7rem;text-transform:capitalize;scroll-margin-top:100px;}
-.content-detail figure.image img{max-width:100%;min-width:100%;}
+.content-detail h2 strong,.content-detail h3 strong{font-weight:bold;}
 .content-detail{font-size:17px;font-weight:400;line-height:28px;color:rgba(0, 0, 0, .95);}
 .content-detail a{color:#00f;font-weight:700;font-style:italic;}
 .content-detail a:hover{color:#00a6ff;transition:text-underline-offset .3s;}
@@ -308,9 +321,12 @@ body{overflow-x:hidden;}
 .table-of-contents ul{list-style:circle;color:#454545;}
 .head-2{padding-left:0;font-size:1rem;font-weight:600;margin-bottom:10px;}
 .head-3{margin-left:30px;font-weight:500;font-size:1rem;margin-bottom:10px;}
+.readmore-container{border:1px solid #ccc;border-radius:5px;margin:0px 0px 15px 0px;padding:10px;background:#e9f8fa;}
 .readmore-title,.readmore-title a,.readmore-title a:visited{font-size:17px;margin-top:5px;font-weight:700;color:#000;text-decoration:none!important;line-height:25px;text-align:left!important;}
-.readmore-title{display:-webkit-box;overflow:hidden;-webkit-line-clamp:1;-webkit-box-orient:vertical;}
-.readmore-text{margin-left:8px;font-size:22px;font-weight:700;color:#c41111;}
+.readmore-title{margin:0px;padding:0px;}
+.readmore-text{margin-left:2px;font-size:22px;font-weight:700;color:#c41111;}
+.readmore-image{display:flex;flex-direction:row;gap:10px;margin-bottom:10px;}
+.readmore-image-img{width:190px!important;height:120px!important;}
 /*! CSS Used fontfaces */
 @font-face{font-family:"Font Awesome 6 Brands";font-style:normal;font-weight:400;font-display:block;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/webfonts/fa-brands-400.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/webfonts/fa-brands-400.ttf) format("truetype");}
 @font-face{font-family:"Font Awesome 6 Free";font-style:normal;font-weight:400;font-display:block;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/webfonts/fa-regular-400.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/webfonts/fa-regular-400.ttf) format("truetype");}

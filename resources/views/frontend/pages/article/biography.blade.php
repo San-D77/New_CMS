@@ -1,5 +1,5 @@
 @push('styles')
-    @include('frontend.assets.css.biography')
+    @include('frontend.assets.css.biography_min')
 @endpush
 
 

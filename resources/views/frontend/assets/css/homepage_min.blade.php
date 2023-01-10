@@ -1,5 +1,5 @@
 <style>
-/*! CSS Used from: Embedded */
+    /*! CSS Used from: Embedded */
 *,::after,::before{box-sizing:border-box;}
 body{margin:0;font-family:var(--bs-font-sans-serif);font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;}
 [tabindex="-1"]:focus:not(:focus-visible){outline:0!important;}
@@ -190,7 +190,13 @@ p{text-align:left!important;}
 header .navbar .navbar-brand{padding:0;font-size:26px;line-height:125%;font-weight:500;color:#d4d2d2!important;align-items:center;text-align:center;text-transform:uppercase;letter-spacing:3px;transition:.3s;}
 }
 header .navbar .navbar-brand:hover{font-weight:500;color:#878787!important;text-transform:uppercase;letter-spacing:3px;}
-header .navbar .navbar-brand img{width:130px;height:auto;}
+header .navbar .navbar-brand img{width:130px;height:40px;margin-top:10px;}
+@media (max-width: 500px){
+header .navbar .navbar-brand img{width:130px;height:45px;margin-top:5px;}
+}
+@media (min-width: 505px) and (max-width: 820px){
+header .navbar .navbar-brand img{width:130px;height:40px;margin-top:10px;}
+}
 header .navbar .navbar-nav .nav-item{padding:0 .5rem;}
 header .navbar .navbar-nav .nav-item .nav-link{font-size:15px!important;font-weight:700!important;line-height:20px!important;color:#d4d2d2!important;letter-spacing:1px;position:relative;}
 header .navbar .navbar-nav .nav-item .active,header .navbar .navbar-nav .nav-item .nav-link:hover{background-color:#3a3b3c;border-radius:5px;}
@@ -274,14 +280,15 @@ input{z-index:130;}
 .biography-single .image{width:30%;margin-right:10px;overflow:hidden;}
 .biography-right .image_img{min-height:240px;max-height:240px;}
 .textover{position:relative;margin-left:0;}
-.image_overlay,.textover figcaption{position:absolute;left:0;width:100%;color:rgb(209, 209, 209);}
+.textover figcaption{position:absolute;left:0;width:100%;color:rgb(209, 209, 209);}
 .textover figcaption a{display:-webkit-box;overflow:hidden;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
 .textover figcaption{bottom:0;padding:10px 15px;background-color:rgba(0, 0, 0, .8);border-bottom-left-radius:15px;border-bottom-right-radius:15px;}
-.image_overlay{top:0;height:100%;background:rgba(0, 0, 0, .75);opacity:0;transition:opacity .5s;backdrop-filter:blur(5px);border-radius:15px;}
+.image_overlay{top:0;height:100%;background:rgba(0, 0, 0, .75);opacity:0;transition:opacity .5s;backdrop-filter:blur(5px);border-radius:15px;color:#d1d1d1;padding:15px;overflow:hidden;-webkit-line-clamp:7;-webkit-box-orient:vertical;}
 .image_overlay:hover{opacity:1;}
 .image_overlay>*{transform:translate(20px);transition:transform .5s;}
 .image_overlay:hover>*{transform:translate(0);}
-.image_overlay .image_description{font-size:18px;padding:10px 10px 0;justify-content:center;border-bottom:15px;-webkit-line-clamp:6;}
+.image_overlay{position:absolute;left:0;top:0;font-size:18px;padding:10px 10px;justify-content:center;border-bottom:15px;}
+.image_overlay .image_description{display:-webkit-box;-webkit-line-clamp:5;}
 .image_img{max-height:230px;min-height:230px;}
 @media (max-width:820px){
 .biography-right{display:none;}

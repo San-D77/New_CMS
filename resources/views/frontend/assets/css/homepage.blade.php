@@ -334,7 +334,7 @@
 								margin-left: 0
 				}
 
-				.image_overlay,
+
 				.textover figcaption {
 								position: absolute;
 								left: 0;
@@ -343,9 +343,9 @@
 				}
                 .textover figcaption a{
                     display: -webkit-box;
-								overflow: hidden;
-                                -webkit-line-clamp: 2;
-								-webkit-box-orient: vertical;
+                    overflow: hidden;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
                 }
 
 				.textover figcaption {
@@ -357,14 +357,28 @@
 
 				}
 
+
+                /* .image_overlay{
+                    position: absolute;
+                    left: 0;
+                    width: 100%;
+                    padding: 15px;
+                    color: #d1d1d1;
+
+                } */
 				.image_overlay {
-								top: 0;
-								height: 100%;
-								background: rgba(0, 0, 0, .75);
-								opacity: 0;
-								transition: opacity .5s;
-								backdrop-filter: blur(5px);
-								border-radius: 15px
+                    top: 0;
+                    height: 100%;
+                    background: rgba(0, 0, 0, .75);
+                    opacity: 0;
+                    transition: opacity .5s;
+                    backdrop-filter: blur(5px);
+                    border-radius: 15px;
+                    color: #d1d1d1;
+                    padding: 15px;
+                    overflow: hidden;
+                    -webkit-line-clamp: 7;
+                    -webkit-box-orient: vertical;
 				}
 
 				.image_overlay:hover {
@@ -377,22 +391,30 @@
 				}
 
 				.image_overlay:hover>* {
-								transform: translate(0)
+                    transform: translate(0)
 				}
 
-				.image_overlay .image_description {
-								font-size: 18px;
-								padding: 10px 10px 0;
-								justify-content: center;
-								border-bottom: 15px;
-								-webkit-line-clamp: 6
+				.image_overlay {
+                    position:absolute;
+                    left:0;
+                    top: 0;
+                    font-size: 18px;
+                    padding: 10px 10px;
+                    justify-content: center;
+                    border-bottom: 15px;
+
 				}
+
+                .image_overlay .image_description{
+                    display: -webkit-box;
+                    -webkit-line-clamp: 5;
+                }
 
 				.image_img {
 								max-height: 230px;
 								min-height: 230px
 				}
-
+				
 				.read-more {
 								text-align: right
 				}

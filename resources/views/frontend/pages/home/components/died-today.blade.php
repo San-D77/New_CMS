@@ -22,6 +22,7 @@
                     <p class="image_description">
                         {{ $article->summary }}
                     </p>
+                    <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}" class="btn btn-info btn-sm m-2 text-white">Read More</a>
                 </div>
             </figure>
         </div>

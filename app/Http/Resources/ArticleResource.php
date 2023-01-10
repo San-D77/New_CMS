@@ -25,6 +25,7 @@ class ArticleResource extends JsonResource
             "author" => [
                 "name" => $this->author->name,
                 "url" => route("authorArticle", $this->author->slug),
+                "alias_name" => $this->author->alias_name
             ],
             "published_at" => dateFormat($this->published_at),
         ];

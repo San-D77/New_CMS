@@ -111,6 +111,7 @@ button{text-transform:none;}
 .fa-align-left:before{content:"\f036";}
 .fa-arrow-up:before{content:"\f062";}
 .fa-magnifying-glass:before{content:"\f002";}
+.fa-home:before{content:"\f015";}
 .fa-caret-down:before{content:"\f0d7";}
 .fa-xmark:before{content:"\f00d";}
 .fa-solid{font-family:"Font Awesome 6 Free";font-weight:900;}
@@ -126,8 +127,8 @@ p{text-align:justify!important;}
 .close-search{padding-top:5px;font-weight:400;font-size:20px;}
 .navbar-nav .nav-item{position:relative;text-transform:uppercase;}
 .dropdown-mobile,.navbar-nav .dropdown-list{display:none;list-style:none;}
-.navbar-nav .nav-link:hover>ul{display:block;}
-.parent:hover>.fa-caret-down{transform:rotate(90deg);}
+.display-menu,.navbar-nav .nav-link:hover>ul{display:block;}
+.parent:hover>.fa-caret-down,.rotate-icon{transform:rotate(90deg);}
 .navbar-nav .dropdown-list{position:absolute;background:#3a3b3c;top:90%;left:0;border-radius:0 0 7px 7px;min-width:300px;padding:20px 0;}
 .navbar-nav .dropdown-list li{float:none;padding:15px 10px;}
 .links,.navbar-nav .dropdown-list li a{color:#fff;}
@@ -170,7 +171,13 @@ p{text-align:left!important;}
 header .navbar .navbar-brand{padding:0;font-size:26px;line-height:125%;font-weight:500;color:#d4d2d2!important;align-items:center;text-align:center;text-transform:uppercase;letter-spacing:3px;transition:.3s;}
 }
 header .navbar .navbar-brand:hover{font-weight:500;color:#878787!important;text-transform:uppercase;letter-spacing:3px;}
-header .navbar .navbar-brand img{width:130px;height:auto;}
+header .navbar .navbar-brand img{width:130px;height:40px;margin-top:10px;}
+@media (max-width: 500px){
+header .navbar .navbar-brand img{width:130px;height:45px;margin-top:5px;}
+}
+@media (min-width: 505px) and (max-width: 820px){
+header .navbar .navbar-brand img{width:130px;height:40px;margin-top:10px;}
+}
 header .navbar .navbar-nav .nav-item{padding:0 .5rem;}
 header .navbar .navbar-nav .nav-item .nav-link{font-size:15px!important;font-weight:700!important;line-height:20px!important;color:#d4d2d2!important;letter-spacing:1px;position:relative;}
 header .navbar .navbar-nav .nav-item .active,header .navbar .navbar-nav .nav-item .nav-link:hover{background-color:#3a3b3c;border-radius:5px;}

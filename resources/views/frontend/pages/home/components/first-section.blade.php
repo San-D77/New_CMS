@@ -25,7 +25,7 @@
 
                                      <h2>
                                          <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
-                                             {{ $article->title }}
+                                             {{ $article->category->slug == "biography" ? $article->seo->meta_title : $article->title }}
                                          </a>
                                      </h2>
 

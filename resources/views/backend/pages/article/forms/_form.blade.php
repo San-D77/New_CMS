@@ -143,7 +143,7 @@
                     <option value="" disabled>Select Category</option>
                     @foreach ($writableCategories as $category)
                         <option value="{{ $category->id }}"
-                            {{ isset($article_title) && $article_title->category_id == $category->id ? 'selected' : '' }}>
+                            {{ $article->category_id == $category->id ? 'selected' : '' }}>
                             {{ $category->title }}
                         </option>
                     @endforeach

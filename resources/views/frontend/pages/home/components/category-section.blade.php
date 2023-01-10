@@ -22,8 +22,7 @@
                         </a>
                     </figcaption>
                     <div class="image_overlay">
-
-                        {{-- <p class="image_description"> --}}
+                        <p class="image_description">
                             {{ $article->summary }}
                         </p>
                         <a href="{{ $article->slug }}" class="btn btn-info btn-sm m-2 text-white">Read More</a>
