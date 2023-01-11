@@ -40,5 +40,5 @@
             </h2>
         </div>
     </div>
-{{-- </section> --}}
+</section>
 @endif
