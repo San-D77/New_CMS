@@ -5,6 +5,10 @@
 
     RewriteEngine On
 
+     #Redirect all request to https
+     RewriteCond %{HTTP_HOST} ^www.htowndaily.com [NC]
+     RewriteRule ^(.*)$ https://htowndaily.com/$1 [L,R=301]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
