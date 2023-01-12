@@ -10,15 +10,9 @@
 
         <h2 class="title">
             <a href="{{ route('singleArticle', $article->slug) }}">
-                {{ $article->title }}
+                {{ $article->seo->meta_title  }}
             </a>
         </h2>
-        <div class="meta">
-            <span class="article-date">{{ dateFormat($article->published_at) }} | </span><span class="article-author"><a
-                    href="{{ route('authorArticle', $article->author->slug) }}">
-                    {{ $article->author->alias_name }}</a></span>
-        </div>
-
     </div>
 
 </div>
