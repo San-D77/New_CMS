@@ -22,6 +22,17 @@
             @include('frontend.pages.home.components.slider')
         @endif
 
+        @if($data['born_today']->count()>0)
+            @include('frontend.pages.home.components.born-today', [
+                'born_today' => $data['born_today']
+            ])
+        @endif
+
+        @if($data['died_today']->count()>0)
+            @include('frontend.pages.home.components.died-today', [
+                'died_today' => $data['died_today']
+            ])
+        @endif
 
         @include('frontend.pages.home.components.first-section', [
             'section' => $data['category_articles'][0],
@@ -36,10 +47,5 @@
                 ])
             @endif
         @endforeach
-
-        <section id="born-today">
-        </section>
-        <section id="died-today">
-        </section>
     </main>
 @endsection

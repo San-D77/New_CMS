@@ -39,6 +39,24 @@ class HomePageCache implements ShouldQueue
     public static function getCache()
     {
         return Cache::rememberForever(config('constants.home_page_cache_key'), function () {
+
+            $today = explode(" ",carbon()->format('F d'));
+
+            $born_today = Article::activeAndPublish()
+                ->with(['category', 'writer'])
+                ->where('task_status', 'published')
+                ->where('tables->quick-facts->birth-month->value', '=', $today[0])
+                ->where('tables->quick-facts->birth-day->value', '=', (int)$today[1])
+                ->limit(config('constants.article_limit', 8))
+                ->get();
+
+            $died_today = Article::activeAndPublish()
+                ->with(['category', 'writer'])
+                ->where('task_status', 'published')
+                ->where('tables->quick-facts->death-month->value', '=', $today[0])
+                ->where('tables->quick-facts->death-day->value', '=', (int)$today[1])
+                ->limit(config('constants.article_limit', 8))
+                ->get();
             // get featured articles
             $featured_articles = Article::activeAndPublish()
                 ->with(['category', 'writer'])
@@ -79,8 +97,9 @@ class HomePageCache implements ShouldQueue
             return [
                 'featured_articles' => $featured_articles,
                 'editor_choice' => $editor_choice,
+                'born_today' => $born_today,
+                'died_today' => $died_today,
                 'category_articles' => $category_articles
-
             ];
         });
     }

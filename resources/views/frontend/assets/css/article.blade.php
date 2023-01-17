@@ -443,26 +443,40 @@
 				.readmore-container{
                     border: 1px solid #ccc;
                     border-radius: 5px;
-                    margin: 0px 0px 15px 0px;
-                    padding: 10px;
+                    margin: 7px 2px;
+                    padding: 10px 0PX;
                     background: #e9f8fa;
                 }
 
 				.readmore-title,
 				.readmore-title a,
 				.readmore-title a:visited {
-								font-size: 17px;
-								margin-top: 5px;
-								font-weight: 700;
-								color: #000;
-								text-decoration: none !important;
-								line-height: 25px;
-								text-align: left !important
+                    font-size: 17px;
+                    margin-top: 5px;
+                    font-weight: 700;
+                    color: #000;
+                    text-decoration: none !important;
+                    line-height: 25px;
+                    text-align: left !important
 				}
 
                 .readmore-title{
                     margin:0px;
                     padding: 0px;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    overflow: hidden;
+                    -webkit-box-orient: vertical
+                }
+
+                @media(max-width: 520px){
+                    .readmore-title{
+
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        overflow: hidden;
+                        -webkit-box-orient: vertical
+                    }
                 }
 				.readmore-text {
                     margin-left: 2px;
@@ -478,7 +492,7 @@
                     margin-bottom:10px;
                 }
                 .readmore-image-img{
-                    width: 190px !important;
-                    height: 120px !important;
+                    width: 100px !important;
+                    height: 80px !important;
                 }
 </style>
