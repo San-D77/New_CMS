@@ -1,6 +1,8 @@
 @extends('frontend.layouts.index')
 
 @push('styles')
+    @include('frontend.assets.css.author_min')
+
     <style>
         .wrap{height:300px;display:flex;flex-direction:row;gap:25px;border:1px solid #cac9c9;box-shadow:.5px .5px #959494;margin-bottom:20px;border-radius:10px;padding:0 20px}.image,.title{margin:auto 0}.image_img{width:150px;height:150px;object-fit:cover;object-position:top;border-radius:100%}.title{font-size:23px;font-weight:600;color:#111}@media(max-width:820px){.wrap{flex-direction:column;gap:10px}.image,.title{margin:auto}}
     </style>
