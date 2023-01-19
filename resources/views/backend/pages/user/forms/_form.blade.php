@@ -1,9 +1,11 @@
 @php
-    if($user){
+    if(isset($user)){
+        
         $links = json_decode($user->social_links);
-        $facebook = $links->facebook;
-        $twitter = $links->twitter;
-        $linkedin = $links->linkedin;
+        $facebook = $links? $links->facebook:'';
+        $twitter = $links? $links->twitter:'';
+        $linkedin = $links? $links->linkedin:'';
+        
     }
 
 @endphp
