@@ -32,7 +32,7 @@
                     <a href="/{{$article->slug}}">
                         <h2 class="article-title">{{ $article->title }}</h2>
                     </a>
-                    <p>{!! $article->summary !!}</p>
+                    <p class="summary">{!! $article->summary !!}</p>
                 </div>
             </div>
             @endforeach

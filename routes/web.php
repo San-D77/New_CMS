@@ -48,6 +48,8 @@ Route::post('author/{author:slug}', [FrontendController::class, 'authorArticles'
     ->name('authorArticles')
     ->withoutMiddleware('csrf');
 
+Route::get('author/list', [FrontendController::class, 'ourAuthors'])->name('ourAuthors');
+
 Route::get('author/{author:slug}', [FrontendController::class, 'authorArticle'])->name('authorArticle');
 
 Route::get('/facts/{field}/{value}', [FrontendController::class, 'searchByTableField'])->name('facts.search');

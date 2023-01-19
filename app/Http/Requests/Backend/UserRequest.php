@@ -20,6 +20,9 @@ class UserRequest extends FormRequest
             "password" => "required_without:id|min:6",
             "alias_name" => "required|string|max:255",
             "slug" => "required|string|max:255|unique:users,slug," . $this->route("user")?->id,
+            "avatar" => "nullable|image|mimes:jpeg,png,jpg,gif,svg",
+            "description" =>'nullable|string',
+            "social_links" => 'nullable|string',
             "role_id" => "required|exists:roles,id",
             "permissions" => "required|array",
         ];

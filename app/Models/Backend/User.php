@@ -20,7 +20,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ['name', 'email', 'password', 'google2fa_secret', 'alias_name', 'slug', 'gender', 'avatar', 'status'];
+    protected $fillable = ['name', 'email', 'password', 'google2fa_secret', 'alias_name', 'slug', 'gender', 'avatar', 'status', 'description', 'social_links'];
 
     /**
      * The attributes that should be hidden for serialization.

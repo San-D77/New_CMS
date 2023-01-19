@@ -302,6 +302,70 @@ function getTagSchema($tag){
     return returnSchemaScriptTag(json_encode($schemaObj,JSON_UNESCAPED_SLASHES));
 }
 
+function getAuthorSchema($author){
+    $profilePage = [
+        "@type"=>"ProfilePage",
+        "@id"=>route('authorArticle', $author->slug),
+        "url"=>route('authorArticle', $author->slug),
+        "name"=>$author->alias_name,
+        "isPartOf"=>[
+            "@id"=>route('home')."/#website"
+        ],
+        "breadcrumb"=>[
+            "@id"=>route('authorArticle', $author->slug)."/#breadcrumb"
+        ],
+        "inLanguage"=>"en-US",
+        "potentialAction"=>[
+            [
+                "@type"=>"ReadAction",
+                "target"=>[
+                    route('authorArticle', $author->slug)
+                ]
+            ]
+        ]
+    ];
+    $breadCrumb = [
+        "@type"=>"BreadcrumbList",
+        "@id"=>route('authorArticle', $author->slug)."/#breadcrumb",
+        "itemListElement"=>[
+            [
+                "@type"=>"ListItem",
+                "position"=>1,
+                "name"=>"Home",
+                "item"=>route('home')
+            ],
+            [
+                "@type"=>"ListItem",
+                "position"=>2,
+                "name"=>$author->alias_name
+            ]
+        ]
+    ];
+
+    $person = [
+        "@type"=>"Person",
+        "name"=> $author->alias_name,
+        "sameAs"=>[
+            route('home')
+        ],
+        "mainEntityOfPage"=>[
+            "@id"=>route('authorArticle', $author->slug)
+        ]
+    ];
+
+    $schemaObj = [[
+        "@context" => "https://schema.org",
+        "@graph" => [
+            $profilePage,
+            $breadCrumb,
+            $person,
+            getOrganizationSchema()
+        ]
+    ]];
+    return returnSchemaScriptTag(json_encode($schemaObj,JSON_UNESCAPED_SLASHES));
+
+}
+
 
 function getImageMeta($url)
 {

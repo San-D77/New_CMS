@@ -8,6 +8,13 @@
 
 @push('styles')
     @include('frontend.assets.css.category_min')
+    <style>
+        .author_image,.image{width:200px;height:200px}.intro{font-size:22px;font-weight:600;text-align:center}.author-bio{display:flex;flex-direction:row;margin:20px 10px;padding:0 10px;gap:20px}.image{margin:auto 0}@media(max-width:520px){.author-bio{display:flex;flex-direction:column;margin:20px 0;gap:20px}.image{margin:0 auto}}.author_image{border-radius:100%;object-fit:cover;object-position:top}.description{font-size:19px;font-weight:500;color:#414141;letter-spacing:.5px;word-spacing:.9px;line-height:32px;text-align:justify}.fa-linkedin:before{content:"\f08c"}
+    </style>
+@endpush
+
+@push('schema')
+    {!! $schema !!}
 @endpush
 
 
@@ -29,14 +36,35 @@
                 </li>
             </ul>
         </div>
+        @if ($author->description)
+        <div class="intro">
+            About <span class="colored">{{ $author->alias_name }}</span>
+            <span style="margin-left:50px;">
+                @foreach (json_decode($author->social_links) as $key => $value)
+                    @if($value)
+                        <a href="{{ $value }}"><i class="fa-brands fa-{{$key}}"></i></a>
+                    @endif
+                @endforeach
+            </span>
+        </div>
+        <section class="author-bio">
+            <div class="image">
+                <img class="author_image" src="{{ asset($author->avatar) }}" alt="">
+            </div>
+            <div class="description">
+                {!! $author->description !!}
+            </div>
+        </section>
+
+        @endif
 
         <section class="category-div">
             <div class="container category-title">
-                <h1 class="text-capitalize">All Posts from
+                <h3 class="text-capitalize mb-4 mt-4">All Posts from
                     <span class="colored">
                         {{ $author->alias_name }}
                     </span>
-                </h1>
+                </h3>
             </div>
         </section>
 

@@ -78,11 +78,20 @@ class FrontendController extends Controller
         }
     }
 
+    public function ourAuthors(){
+        
+        $authors = User::where('status','1')->with('articles')->get();
+        return view("frontend.pages.author.list", [
+            'authors' => $authors
+        ]);
+    }
+
     public function authorArticle(User $author)
     {
         if ($author) {
             return view("frontend.pages.author.index", [
                 "author" => $author,
+                "schema" => getAuthorSchema($author)
             ]);
         } else {
             return abort(404);

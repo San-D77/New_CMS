@@ -102,7 +102,7 @@
 				}
 
 				.content-detail figure {
-								max-width: 80%;
+								width: 80%;
 								display: block;
 								margin: 10px auto;
 								text-align: center;

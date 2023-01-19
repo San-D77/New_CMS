@@ -34,7 +34,7 @@
             </div>
         </div>
     @empty
-        No Articles Found
+        <p>No Articles Found</p>
     @endforelse
 
 

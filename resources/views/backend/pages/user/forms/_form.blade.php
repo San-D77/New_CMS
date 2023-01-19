@@ -1,3 +1,12 @@
+@php
+    if($user){
+        $links = json_decode($user->social_links);
+        $facebook = $links->facebook;
+        $twitter = $links->twitter;
+        $linkedin = $links->linkedin;
+    }
+
+@endphp
 <form class="row g-3" method="POST" protected $casts=[ ];
     action="{{ isset($user) ? route('backend.user-update', ['user' => $user]) : route('backend.user-store') }}"
     enctype="multipart/form-data">
@@ -61,6 +70,20 @@
                                 </div>
                             @endif
                         </div>
+                        <div class="col-12 mb-2 ">
+                            <label class="form-label">Description</label>
+                            <textarea
+                                rows="10"
+                                class="form-control {{ isset($errors) && $errors->has('description') ? 'is-invalid' : '' }}"
+                            name="description">
+                                {{ isset($user) ? $user->description : old('description') }}
+                            </textarea>
+                            @if (isset($errors) && $errors->has('description'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('description') }}
+                                </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
@@ -107,6 +130,30 @@
                         <label class="form-label">Avatar</label>
 
                         <input type="file" name="avatar" class="form-control">
+
+                        @isset($user)
+                            <div style="margin: 0 auto;">
+                                <img style="width:205px; height:205px; margin-top:15px; object-fit: cover;
+                                object-position: top; border-radius:100%;" src="{{ asset($user->avatar)}}" alt="">
+                            </div>
+                        @endisset
+                    </div>
+                    <div class="col-12 mb-2 mt-2">
+
+                        <div class="form-group">
+                            <label class="form-label">Facebook</label>
+                            <input type="text" name="facebook" placeholder="Input Facebook URL for the User" class="form-control" value="{{ isset($user) ? $facebook : '' }}" >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Twitter</label>
+                            <input type="text" name="twitter" placeholder="Input Twitter URL for the User" class="form-control" value="{{ isset($user) ? $twitter : '' }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">LinkedIn</label>
+                            <input type="text" name="linkedin" placeholder="Input LinkedIn URL for the User" class="form-control" value="{{ isset($user) ? $linkedin : '' }}">
+                        </div>
                     </div>
                 </div>
                 <div class="card">

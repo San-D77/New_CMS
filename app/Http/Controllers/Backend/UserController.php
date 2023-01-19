@@ -45,10 +45,25 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
+        $social_links = [
+           'facebook' => $request->facebook,
+           'twitter' => $request->twitter,
+           'linkedin' => $request->linkedin
+        ];
+        $userArray = array_merge(collect($request->validated())->toArray(),[
+            'social_links' => json_encode($social_links)
+        ]);
         if($request->hasFile('avatar')){
-            $request->avatar = ImageUpload::upload($request->avatar, "avatar", str_slug($request->name));
+            $userArray = array_merge(
+                 $userArray,
+                 [
+                     'avatar' => ImageUpload::upload($request->avatar, "avatar", $request->slug)
+                 ]
+             );
+
         }
-        $user = User::create(array_filter($request->validated()));
+
+        $user = User::create(array_filter($userArray));
         $user->permission()->updateOrCreate(['role_id' => $request->role_id], ['permissions' => $request->permissions]);
         return redirect()
             ->route('backend.user-view')
@@ -63,6 +78,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+
         return view($this->path . 'crud', [
             'user' => $user,
             'permissions' => RoleController::getRouteArray(),
@@ -79,14 +95,27 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        if($request->hasFile('avatar')){
-            $request->avatar = ImageUpload::upload($request->avatar, "avatar", $user->slug);
 
-        }
+        $social_links = [
+            'facebook' => $request->facebook,
+            'twitter' => $request->twitter,
+            'linkedin' => $request->linkedin
+         ];
+         $userArray = array_merge(collect($request->validated())->toArray(),[
+             'social_links' => json_encode($social_links)
+         ]);
+         if($request->hasFile('avatar')){
+             $userArray = array_merge(
+                  $userArray,
+                  [
+                      'avatar' => ImageUpload::upload($request->avatar, "avatar", $request->slug)
+                  ]
+              );
+
+         }
 
 
-
-        $user->update(array_filter($request->validated()));
+        $user->update(array_filter($userArray));
         $user->permission()->updateOrCreate(['user_id' => $user->id], ['role_id' => $request->role_id, 'permissions' => $request->permissions]);
         return redirect()
             ->route('backend.user-view')
