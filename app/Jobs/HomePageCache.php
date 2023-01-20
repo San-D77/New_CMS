@@ -89,6 +89,7 @@ class HomePageCache implements ShouldQueue
                     ->articles()
                     ->with(['category', 'writer'])
                     ->where('task_status', 'published')
+                    ->orderBy("published_at", "desc")
                     ->limit(config('constants.article_limit', 7))
                     ->whereNotIn('id', $ids)
                     ->get());

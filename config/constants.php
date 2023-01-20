@@ -14,21 +14,21 @@ return [
         'featured' => [
             'width' => 1200,
             'height' => 900,
-            'quality' => 50,
+            'quality' => 60,
         ],
         'medium' => [
             'width' => 300,
             'height' => 187,
-            'quality' => 50,
+            'quality' => 100,
         ],
         'thumbnail' =>[
             'width' => 165,
             'height' => 100,
-            'quality' => 50
+            'quality' => 80
         ]
     ],
     "content_image_width" => 728,
-    "content_image_quality" => 50,
+    "content_image_quality" => 65,
     "task_status" => [
         "writing",
         "submitted",
