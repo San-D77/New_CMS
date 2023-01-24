@@ -5,6 +5,7 @@ return [
     "article_limit" => 8,
     "homepage_categories" =>[
         'biography',
+        'movies',
         'relationship',
         'family',
         'webs-most-searched',
