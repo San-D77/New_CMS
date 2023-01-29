@@ -137,6 +137,7 @@
                 </div>
             </div>
 
+
             <div class="mb-4 mt-2" style="position:sticky; top:15rem;">
                 <label class="form-label mx-2">Category *</label>
                 <select name="category_id" class="form-control">
@@ -155,7 +156,24 @@
                 @endif
             </div>
 
-            <div class="row mb-1" style="position:sticky; top:20rem;">
+            <div class="col-12 mb-2 mt-2" style="position:sticky; top:20rem;">
+                <label style="display:block;" class="form-label">Features</label>
+                <button type="button" data-target=".bd-example-modal-lg" data-bs-toggle="modal"
+                    href="#facts-modal" class="btn btn-md btn-secondary col-md-5 mb-1">
+                    Add Facts
+                </button>
+
+
+                <a data-bs-toggle="modal" href="#more-article" class="btn btn-md btn-primary col-md-5 mb-1">
+                    Read More
+                </a>
+
+                <a data-bs-toggle="modal" href="#linkable-article" class="btn btn-md btn-secondary col-md-5 mb-1">
+                    Find Links
+                </a>
+            </div>
+
+            <div class="row mb-1" style="position:sticky; top:28rem;">
                 <div>
                     <label for="formFile" class="form-label">Featured Image</label>
                     <input
@@ -192,22 +210,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-12 mb-2 mt-2">
-                    <label style="display:block;" class="form-label">Features</label>
-                    <button type="button" data-target=".bd-example-modal-lg" data-bs-toggle="modal"
-                        href="#facts-modal" class="btn btn-md btn-secondary col-md-5 mb-1">
-                        Add Facts
-                    </button>
 
-
-                    <a data-bs-toggle="modal" href="#more-article" class="btn btn-md btn-primary col-md-5 mb-1">
-                        Read More
-                    </a>
-
-                    <a data-bs-toggle="modal" href="#linkable-article" class="btn btn-md btn-secondary col-md-5 mb-1">
-                        Find Links
-                    </a>
-                </div>
 
             </div>
 
@@ -567,18 +570,18 @@
                 let html = '';
                 articles.forEach(article => {
                     html += `<li
-                                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center copy-link"
-                                data-url="${article.value}">
+                                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                                 <div class="flex-column">
                                     ${article.title}
+                                    <div>
+                                        <span class="btn btn-sm btn-info copy-url" data-url="${article.value}">Copy Url</span>
+                                        <span class="btn btn-sm btn-info copy-image" data-url="/uploads/medium/${article.image}">Copy Image</span>
+                                    </div>
                                 </div>
-                                <div class="image-parent">
-                                    <img src="${article.image}" class="img-fluid" alt="quixote" width="100px">
-                                </div>
+
                             </li>`;
                 });
                 return html;
-
             }
 
             const getSearchResult = () => {
@@ -627,7 +630,15 @@
 
         });
 
-        $(document).on("click", ".copy-link", function() {
+        $(document).on("click", ".copy-url", function() {
+            const url = $(this).data('url');
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val(url).select();
+            navigator.clipboard.writeText(url);
+            $temp.remove();
+        })
+        $(document).on("click", ".copy-image", function() {
             const url = $(this).data('url');
             var $temp = $("<input>");
             $("body").append($temp);

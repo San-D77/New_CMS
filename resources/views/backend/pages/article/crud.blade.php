@@ -25,7 +25,11 @@
     <script>
         tinymce.PluginManager.add('readmore', function(editor, url) {
             var addHtml = function() {
-                editor.insertContent('<div class="readmore"><pre class="">Read More Section</pre></div>');
+                editor.insertContent(`<div class="also-read"><p class="also-read-intro">Also Read: </p>
+                    <div class="articles row">
+                        </div>
+                        </div>`
+                );
             };
             /* Add a button that opens a window */
             editor.ui.registry.addButton('readmore', {
@@ -54,7 +58,59 @@
                 }
             };
         });
+        // Dialog for readmore article insertion
 
+        const dialogConfig =  {
+                    title: 'Select Read More Articles',
+                    body: {
+                        type: 'panel',
+                        items: [
+                            {
+                                type: 'input',
+                                name: 'article_url',
+                                label: 'Input the url',
+                            },
+                            {
+                                type: 'input',
+                                name: 'article_title',
+                                label: 'Input the title to display'
+                            },
+                            {
+                                type: 'input',
+                                name: 'article_image',
+                                label: 'Input image url',
+                            }
+                        ]
+                    },
+                    buttons: [
+                        {
+                            type: 'cancel',
+                            name: 'closeButton',
+                            text: 'Cancel'
+                        },
+                        {
+                            type: 'submit',
+                            name: 'submitButton',
+                            text: 'Insert',
+                            buttonType: 'primary'
+                        }
+                    ],
+                    onSubmit: (api) => {
+                        const data = api.getData();
+
+                        tinymce.activeEditor.execCommand('mceInsertContent', false, `
+                            <div class="col-md-6 col-12">
+                                <div class="also-read-article">
+                                    <img src="${data.article_image}" class="also-read-image" />
+                                    <a class="also-read-title" href="${data.article_url}">${data.article_title}</a>
+                                </div>
+                            </div>
+                            `);
+                        api.close();
+                    }
+                    };
+
+        // End
 
 
         const image_upload_handler_callback = (blobInfo, progress) => new Promise((resolve, reject) => {
@@ -114,7 +170,7 @@
             convert_urls: false,
             menubar: '',
 
-            toolbar: 'blocks code bold italic underline insertfile image media link blockquote alignleft aligncenter alignjustify save numlist bullist charmap fullscreen table preview readmore',
+            toolbar: 'blocks code bold italic underline insertfile image media link blockquote alignleft aligncenter alignjustify save numlist bullist charmap fullscreen table preview readmore dialog-example-btn',
 
             link_context_toolbar: true,
             link_rel_list:[
@@ -143,6 +199,13 @@
             autosave_restore_when_empty: false,
             autosave_retention: "5s",
 
+            setup: (editor) => {
+                editor.ui.registry.addButton('dialog-example-btn', {
+                icon: "edit-image",
+                onAction: () => editor.windowManager.open(dialogConfig)
+                })
+            },
+
             /* enable title field in the Image dialog*/
             image_title: true,
             /* enable automatic uploads of images represented by blob or data URIs*/
@@ -155,7 +218,10 @@
 
 
             // success color
-            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; width: 95%; } .readmore{ border: solid 1px #ccc;background-color: #eee; font-size: 17px; font-weight:bold; border-radius:7px; width:35%; color:black; padding: 5px 10px; margin: 10px 0; }',
+            content_style: `body { font-family:Helvetica,Arial,sans-serif; font-size:16px; width: 95%; } .readmore{ border: solid 1px #ccc;background-color: #eee; font-size: 17px; font-weight:bold; border-radius:7px; width:35%; color:black; padding: 5px 10px; margin: 10px 0; }
+
+            .also-read{ margin: 10px; border: 1px solid #ccc; border-radius: 10px; background-color: rgb(209, 239, 255); } .articles{ padding: 0px 20px 10px 5px; margin-left: 10px; display:flex; flex-direction: row;} .also-read-article{ display: flex; flex-direction: row; gap: 10px; } .col-md-6{width:50%;} .also-read-article .also-read-image{ width: 100px; height: 90px; } .also-read-intro{ padding: 10px 15px 0px 15px; font-size: 20px; font-weight: 600; color: #dd3000; } .also-read-title{ margin:0px; padding: 0px; display: -webkit-box; -webkit-line-clamp: 3; overflow: hidden; -webkit-box-orient: vertical }
+            `,
 
 
             importcss_append: true,

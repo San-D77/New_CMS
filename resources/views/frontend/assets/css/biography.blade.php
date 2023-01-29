@@ -475,4 +475,51 @@
                     width: 100px !important;
                     height: 95px !important;
                 }
+
+                .also-read{
+                    margin: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 10px;
+                    background-color: rgb(209, 239, 255);
+                }
+                .articles{
+                    padding: 0px 20px 10px 5px;
+                    margin: 0px;
+                }
+                .also-read-article{
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                }
+
+
+
+                @media(min-width: 600px){
+                    .articles .col-md-6{
+                        width: 48%;
+                    }
+
+                }
+
+                .also-read-article .also-read-image{
+                    width: 100px !important;
+                    height: 90px !important;
+                }
+                .also-read-intro{
+                    padding: 10px 15px 0px 15px;
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: #dd3000;
+                }
+                .also-read-article a, .also-read-article a:visited{
+                    color: #333;
+                    text-decoration: none !important;
+                    margin:0px;
+                    padding: 0px;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    overflow: hidden;
+                    -webkit-box-orient: vertical
+                }
+
 </style>

@@ -1,5 +1,5 @@
 @php
-    $factsOrder = ['full-name', 'popular-name', 'birth-place', 'birth-month', 'birth-year', 'death-month', 'death-year', 'death-cause', 'age', 'nationality', 'ethnicity', 'father', 'mother', 'siblings', 'profession', 'net-worth', 'height', 'weight', 'body-measurement', 'gender-identity', 'marital-status', 'spouse', 'children'];
+    $factsOrder = ['full-name', 'popular-name', 'birth-place', 'birth-month', 'birth-year', 'death-month', 'death-year', 'death-cause', 'age', 'nationality', 'ethnicity', 'father', 'mother', 'siblings', 'profession', 'net-worth', 'height', 'weight', 'body-measurement', 'gender-identity', 'marital-status','relationship-status','partner', 'spouse', 'children'];
 
 
     $tables = $article->category->tables;
