@@ -19,7 +19,7 @@ class Article extends Model
     use HasFactory, SeoTrait;
 
 
-    protected $fillable = ['title', 'slug', 'summary', 'body', 'image', 'category_id', 'writer_id', 'editor_id', 'published_at', 'status', 'task_status', 'tables', "is_featured", "editor_choice",'featured_image_alt_text','schema'];
+    protected $fillable = ['title', 'slug', 'summary', 'body', 'image', 'category_id', 'writer_id', 'editor_id', 'published_at', 'status', 'task_status', 'tables', "is_featured", "editor_choice",'featured_image_alt_text','schema','views','faq','faq_schema'];
 
     protected $casts = [
         'tables' => 'array',
@@ -82,19 +82,25 @@ class Article extends Model
 
     public function linkableArticles($search = null)
     {
-        $keyword = str_word_count($this->title) < 2 ? $this->title : $this->seo->meta_keywords;
         $url = url('/') . '/';
         $articles = Article::where('task_status', 'published')
             ->where('status', 1)
             ->where('id', '!=', $this->id)
-            ->select(DB::raw("title , CONCAT('$url',slug) as value , image"));
-        if ($search) {
-            $articles->where('body', 'like', "%$search%")
+            ->select(DB::raw("title, id , CONCAT('$url',slug) as value , image"))->where('title', 'like', "%$search%")
             ->get();
-        } else {
-            $articles->where('body', 'like', '%' . $keyword . '%');
-        }
-        return $articles->get();
+
+
+
+        $ar = Article::where('task_status', 'published')
+        ->where('status', 1)
+        ->where('id', '!=', $this->id)
+        ->select(DB::raw("title, id , CONCAT('$url',slug) as value , image"))->where('body', 'like', "%$search%")
+        ->whereNotIn('id', $articles->pluck('id')->toArray())
+        ->get();
+
+        $articles = $articles->merge($ar);
+
+        return $articles;
     }
 
     public function getIncomingLinkAttribute()

@@ -9,6 +9,13 @@
 
 @push('schema')
     {!! $article->schema !!}
+    {!! $article->faq_schema !!}
+@endpush
+
+@push('styles')
+    <style>
+        .one-set{margin-left:5px}.faq-question::before{content:"❖";margin-right:5px;font-weight:500}.faq-answer::before{content:"✦";margin-right:5px;font-weight:500}.faq-question{font-size:22px;font-weight:600}.faq-answer{font-size:19px;margin-left:25px;font-weight:400}
+    </style>
 @endpush
 
 @push('head')

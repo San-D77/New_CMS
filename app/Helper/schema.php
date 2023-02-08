@@ -366,6 +366,31 @@ function getAuthorSchema($author){
 
 }
 
+function getFAQSchema($faq){
+
+    $faqs = [];
+    foreach($faq as $faqSet){
+        array_push($faqs,[
+            "@type" => "Question",
+            "name"=> $faqSet['question'],
+            "acceptedAnswer"=> [
+                "@type"=> "Answer",
+                "text"=> $faqSet['answer']
+            ]
+        ]);
+    }
+
+    $schemaObj = [[
+        "@context" => "https://schema.org",
+        "@type" => "FAQPage",
+        "mainEntity"=> [
+            ...$faqs
+        ]
+    ]];
+
+    return returnSchemaScriptTag(json_encode($schemaObj,JSON_UNESCAPED_SLASHES));
+}
+
 
 function getImageMeta($url)
 {

@@ -56,6 +56,17 @@
                                 <p>
                                     {!! $article->body !!}
                                 </p>
+                                <h2>FAQs</h2>
+                                @isset($article->faq)
+                                    @if(count(json_decode($article->faq))>0)
+                                        @foreach (json_decode($article->faq) as $faq)
+                                            <div class="one-set">
+                                                <p class="faq-question">{!! $faq->question !!}</p>
+                                                <p class="faq-answer">{!! $faq->answer !!}</p>
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                @endisset
                             </div>
                             <div class="col-md-12">
                                 @include('frontend.pages.article.components.tags')

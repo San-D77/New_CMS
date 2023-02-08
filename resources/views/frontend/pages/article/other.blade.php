@@ -39,6 +39,17 @@
             @include('frontend.pages.article.components.table_of_content')
             <div class="content-detail">
                 {!! $article->body !!}
+                <h2>FAQs</h2>
+                @isset($article->faq)
+                    @if(count(json_decode($article->faq))>0)
+                        @foreach (json_decode($article->faq) as $faq)
+                            <div class="one-set">
+                                <p class="faq-question">{!! $faq->question !!}</p>
+                                <p class="faq-answer">{!! $faq->answer !!}</p>
+                            </div>
+                        @endforeach
+                    @endif
+                @endisset
             </div>
         </div>
         <div class="col-lg-4 sidebar-section mt-3">

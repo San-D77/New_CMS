@@ -36,4 +36,14 @@ class AjaxController extends Controller
             'readMoreSection' => $article ?  getReadMoreSection($article) : '',
         ]);
     }
+
+    public function update_views(Request $request){
+        $article = Article::where('id', $request->id)->first();
+        $article->update([
+            "views" => (int)$article->views + 1,
+        ]);
+        return response()->json([
+            "result" => "views updated"
+        ]);
+    }
 }

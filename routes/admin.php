@@ -78,6 +78,9 @@ Route::group(['prefix' => 'article', "as" => "article-"], function () {
     Route::post("/update/{article}", [ArticleController::class, "update"])->name("update");
 
 
+    Route::post("/add-faq", [ArticleController::class, "add_faq"])->name("add_faq");
+
+
     Route::get("/delete/{article}", [ArticleController::class, "destroy"])->name("delete");
     Route::get("/status-update/{article}", [ArticleController::class, "updateStatus"])->name("update_status");
 

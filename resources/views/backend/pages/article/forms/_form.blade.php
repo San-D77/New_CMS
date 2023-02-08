@@ -171,6 +171,10 @@
                 <a data-bs-toggle="modal" href="#linkable-article" class="btn btn-md btn-secondary col-md-5 mb-1">
                     Find Links
                 </a>
+
+                <a data-bs-toggle="modal" href="#faqs-modal" class="btn btn-md btn-warning col-md-5 mb-1">
+                    Add FAQs
+                </a>
             </div>
 
             <div class="row mb-1" style="position:sticky; top:28rem;">
@@ -467,6 +471,58 @@
             </div>
         </div>
     </div>
+
+    {{-- FAQ Model --}}
+    <div class="modal fade bd-example-modal-lg" style="margin-left: -200px;" id="faqs-modal" tabindex="-1"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content" style="width:1000px;">
+                <div class="modal-header">
+                    <h5 class="modal-title">FAQs</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mx-auto">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <button class="btn btn-sm btn-success mb-2" id="add_button">Add+</button>
+                                <span id="error_message" style="border: solid 1px rgb(247, 116, 116); padding: 10px; background: #e96767; color:white; border-radius: 5px; display:none;">Please fill all the sections first and then try again</span>
+                                <div class="border p-3 rounded" id="main_container">
+                                    @isset($article->faq)
+                                        @if(count(json_decode($article->faq))>0)
+                                                @foreach (json_decode($article->faq) as $faq)
+                                                    <div class="one-set">
+                                                        <span style="margin-left: 840px; font-size: 20px; color: red; cursor:pointer;" onclick="remove(event)">X</span>
+                                                        <input type="text" name="question" value="{{ $faq->question }}" placeholder="Input Question" class="form-control mb-3">
+                                                        <textarea name="answer" id="" rows="4" placeholder="Input Answer" class="form-control">{{ $faq->answer }}</textarea>
+                                                    </div>
+                                                @endforeach
+                                        @endif
+                                    @else
+                                        <div class="one-set">
+                                            <span style="margin-left: 840px; font-size: 20px; color: red; cursor:pointer;" onclick="remove(event)">X</span>
+                                            <input type="text" name="question" placeholder="Input Question" class="form-control mb-3">
+                                            <textarea name="answer" id="" rows="4" placeholder="Input Answer" class="form-control"></textarea>
+                                        </div>
+                                    @endisset
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-md btn-success" id="save_faq" style="display: inline;">
+                        Save
+                    </button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        aria-label="Close">Close</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
 </form>
 
 @push('styles')
@@ -646,5 +702,78 @@
             navigator.clipboard.writeText(url);
             $temp.remove();
         })
+
+        function validateEmpty(){
+            var empty = false;
+            var list = document.querySelectorAll(".one-set");
+            for(var i = 0; i<list.length; i++){
+                if(list[i].childNodes[3].value == '' || list[i].childNodes[5].value == ''){
+                    empty = true;
+                    break;
+                }
+            }
+            return empty;
+        }
+
+        var addMore = document.querySelector('#add_button');
+        var saveFaq = document.querySelector("#save_faq");
+        var mainContainer = document.querySelector("#main_container");
+        var errMsg = document.querySelector('#error_message');
+        addMore.addEventListener('click', function(e){
+            e.preventDefault();
+            if(!validateEmpty()){
+                errMsg.style.display = "none";
+                mainContainer.insertAdjacentHTML("beforeend", `<div class="one-set">
+                    <span style="margin-left: 840px; font-size: 20px; color: red; cursor:pointer;" onclick="remove(event)">X</span>
+                    <input required type="text" placeholder="Input Question" name="question_1" class="form-control mb-3">
+                    <textarea required name="answer_1" id="" placeholder="Input Answer" rows="4" class="form-control"></textarea>
+                </div>`)
+            }
+            else{
+                errMsg.style.display = "block";
+            }
+
+        })
+
+        saveFaq.addEventListener('click', function(e){
+            e.preventDefault();
+            if(!validateEmpty()){
+                errMsg.style.display = "none";
+                var faqJson = [];
+                var list = document.querySelectorAll(".one-set");
+                for(var i = 0; i<list.length; i++){
+                    var el = {
+                        "question": list[i].childNodes[3].value,
+                        "answer": list[i].childNodes[5].value
+                    }
+                    faqJson.push(el)
+                }
+                fetch("{{ route('backend.article-add_faq') }}", {
+                    method:"POST",
+                    headers:{
+                        "Content-Type":"application/json",
+                        "X-Requested-With":"XMLHttpRequest",
+                        "X-CSRF-Token": "{{ csrf_token() }}"
+                    },
+                    body: JSON.stringify({main: faqJson, id: {{$article->id}} })
+                }).then(response => response.json())
+                .then(r => {
+                    $('#faqs-modal').modal('hide');
+                }).catch(err => {
+                    console.log(err);
+                });
+            }
+            else{
+                errMsg.style.display = "block";
+            }
+
+        })
+
+        function remove(e){
+            var parentNode = e.target.parentElement;
+            parentNode.remove();
+        }
+
+
     </script>
 @endpush

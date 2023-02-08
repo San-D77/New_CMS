@@ -39,7 +39,7 @@
                 <ul>
                     <li><a href="/privacy-policy">Privacy Policy</a></li>
                     <li><a href="/about-us">About Us</a></li>
-                    <li><a href="contact-us">Contact Us</a></li>
+                    <li><a href="/contact-us">Contact Us</a></li>
                     <li><a href="{{ route('ourAuthors') }}">Our Authors</a></li>
                 </ul>
             </div>

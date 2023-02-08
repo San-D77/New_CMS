@@ -235,6 +235,23 @@ class ArticleController extends Controller
         }
     }
 
+
+    public function add_faq(Request $request){
+
+        $article = Article::where('id', $request->id)->first();
+
+        $faqSchema = getFAQSchema($request->main);
+
+        $article->update([
+            'faq' => $request->main,
+            'faq_schema' => $faqSchema
+        ]);
+
+        return response()->json([
+            "status" => "completed",
+        ]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

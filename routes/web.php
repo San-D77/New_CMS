@@ -63,5 +63,7 @@ Route::group(['prefix' => 'ajax', 'as' => 'ajax.'], function () {
     Route::get('read-more/{article?}', [AjaxController::class, 'readMoreSection'])->name('readMoreSectionAjax');
     Route::post('more-on-category/{article?}', [AjaxController::class, 'moreOnCategory'])->name('moreOnCategory');
 
+    Route::post("/update-views", [AjaxController::class, 'update_views'])->name('update_views');
+
     // in_array()
 });

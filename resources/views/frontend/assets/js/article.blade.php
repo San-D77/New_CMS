@@ -106,5 +106,17 @@
 								firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 				}
 
-
+                setTimeout(function(){
+                    fetch("{{ route('ajax.update_views') }}",{
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-Requested-With": "XMLHttpRequest",
+                            "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content,
+                        },
+                        body: JSON.stringify({'id':{{ $article->id }}})
+                    })
+                    .then(r => r.json())
+                    .then(res => {})
+                }, 35000)
 </script>
