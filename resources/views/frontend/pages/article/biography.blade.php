@@ -56,8 +56,8 @@
                                 <p>
                                     {!! $article->body !!}
                                 </p>
-                                <h2>FAQs</h2>
                                 @isset($article->faq)
+                                <h2>FAQs</h2>
                                     @if(count(json_decode($article->faq))>0)
                                         @foreach (json_decode($article->faq) as $faq)
                                             <div class="one-set">
