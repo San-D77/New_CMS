@@ -38,7 +38,9 @@
             </div>
             @include('frontend.pages.article.components.table_of_content')
             <div class="content-detail">
-                {!! $article->body !!}
+                <p>
+                    {!! $article->body !!}
+                </p>
                 @isset($article->faq)
                     <h2>FAQs</h2>
                     @if(count(json_decode($article->faq))>0)
