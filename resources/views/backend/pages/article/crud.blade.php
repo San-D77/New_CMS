@@ -12,6 +12,15 @@
     <link href="{{ asset('backend') }}/assets/plugins/select2/css/select2-bootstrap4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="{{ asset('backend/assets/plugins/datetime/jquery.datetimepicker.min.css') }}">
+    <style>
+        .one-set{
+            background: #cdeeee;
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            border-radius: 7px;
+        }
+    </style>
+
 @endpush
 
 @push('scripts')

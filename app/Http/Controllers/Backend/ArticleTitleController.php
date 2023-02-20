@@ -54,19 +54,27 @@ class ArticleTitleController extends Controller
     }
 
     public function start_writing( Request $request){
-        $article = Article::create([
-            "title" => $request->title,
-            "slug" => Str::slug($request->title),
-            "task_status" => 'autopublish',
-            "category_id" => $request->category_id ?? 1, // TODO remove default 1
-            "writer_id" => auth()->user()->id,
-        ]);
+
+        $artAvailable = Article::where('slug',str_slug($request->title))->first();
+        if($artAvailable){
+            return back()->with("error", "Topic already exists.");
+        }else{
+            $article = Article::create([
+                "title" => $request->title,
+                "slug" => Str::slug($request->title),
+                "task_status" => 'autopublish',
+                "category_id" => $request->category_id ?? 1, // TODO remove default 1
+                "writer_id" => auth()->user()->id,
+            ]);
 
 
-        ArticleLogJob::dispatchAfterResponse($article, "Article writing by " . auth()->user()->name);
+            ArticleLogJob::dispatchAfterResponse($article, "Article writing by " . auth()->user()->name);
 
-        return redirect()->route("backend.article-edit", ["article" => $article]);
+            return redirect()->route("backend.article-edit", ["article" => $article]);
+        }
+
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -76,8 +84,13 @@ class ArticleTitleController extends Controller
      */
     public function store(ArticleTitleRequest $request)
     {
-        ArticleTitle::create($request->validated());
-        return redirect()->route("backend.article_title-view")->with("success", "ArticleTitle created successfully.");
+        $artAvailable = Article::where('slug',str_slug($request->title))->first();
+        if($artAvailable){
+            return back()->with("error", "Topic already exists.");
+        }else{
+            ArticleTitle::create($request->validated());
+            return redirect()->route("backend.article_title-view")->with("success", "Topic created successfully.");
+        }
     }
 
 
@@ -125,25 +138,30 @@ class ArticleTitleController extends Controller
 
     public function pick(ArticleTitle $article_title)
     {
+        $artAvailable = Article::where('slug',str_slug($article_title->title))->first();
+        if($artAvailable){
+            return back()->with("error", "Topic already exists.");
+        }else{
 
-        if (auth()->user()->allArticles()->where("task_status", "writing")->count() > 2) {
-            return redirect()->route("backend.article_title-view")->with("error", "You can't pick more than three articles at a time.");
+            if (auth()->user()->allArticles()->where("task_status", "writing")->count() > 2) {
+                return redirect()->route("backend.article_title-view")->with("error", "You can't pick more than three articles at a time.");
+            }
+            $article = Article::create([
+                "title" => $article_title->title,
+                "slug" => Str::slug($article_title->title),
+                "category_id" => $article_title->category_id ?? 1, // TODO remove default 1
+                "writer_id" => auth()->user()->id,
+            ]);
+
+            $article_title->update([
+                "article_id" => $article->id,
+            ]);
+
+            ArticleLogJob::dispatch($article, "Article picked by " . auth()->user()->name);
+
+            return redirect()->route("backend.article-edit", ["article" => $article]);
         }
-        $article = Article::create([
-            "title" => $article_title->title,
-            "slug" => Str::slug($article_title->title),
-            "category_id" => $article_title->category_id ?? 1, // TODO remove default 1
-            "writer_id" => auth()->user()->id,
-        ]);
 
-        $article_title->update([
-            "article_id" => $article->id,
-        ]);
-
-
-        ArticleLogJob::dispatchAfterResponse($article, "Article picked by " . auth()->user()->name);
-
-        return redirect()->route("backend.article-edit", ["article" => $article]);
     }
 
     public function assign(Request $request, $articleTitle){

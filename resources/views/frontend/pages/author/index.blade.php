@@ -9,7 +9,8 @@
 @push('styles')
     @include('frontend.assets.css.category_min')
     <style>
-        .author_image,.image{width:200px;height:200px}.intro{font-size:22px;font-weight:600;text-align:center}.author-bio{display:flex;flex-direction:row;margin:20px 10px;padding:0 10px;gap:20px}.image{margin:auto 0}@media(max-width:520px){.author-bio{display:flex;flex-direction:column;margin:20px 0;gap:20px}.image{margin:0 auto}}.author_image{border-radius:100%;object-fit:cover;object-position:top}.description{font-size:19px;font-weight:500;color:#414141;letter-spacing:.5px;word-spacing:.9px;line-height:32px;text-align:justify}.fa-linkedin:before{content:"\f08c"}
+        .fa-brands{font-family:"Font Awesome 6 Brands"}
+        .author_image,.image{width:200px;height:200px}.intro{font-size:22px;font-weight:600;text-align:center}.author-bio{display:flex;flex-direction:row;margin:20px 10px;padding:0 10px;gap:20px}.image{margin:auto 0}@media(max-width:520px){.author-bio{display:flex;flex-direction:column;margin:20px 0;gap:20px}.image{margin:0 auto}}.author_image{border-radius:100%;object-fit:cover;object-position:top}.description{font-size:19px;font-weight:500;color:#414141;letter-spacing:.5px;word-spacing:.9px;line-height:32px;text-align:justify}.fa-linkedin:before{content:"\f08c"; color:#0A66C2;}.fa-facebook:before{content:"\f09a";color:#2374E1;}.fa-twitter:before{content:"\f099"; color: #1D9BF0;}
     </style>
 @endpush
 

@@ -215,7 +215,8 @@ class ArticleController extends Controller
         }
 
         $article->tags()->sync($request->tags);
-        if ($message) {
+
+        if ($message && ($article->task_status == 'published' || $article->task_status == 'submitted')) {
 
             ArticleLogJob::dispatch($article, $message, $request->discussion ?? '');
         }
