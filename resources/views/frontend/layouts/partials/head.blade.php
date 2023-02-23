@@ -23,7 +23,7 @@ $type = isset($type) ? $type : "website";
 <meta name="apple-mobile-web-app-status-bar-style" content="#111">
 <meta property="og:site_name" content="{{ getSettingValue('website_title') }}">
 <meta property="og:type" content="{{ $type }}">
-<meta name="google-site-verification" content="JP9MCfJdZMBDMIjn3oApf_gBlfHTLb4kujiKmPSwjSY" />
+<meta name="google-site-verification" content="{{ getSettingValue('google_search_console_code')  }}" />
 
 <meta property="og:title" content="{{ $meta_title }}">
 
