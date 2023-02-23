@@ -34,18 +34,20 @@
             ])
         @endif
 
-        @include('frontend.pages.home.components.first-section', [
-            'section' => $data['category_articles'][0],
-            'second' => $data['editor_choice']
+        @if($data['category_articles']->count() > 0)
+            @include('frontend.pages.home.components.first-section', [
+                'section' => $data['category_articles'][0],
+                'second' => $data['editor_choice']
 
-        ])
+            ])
+            @foreach ($data['category_articles'] as $section)
+                @if ($loop->iteration > 1)
+                    @include('frontend.pages.home.components.category-section', [
+                        'section' => $section,
+                    ])
+                @endif
+            @endforeach
+        @endif
 
-        @foreach ($data['category_articles'] as $section)
-            @if ($loop->iteration > 1)
-                @include('frontend.pages.home.components.category-section', [
-                    'section' => $section,
-                ])
-            @endif
-        @endforeach
     </main>
 @endsection
