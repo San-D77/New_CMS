@@ -34,7 +34,7 @@
             ])
         @endif
 
-        @if($data['category_articles']->count() > 0)
+        @if(count($data['category_articles']) > 0)
             @include('frontend.pages.home.components.first-section', [
                 'section' => $data['category_articles'][0],
                 'second' => $data['editor_choice']
