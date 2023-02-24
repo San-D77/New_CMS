@@ -98,8 +98,8 @@ function getArticleSchema($article){
         "image"=> [
             '@type' => 'ImageObject',
             'url' => asset('/uploads/featured/'.$article->image),
-            'width' => 728,
-            'height' => 455,
+            'width' => 1200,
+            'height' => 900,
         ],
         "wordCount"=> str_word_count(strip_tags($article->body)),
         "publisher"=> [
@@ -165,7 +165,7 @@ function getCategorySchema($category){
     $firstArticle = $category->articles()->orderBy('published_at')->first();
 
     if($firstArticle){
-        $articleImage = asset($firstArticle->image);
+        $articleImage = asset('/uploads/featured/'.$firstArticle->image);
     }else{
         $articleImage = '';
     }
@@ -195,8 +195,8 @@ function getCategorySchema($category){
         "@id"=>route('singleArticle', $category->slug)."/#primaryimage",
         "url" =>$articleImage,
         "contentUrl"=>$articleImage,
-        "width" => 728,
-        "height" => 455,
+        "width" => 1200,
+        "height" => 900,
         "caption"=>$firstArticle? $firstArticle->featured_image_alt_text:''
     ];
 
