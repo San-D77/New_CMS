@@ -45,10 +45,6 @@
 
             <div class="collapse navbar-collapse d-none d-lg-block menu-items" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto text-uppercase">
-                    <li class="nav-item">
-                        <a class="nav-link {{ $current_url == url('/') ? 'active' : '' }}"
-                            href="{{ url('/') }}">Home</a>
-                    </li>
                     @foreach ($soloCategories as $category)
                         <li class="nav-item">
                             <a class="nav-link {{ $current_url == route('singleArticle', ['slug' => $category->slug]) ? 'active' : '' }}"

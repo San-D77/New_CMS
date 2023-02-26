@@ -13,10 +13,11 @@
                         <hr>
                         @csrf
                         <div class="col-12 mb-2 ">
-                            <label class="form-label">Title *</label>
+                            <label class="form-label">Title*</label>
                             <input type="text"
                                 class="form-control {{ isset($errors) && $errors->has('title') ? 'is-invalid' : '' }}"
                                 name="title" value="{{ isset($article) ? $article->title : old('title') }}">
+
                             @if (isset($errors) && $errors->has('title'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('title') }}
@@ -24,7 +25,7 @@
                             @endif
                         </div>
                         <div class="col-12 mb-2 ">
-                            <label class="form-label">Category *</label>
+                            <label class="form-label">Category*</label>
                             <select name="category_id" class="form-control">
                                 <option value="" disabled>Select Category</option>
                                 @foreach ($categories as $category)

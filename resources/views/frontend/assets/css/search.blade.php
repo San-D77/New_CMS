@@ -43,7 +43,8 @@
 								}
 
 								.image-section img {
-												width: 100%
+												width: 100%;
+                                                height: 300px;
 								}
 				}
                 .summary{
@@ -52,4 +53,11 @@
                     overflow: hidden;
                     -webkit-box-orient: vertical;
                 }
+                .image-section img {
+                                                height: 200px;
+                                                border-radius: 20px;
+                                                object-fit: cover;
+                                                object-position: top;
+
+								}
 </style>

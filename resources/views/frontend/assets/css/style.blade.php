@@ -1203,12 +1203,9 @@
 				    }
                 }
 
-				header .navbar .navbar-nav .nav-item {
-								padding: 0 .5rem
-				}
 
 				header .navbar .navbar-nav .nav-item .nav-link {
-								font-size: 15px !important;
+								font-size: 13px !important;
 								font-weight: 700 !important;
 								line-height: 20px !important;
 								color: #d4d2d2 !important;

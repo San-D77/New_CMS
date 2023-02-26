@@ -13,7 +13,7 @@
                         <ul class="breadcrumb-container">
                             <li class="breadcrumb">
                                 <a href="{{ url('/') }}">
-                                    <i class="fa fa-solid fa-home"></i>
+                                    <i class="fa fa-solid fa-home"></i> Home
                                 </a>
                             </li>
                             ⇢

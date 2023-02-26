@@ -15,7 +15,7 @@
             <ul class="breadcrumb-container">
                 <li class="breadcrumb">
                     <a href="{{ url('/') }}">
-                        <i class="fa fa-solid fa-home"></i>
+                        <i class="fa fa-solid fa-home"></i> Home
                     </a>
                 </li>
                 ⇢
@@ -40,10 +40,10 @@
                     @forelse ($authors as $author)
                         @if(count($author->articles)> 0)
                             <div class="col-md-6 author">
-    
+
                                <div class="wrap">
-    
-                                    <div class="image"> 
+
+                                    <div class="image">
                                         <a href="{{ route('authorArticle', $author->slug) }}">
                                             <img src="{{ asset($author->avatar) }}" alt="" class="image_img">
                                         </a>
@@ -53,9 +53,9 @@
                                             {{ $author->alias_name }}
                                         </a>
                                     </div>
-    
+
                                </div>
-    
+
                             </div>
                         @endif
                     @empty

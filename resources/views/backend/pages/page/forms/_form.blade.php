@@ -5,7 +5,7 @@
     <input type="hidden" name="task_status" id="task_status">
 
     <div class="row">
-        @include('error')
+
         <div class="col-xl-12 mx-auto">
             <div class="row">
                 <div class="col-12">

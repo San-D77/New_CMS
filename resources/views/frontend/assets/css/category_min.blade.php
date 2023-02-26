@@ -23,8 +23,7 @@ button:focus{outline:dotted 1px;outline:-webkit-focus-ring-color auto 5px;}
 button,input{margin:0;font-family:inherit;font-size:inherit;line-height:inherit;}
 button{text-transform:none;}
 [type=button],button{-webkit-appearance:button;}
-::-moz-focus-inner{padding:0;border-style:none;}
-.img-fluid{max-width:100%;height:auto;}
+[type=button]:not(:disabled),button:not(:disabled){cursor:pointer;}
 .container{width:100%;padding-right:var(--bs-gutter-x,.75rem);padding-left:var(--bs-gutter-x,.75rem);margin-right:auto;margin-left:auto;}
 @media (min-width:576px){
 .container{max-width:540px;}
@@ -58,8 +57,6 @@ button{text-transform:none;}
 .form-control{transition:none;}
 }
 .form-control:focus{color:#212529;background-color:#fff;border-color:#86b7fe;outline:0;box-shadow:0 0 0 .25rem rgba(13,110,253,.25);}
-.form-control::-webkit-input-placeholder{color:#6c757d;opacity:1;}
-.form-control::-moz-placeholder{color:#6c757d;opacity:1;}
 .form-control::placeholder{color:#6c757d;opacity:1;}
 .form-control:disabled{background-color:#e9ecef;opacity:1;}
 .collapse:not(.show){display:none;}
@@ -133,7 +130,6 @@ p{text-align:justify!important;}
 .navbar-nav .dropdown-list li{float:none;padding:15px 10px;}
 .links,.navbar-nav .dropdown-list li a{color:#fff;}
 .nav-item:active,.nav-item:hover{background:0 0!important;}
-::-moz-selection{background:#012835;color:#d2d2d4;}
 ::selection{background:#012835;color:#d2d2d4;}
 .meta{margin:0;}
 body{font-family:Helvetica, Sans-serif;letter-spacing:.3px;}
@@ -178,8 +174,7 @@ header .navbar .navbar-brand img{width:130px;height:45px;margin-top:5px;}
 @media (min-width: 505px) and (max-width: 820px){
 header .navbar .navbar-brand img{width:130px;height:40px;margin-top:10px;}
 }
-header .navbar .navbar-nav .nav-item{padding:0 .5rem;}
-header .navbar .navbar-nav .nav-item .nav-link{font-size:15px!important;font-weight:700!important;line-height:20px!important;color:#d4d2d2!important;letter-spacing:1px;position:relative;}
+header .navbar .navbar-nav .nav-item .nav-link{font-size:13px!important;font-weight:700!important;line-height:20px!important;color:#d4d2d2!important;letter-spacing:1px;position:relative;}
 header .navbar .navbar-nav .nav-item .active,header .navbar .navbar-nav .nav-item .nav-link:hover{background-color:#3a3b3c;border-radius:5px;}
 @media (max-width:720px){
 .navbar-brand{line-height:200%;}
@@ -223,5 +218,4 @@ input{z-index:130;}
 /*! CSS Used fontfaces */
 @font-face{font-family:"Font Awesome 6 Free";font-style:normal;font-weight:400;font-display:block;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/webfonts/fa-regular-400.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/webfonts/fa-regular-400.ttf) format("truetype");}
 @font-face{font-family:"Font Awesome 6 Free";font-style:normal;font-weight:900;font-display:block;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/webfonts/fa-solid-900.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/webfonts/fa-solid-900.ttf) format("truetype");}
-@font-face{font-family:"Font Awesome 6 Brands";font-style:normal;font-weight:400;font-display:block;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/webfonts/fa-brands-400.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/webfonts/fa-brands-400.ttf) format("truetype")}
 </style>

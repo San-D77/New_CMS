@@ -2,7 +2,7 @@
 @push('styles')
     {{-- @include('frontend.assets.css.homepage')
     @include('frontend.assets.css.splide') --}}
-     @include('frontend.assets.css.homepage_min')
+    @include('frontend.assets.css.homepage_min')
 @endpush
 @push('schema')
     {!! getSettingValue('org_schema') !!}

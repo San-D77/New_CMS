@@ -36,10 +36,14 @@
                                 <hr>
                                 <div class="col-12 mb-2 ">
                                     <label class="form-label">Title *</label>
+                                    @if($article->task_status == 'published')
+                                        <a href="{{ route('singleArticle', $article->slug) }}" class="btn btn-sm btn-info mt-2 mb-2 text-white" style="position:absolute; top:15px; right:25px;" target="new">View</a>
+                                    @endif
                                     <input type="text"
                                         {{ isset($article) ? (auth()->user()->isWriter ? 'readonly=readonly' : '') : '' }}
                                         class="form-control {{ isset($errors) && $errors->has('title') ? 'is-invalid' : '' }}"
                                         name="title" value="{{ old('title') ? old('title') : ( isset($article) ? $article->title : '' ) }}">
+
                                     @if (isset($errors) && $errors->has('title'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('title') }}
