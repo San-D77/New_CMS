@@ -80,10 +80,11 @@ class HomePageCache implements ShouldQueue
 
             $category_articles = [];
             foreach (
-                config('constants.homepage_categories')
-                 as $category_slug
+                Category::all()
+                 as $category
             ) {
-                $cat = Category::where('slug',$category_slug)->where('status',1)->first();
+
+                $cat = Category::where('slug',$category->slug)->where('status',1)->first();
                 if($cat){
                     array_push($category_articles, $cat
                     ->articles()
