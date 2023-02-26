@@ -4,6 +4,7 @@
         <div class="col-lg-8 mt-4">
             <div class="heading">
                 <div class="category-segment">
+
                     <span>{{ $section[0]->category->title }}</span>
                 </div>
             </div>

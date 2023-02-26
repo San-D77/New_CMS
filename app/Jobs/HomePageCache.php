@@ -77,7 +77,6 @@ class HomePageCache implements ShouldQueue
             $ids = array_merge($ids, $editor_choice->pluck('id')->toArray());
 
 
-
             $category_articles = [];
             foreach (
                 Category::all()
@@ -86,14 +85,17 @@ class HomePageCache implements ShouldQueue
 
                 $cat = Category::where('slug',$category->slug)->where('status',1)->first();
                 if($cat){
-                    array_push($category_articles, $cat
+                    $art = $cat
                     ->articles()
                     ->with(['category', 'writer'])
                     ->where('task_status', 'published')
                     ->orderBy("published_at", "desc")
                     ->limit(config('constants.article_limit', 7))
                     ->whereNotIn('id', $ids)
-                    ->get());
+                    ->get();
+                    if(!$art->isEmpty()){
+                        array_push($category_articles, $art);
+                    };
                 }
             }
             return [

@@ -34,14 +34,15 @@
             ])
         @endif
 
-        @if(count($data['category_articles']) > 0)
-            @include('frontend.pages.home.components.first-section', [
-                'section' => $data['category_articles'][0],
-                'second' => $data['editor_choice']
 
-            ])
+        @if(count($data['category_articles']) > 0)
             @foreach ($data['category_articles'] as $section)
-                @if ($loop->iteration > 1)
+                @if ($loop->iteration == 1)
+                    @include('frontend.pages.home.components.first-section', [
+                        'section' => $section,
+                        'second' => $data['editor_choice']
+                    ])
+                @else
                     @include('frontend.pages.home.components.category-section', [
                         'section' => $section,
                     ])

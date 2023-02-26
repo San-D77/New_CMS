@@ -1,9 +1,9 @@
 
-
 @if (count($section)>0)
 <section class="row outer-section">
     <div class="heading mt-4 mb-4">
         <div class="category-segment">
+
             <span>{{ $section[0]->category->title }}</span>
         </div>
     </div>
