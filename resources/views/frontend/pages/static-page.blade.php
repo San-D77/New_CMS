@@ -18,6 +18,7 @@
 </head>
 <body>
     @include('frontend.layouts.partials.header')
+    <div class="sidebar-overlay"></div>
     <main class="container">
         <div class="row main-section">
             <div class="col-lg-8 article-section">
@@ -49,5 +50,11 @@
         </div>
 
     </main>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+    @include('frontend.assets.js.script')
+    @include('frontend.assets.js.main')
     @include('frontend.layouts.partials.footer')
+    @stack('scripts')
 </body>
