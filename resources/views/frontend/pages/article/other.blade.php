@@ -53,9 +53,9 @@
                     @endif
                 @endisset
             </div>
-        </div>
-        <div class="col-md-12">
-            @include('frontend.pages.article.components.tags')
+            <div class="col-md-12">
+                @include('frontend.pages.article.components.tags')
+            </div>
         </div>
         <div class="col-lg-4 sidebar-section mt-3">
             <div class="sidebar-section-wrap">

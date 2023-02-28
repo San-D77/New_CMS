@@ -125,8 +125,6 @@ iframe{border:0;}
 .pt-lg-0{padding-top:0!important;}
 }
 /*! CSS Used from: Embedded */
-.fa-caret-down:before{content:"\f0d7";}
-/*! CSS Used from: Embedded */
 body a{color:#454545;}
 p{text-align:justify!important;}
 #myBtn,#search-container{display:none;}

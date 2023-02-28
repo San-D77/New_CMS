@@ -30,13 +30,12 @@
     @yield('content')
     <div id="footerAd" class="adver container text-center">
     </div>
-
+    @include('frontend.layouts.partials.footer')
     <button onclick="topFunction()" id="myBtn" title="Go to top">
         <img style="position:absolute;top:3px; right:0px;" src="{{ asset('frontend/svgs/up-arrow-circle-svgrepo-com.svg') }}" width="50" height="auto;">
     </button>
     @include('frontend.assets.js.script')
     @include('frontend.assets.js.main')
-    @include('frontend.layouts.partials.footer')
     @stack('scripts')
 </body>
 
