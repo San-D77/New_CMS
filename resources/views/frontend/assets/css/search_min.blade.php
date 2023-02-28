@@ -42,7 +42,6 @@ button{text-transform:none;}
 .row{--bs-gutter-x:1.5rem;--bs-gutter-y:0;display:flex;flex-wrap:wrap;margin-top:calc(var(--bs-gutter-y) * -1);margin-right:calc(var(--bs-gutter-x)/ -2);margin-left:calc(var(--bs-gutter-x)/ -2);}
 .row>*{flex-shrink:0;width:100%;max-width:100%;padding-right:calc(var(--bs-gutter-x)/ 2);padding-left:calc(var(--bs-gutter-x)/ 2);margin-top:var(--bs-gutter-y);}
 @media (min-width:768px){
-.col-md-6{flex:0 0 auto;width:50%;}
 .col-md-11{flex:0 0 auto;width:91.6666666667%;}
 }
 @media (min-width:992px){
@@ -101,30 +100,18 @@ button{text-transform:none;}
 .pt-lg-0{padding-top:0!important;}
 }
 /*! CSS Used from: Embedded */
-.fa-solid{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:var(--fa-display, inline-block);font-style:normal;font-variant:normal;line-height:1;text-rendering:auto;}
-.fa-align-left:before{content:"\f036";}
-.fa-arrow-up:before{content:"\f062";}
-.fa-magnifying-glass:before{content:"\f002";}
-.fa-caret-down:before{content:"\f0d7";}
-.fa-xmark:before{content:"\f00d";}
-.fa-solid{font-family:"Font Awesome 6 Free";font-weight:900;}
-/*! CSS Used from: Embedded */
 body a{color:#454545;}
 p{text-align:justify!important;}
-.fa-magnifying-glass{padding-top:5px;}
-@media (max-width:820px){
-.fa-magnifying-glass{padding-top:15px;}
-}
 #myBtn,#search-container{display:none;}
 #search-container form{display:flex;gap:10px;padding-top:10px;}
 .close-search{padding-top:5px;font-weight:400;font-size:20px;}
 .navbar-nav .nav-item{position:relative;text-transform:uppercase;}
 .dropdown-mobile,.navbar-nav .dropdown-list{display:none;list-style:none;}
-.display-menu,.navbar-nav .nav-link:hover>ul{display:block;}
-.parent:hover>.fa-caret-down,.rotate-icon{transform:rotate(90deg);}
+.navbar-nav .nav-link:hover>ul{display:block;}
+.parent:hover>.fa-caret-down{transform:rotate(90deg);}
 .navbar-nav .dropdown-list{position:absolute;background:#3a3b3c;top:90%;left:0;border-radius:0 0 7px 7px;min-width:300px;padding:20px 0;}
 .navbar-nav .dropdown-list li{float:none;padding:15px 10px;}
-.links,.navbar-nav .dropdown-list li a{color:#fff;}
+.navbar-nav .dropdown-list li a{color:#fff;}
 .nav-item:active,.nav-item:hover{background:0 0!important;}
 ::selection{background:#012835;color:#d2d2d4;}
 body{font-family:Helvetica, Sans-serif;letter-spacing:.3px;}
@@ -136,7 +123,6 @@ body{font-family:Helvetica, Sans-serif;letter-spacing:.3px;}
 .footer-section li a{color:#d4d4d2;}
 .footer-section .footer-content{padding:0 35px;position:relative;z-index:2;}
 .footer-section .footer-logo h2 a{color:#b0aeae!important;font-size:24px;text-transform:uppercase;letter-spacing:5px;}
-.footer-section .footer-social-icon{text-align:right!important;}
 .footer-section .copyright-text p{margin:0;font-style:italic;font-size:12px;color:#d2d2d2;}
 .footer-section .copyright-text p a,.navbar #sidebar .menu li a:hover,.navbar #sidebar .sub-menu li a:hover{color:#fff!important;}
 .footer-section ul li{margin-right:15px;}
@@ -171,16 +157,12 @@ header .navbar .navbar-nav .nav-item .active,header .navbar .navbar-nav .nav-ite
 .navbar-brand{-webkit-transform:translateX(-50%);transform:translateX(-50%);left:50%;top:-4px;position:absolute;}
 }
 #myBtn{position:fixed;bottom:20px;right:30px;z-index:99;border:none;outline:0;background-color:#878787!important;color:#fff;cursor:pointer;padding:1rem;border-radius:50px;width:50px;height:50px;-webkit-transition:.2s;transition:.2s;}
-#myBtn i{font-size:18px;}
 #myBtn:hover{background-color:#888!important;}
 .search{color:#fff;cursor:pointer;}
 .search #search-label{font-size:20px;cursor:pointer;color:#fff;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;z-index:100;}
 input{z-index:130;}
 .navbar #sidebar,.sidebar-overlay{top:0;left:-100%;position:fixed;width:100%;}
 .navbar #sidebar{background-color:#2a2726!important;color:#fff!important;height:100vh;margin:0;z-index:100;overflow-y:auto;-webkit-transition:.2s cubic-bezier(.17, .67, .83, .67);transition:.2s cubic-bezier(.17, .67, .83, .67);}
-.menu-icon,.menu-icon:hover{margin-right:15px;transition:.3s;font-size:29px;}
-.menu-icon{color:#d4d2d2;}
-.menu-icon:hover{color:#878787;}
 .navbar #sidebar .sidebar__btn-close{cursor:pointer;text-align:center;font-size:29px;margin-top:10px;margin-right:10px;margin-left:10px;width:15%;line-height:60px;height:45px;}
 .navbar #sidebar .menu,.navbar #sidebar .sub-menu{list-style:none;margin:0;padding:0;}
 .navbar #sidebar .menu li{padding:5px;border-bottom:1px solid #fff!important;}
@@ -188,7 +170,6 @@ input{z-index:130;}
 .navbar #sidebar .menu li a,.navbar #sidebar .sub-menu li a{color:#fff;-webkit-transition:.2s;transition:.2s;text-transform:uppercase;}
 .navbar #sidebar .sub-menu li{padding:5px;border-bottom:1px solid #a9aaac;}
 .navbar .btn-menu{border:none;border-radius:5px;color:transparent;cursor:pointer;outline:0;padding-left:0;-webkit-animation:2s fadein;animation:2s fadein;}
-.side-links{font-size:20px;padding-bottom:10px;}
 .sidebar-overlay{background:rgba(0, 0, 0, .5);height:100%;z-index:86;}
 @media (min-width:992px){
 .navbar #sidebar{width:20%;position:fixed;left:-100%;top:0;}
@@ -200,14 +181,10 @@ input{z-index:130;}
 p{font-size:18px;font-weight:500;}
 .search-place{position:relative;margin-top:20px;}
 button{border:none;background:0 0;}
-.submit{margin-top:10px;font-size:24px;}
 @media (max-width:700px){
 .single-article{display:flex;flex-direction:column;gap:10px;margin-bottom:15px;}
 .image-section img{width:100%;height:300px;}
 }
 .summary{display:-webkit-box;-webkit-line-clamp:5;overflow:hidden;-webkit-box-orient:vertical;}
 .image-section img{height:200px;border-radius:20px;object-fit:cover;object-position:top;}
-/*! CSS Used fontfaces */
-@font-face{font-family:"Font Awesome 6 Free";font-style:normal;font-weight:400;font-display:block;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/webfonts/fa-regular-400.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/webfonts/fa-regular-400.ttf) format("truetype");}
-@font-face{font-family:"Font Awesome 6 Free";font-style:normal;font-weight:900;font-display:block;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/webfonts/fa-solid-900.woff2) format("woff2"), url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/webfonts/fa-solid-900.ttf) format("truetype");}
 </style>

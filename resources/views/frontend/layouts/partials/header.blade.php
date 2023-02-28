@@ -28,7 +28,7 @@
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon" style="">
-                        <i class="fa-solid fa-align-left menu-icon"></i>
+                        <img src="{{ asset('frontend/svgs/align-left-svgrepo-com.svg') }}" alt="" style="width: 39px;" width="50" height="35">
                     </span>
                 </button>
                 <a href="{{ url('/') }}" class="ml-3 brand-logo d-none" id="navScroll-btn">
@@ -56,8 +56,8 @@
                     @foreach ($parentCategories as $cat)
                         <li class="nav-item">
 
-                            <div class="nav-link parent">
-                                {{ $cat->title }} <i style="font-size:18px;" class="fa-solid fa-caret-down">
+                            <div class="nav-link parent" style="padding:6px 8px;">
+                                {{ $cat->title }}<img src="{{ asset('frontend/svgs/triangle-down-svgrepo-com.svg') }}" class="fa-caret-down" alt="" style="width: 28px;padding-bottom:3px; margin-left:-4px;" width="40" height="25">
                                  </i>
                                  <ul class="dropdown-list">
                                     @foreach ($childCategories as $c)
@@ -83,14 +83,10 @@
             <div class="sidebar" id="sidebar">
                 <div class="d-flex justify-content-end">
                     <div class="sidebar__btn-close" id="sidebarBtnClose">
-                        <i class="fa-solid fa-xmark cros-icon"></i>
+                        <img src="{{ asset('frontend/svgs/cross-svgrepo-com.svg') }}" alt="" style="width: 30px;" width="40" height="25">
                     </div>
                 </div>
                 <ul class="pt-3 pt-lg-0 nav-menu menu">
-                    <li class="nav-item">
-                        <a class="nav-link {{ $current_url == url('/') ? 'active' : '' }}"
-                            href="{{ url('/') }}">Home</a>
-                    </li>
 
                     @foreach ($soloCategories as $category)
                         <li class="nav-item">
@@ -103,7 +99,7 @@
                     @foreach ($parentCategories as $cat)
                         <li class="nav-item">
                             <span id="{{ $cat->slug }}" class="nav-link dropdown-trigger text-uppercase">
-                                {{ $cat->title }} <i style="font-size:18px;" class="fa-solid fa-caret-down"></i>
+                                {{ $cat->title }} <img src="{{ asset('frontend/svgs/triangle-down-svgrepo-com.svg') }}" alt="" style="width: 28px;padding-bottom:3px; margin-left:-4px;" class="fa-caret-down" width="45" height="30">
                             </span>
                             <ul class="dropdown-mobile text-uppercase">
                                 @foreach ($childCategories as $c)
@@ -139,21 +135,10 @@
                         </li> -->
                     </ul>
                 </div>
-                <!-- sidebar social links -->
-                <div class="links side-links mt-3">
-                    @forelse (getSettingType("social-media") as $media)
-                        <a href="{{ $media->value }}">
-                            <i class="fa-brands fa-{{ $media->key }}"></i>
-                        </a>
-                    @empty
-                    @endforelse
-
-                </div>
-
         </div>
 
             <div class="search">
-                <i class="fa-solid fa-magnifying-glass" id="search-label"></i>
+                <img src="{{ asset('frontend/svgs/magnifying-glass-8-svgrepo-com.svg') }}" alt="" width="40" height="25" style="width: 21px;" id="search-label">
                 <div id="search-container">
                     <form action="/search/" method="get">
                         <input type="text" name="q" id="" class="form-control search-box">

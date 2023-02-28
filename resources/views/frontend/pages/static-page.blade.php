@@ -26,7 +26,7 @@
                     <ul class="breadcrumb-container">
                         <li class="breadcrumb">
                             <a href="{{ url('/') }}">
-                                <i class="fa fa-solid fa-home"></i>
+                                <img src="{{ asset('frontend/svgs/home-icon-svgrepo-com.svg') }}" alt="" style="width: 16px; margin-bottom:5px;" width="20" height="15" >Home
                             </a>
                         </li>
                         ⇢
@@ -51,7 +51,7 @@
 
     </main>
     <button onclick="topFunction()" id="myBtn" title="Go to top">
-        <i class="fa-solid fa-arrow-up"></i>
+        <img style="position:absolute;top:3px; right:0px;" src="{{ asset('frontend/svgs/up-arrow-circle-svgrepo-com.svg') }}" width="50" height="auto;">
     </button>
     @include('frontend.assets.js.script')
     @include('frontend.assets.js.main')

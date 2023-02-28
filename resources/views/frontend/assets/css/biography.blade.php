@@ -522,4 +522,27 @@
                     -webkit-box-orient: vertical
                 }
 
+                .content-detail table{
+                    display:block;
+                    border: 1px solid #ddd;
+                }
+                .content-detail td{
+                    width:100%;
+                    padding:10px;
+                    text-align: left;
+                }
+                .content-detail tbody{
+                    display:block;
+                    min-width: 100%;
+                    max-height: 400px;
+                    overflow: auto;
+                }
+                .content-detail tr:nth-child(even) {background-color: #d6d4d4;}
+                .content-detail tr:nth-child(1){
+                    background-color: #aaf8d8;
+                    font-weight: 700 !important;
+                    font-size:18px;
+                }
+                .content-detail tr:hover {background-color: rgb(178, 178, 178);}
+
 </style>

@@ -13,7 +13,7 @@
                         <ul class="breadcrumb-container">
                             <li class="breadcrumb">
                                 <a href="{{ url('/') }}">
-                                    <i class="fa fa-solid fa-home"></i> Home
+                                    <img src="{{ asset('frontend/svgs/home-icon-svgrepo-com.svg') }}" alt="" style="width: 16px; margin-bottom:5px;" width="20" height="15" > Home
                                 </a>
                             </li>
                             ⇢
@@ -42,7 +42,7 @@
                                 <div class="featured-image">
                                     <div class="image">
                                         <figure class="m-0">
-                                            <img data-src="{{ asset('/uploads/featured/'.$article->image) }}" src="{{ asset('/uploads/thumbnail/'.$article->image) }}" alt="{{ $article->featured_image_alt_text }}"
+                                            <img src="{{ asset('/uploads/featured/'.$article->image) }}" alt="{{ $article->featured_image_alt_text }}"
                                                 class="image_img" width="425" height="300">
                                         </figure>
                                     </div>

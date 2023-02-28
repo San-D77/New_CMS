@@ -10,7 +10,7 @@
                 <ul class="breadcrumb-container">
                     <li class="breadcrumb">
                         <a href="{{ url('/') }}">
-                            <i class="fa fa-solid fa-home"></i> Home
+                            <img src="{{ asset('frontend/svgs/home-icon-svgrepo-com.svg') }}" alt="" style="margin-bottom:5px;" width="20" height="15">Home
                         </a>
                     </li>
                     ⇢
@@ -33,7 +33,7 @@
             @include('frontend.pages.article.components.title-section')
 
             <div class="featured-image">
-                <img data-src="{{ asset('/uploads/featured/'.$article->image) }}" src="{{ asset('/uploads/thumbnail/'.$article->image) }}" class=""
+                <img src="{{ asset('/uploads/featured/'.$article->image) }}" class=""
                 alt="{{ $article->featured_image_alt_text }}" width="750" height="500">
             </div>
             @include('frontend.pages.article.components.table_of_content')
@@ -54,14 +54,15 @@
                 @endisset
             </div>
         </div>
+        <div class="col-md-12">
+            @include('frontend.pages.article.components.tags')
+        </div>
         <div class="col-lg-4 sidebar-section mt-3">
             <div class="sidebar-section-wrap">
 
             </div>
         </div>
-        <div class="col-md-12">
-            @include('frontend.pages.article.components.tags')
-        </div>
+
     </div>
     <div class="heading mt-4 mb-4">
         <div class="category-segment">

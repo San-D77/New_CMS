@@ -9,7 +9,7 @@
 
         <form action="/search/" method="get" class="col-lg-6 form">
             <input value="{{ isset($search_for)?$search_for:'' }}" type="text" name="q" id="" class="form-control search-place">
-            <button type="submit"><i class="fa-solid fa-magnifying-glass submit" ></i></button>
+            <button type="submit" style="background:rgb(48, 48, 48); color:white; height: 30px; border-radius:10px; position:relative; right:0; top:23px;">Search</button>
         </form>
 
 

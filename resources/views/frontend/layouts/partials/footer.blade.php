@@ -13,19 +13,6 @@
 
                 </div>
             </div>
-            <div class="col-md-6 mb-30 social-section">
-                <div class="footer-social-icon">
-                    {{-- {{ dd(getSettingType("social-media")) }} --}}
-                    @forelse (getSettingType("social-media") as $media)
-                        <a href="{{ $media->value }}">
-                            <i class="fa-brands fa-{{ $media->key }}"></i>
-                        </a>
-                    @empty
-                    @endforelse
-
-
-                </div>
-            </div>
 
         </div>
         <div class="row copyright-section mt-3">

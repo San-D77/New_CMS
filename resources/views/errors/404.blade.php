@@ -17,22 +17,7 @@
                 <h2>The page you are looking for does not exist or has been removed!
 
                 </h2>
-                <form class="notfound-search">
-                    <input type="text" placeholder="Search...">
-                    <button type="button">Search</button>
-                </form>
-                <div class="notfound-social">
-                    <a href="#" target="_blank">
-                        <i class="fa-brands fa-facebook"></i>
-                    </a>
-                    <a href="#" target="_blank">
-                        <i class="fa-brands fa-twitter"></i>
-                    </a>
-                    <a href="#" target="_blank">
-                        <i class="fa-brands fa-pinterest"></i>
-                    </a>
-                </div>
-                <a href="{{ url('/') }}">Back To Homepage</a>
+                <a href="{{ url('/') }}" style="font-size:20px; font-weight:600;color:#4a300e">Back To Homepage</a>
             </div>
         </div>
     </main>

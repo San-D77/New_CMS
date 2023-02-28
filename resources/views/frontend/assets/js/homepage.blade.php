@@ -1,3 +1,3 @@
 <script>
-   document.getElementById("slider").style.display="",new Splide(".splide",{type:"loop",perPage:4,gap:"10px",autoplay:!0,perMove:1,breakpoints:{820:{perPage:2,gap:"10px"},480:{perPage:1,gap:"10px"}}}).mount(),window.addEventListener("scroll",()=>{var e=document.getElementById("born-today");e&&window.innerHeight+window.scrollY>e.offsetTop&&window.innerHeight+window.scrollY<e.offsetTop+100&&""==e.innerText&&fetch("{{ route('ajax.getHomePageAjax') }}").then(e=>e.json()).then(({data:t})=>{e.innerHTML=t.born_today,document.getElementById("died-today").innerHTML=t.died_today})},{capture:!0,passive:!0});
+   document.getElementById("slider").style.display="",new Splide(".splide",{type:"loop",perPage:4,gap:"10px",autoplay:!0,perMove:1,breakpoints:{820:{perPage:2,gap:"10px"},480:{perPage:1,gap:"10px"}}}).mount()
 </script>

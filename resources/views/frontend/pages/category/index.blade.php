@@ -20,7 +20,7 @@
             <ul class="breadcrumb-container">
                 <li class="breadcrumb">
                     <a href="{{ url('/') }}">
-                        <i class="fa fa-solid fa-home"></i> Home
+                        <img src="{{ asset('frontend/svgs/home-icon-svgrepo-com.svg') }}" alt="" style="margin-bottom:5px;" width="20" height="15">Home
                     </a>
                 </li>
                 ⇢

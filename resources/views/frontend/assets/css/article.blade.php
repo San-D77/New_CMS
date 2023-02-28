@@ -544,4 +544,49 @@
                     -webkit-box-orient: vertical
                 }
 
+                table{
+                    display:block;
+                    border: 1px solid #ddd;
+                }
+                td{
+                    width:100%;
+                    padding:10px;
+                    text-align: left;
+                }
+                tbody{
+                    display:block;
+                    min-width: 100%;
+                    max-height: 400px;
+                    overflow: auto;
+                }
+                tr:nth-child(even) {background-color: #d6d4d4;}
+                tr:nth-child(1){
+                    background-color: #aaf8d8;
+                    font-weight: 700 !important;
+                    font-size:18px;
+                }
+                tr:hover {background-color: rgb(178, 178, 178);}
+
+                #myBtn {
+                position: fixed;
+                bottom: 20px;
+                right: 30px;
+                z-index: 99;
+                border: none;
+                outline: 0;
+                background-color: #878787 !important;
+                color: #fff;
+                cursor: pointer;
+                padding: 1rem;
+                border-radius: 50px;
+                width: 50px;
+                height: 50px;
+                -webkit-transition: .2s;
+                transition: .2s
+            }
+
+            #myBtn:hover {
+                background-color: #888 !important
+            }
+
 </style>
