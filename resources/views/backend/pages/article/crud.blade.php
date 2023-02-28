@@ -34,10 +34,12 @@
     <script>
         tinymce.PluginManager.add('readmore', function(editor, url) {
             var addHtml = function() {
-                editor.insertContent(`<div class="also-read"><p class="also-read-intro">Also Read: </p>
-                    <div class="articles row">
+                editor.insertContent(`
+                    <div class="also-read">
+                        <p class="also-read-intro">Also Read: </p>
+                        <div class="articles row">
                         </div>
-                        </div>`
+                    </div>`
                 );
             };
             /* Add a button that opens a window */
@@ -229,7 +231,7 @@
             // success color
             content_style: `body { font-family:Helvetica,Arial,sans-serif; font-size:16px; width: 95%; } .readmore{ border: solid 1px #ccc;background-color: #eee; font-size: 17px; font-weight:bold; border-radius:7px; width:35%; color:black; padding: 5px 10px; margin: 10px 0; }
 
-            .also-read{ margin: 10px; border: 1px solid #ccc; border-radius: 10px; background-color: rgb(209, 239, 255); } .articles{ padding: 0px 20px 10px 5px; margin-left: 10px; display:flex; flex-direction: row;} .also-read-article{ display: flex; flex-direction: row; gap: 10px; } .col-md-6{width:50%;} .also-read-article .also-read-image{ width: 100px; height: 90px; } .also-read-intro{ padding: 10px 15px 0px 15px; font-size: 20px; font-weight: 600; color: #dd3000; } .also-read-title{ margin:0px; padding: 0px; display: -webkit-box; -webkit-line-clamp: 3; overflow: hidden; -webkit-box-orient: vertical }
+            .also-read{ margin: 10px; border: 1px solid #ccc; border-radius: 10px; background-color: rgb(209, 239, 255); } .articles{ padding: 0px 20px 10px 5px; margin: 10px; display:flex; flex-direction: row; background:#ccc; border-radius:5px;} .also-read-article{ display: flex; flex-direction: row; gap: 10px; padding: 5px; } .col-md-6{width:50%;} .also-read-article .also-read-image{ width: 100px; height: 90px; } .also-read-intro{ padding: 10px 15px 0px 15px; font-size: 20px; font-weight: 600; color: #dd3000; } .also-read-title{ margin:0px; padding: 0px; display: -webkit-box; -webkit-line-clamp: 3; overflow: hidden; -webkit-box-orient: vertical }
             `,
 
 
