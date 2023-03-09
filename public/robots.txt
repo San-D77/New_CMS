@@ -1,2 +1,3 @@
 User-agent: *
-Disallow:
+Disallow:/ajax/more-on-category/
+Disallow:/category/
