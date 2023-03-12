@@ -61,7 +61,7 @@ Route::group(['prefix' => 'ajax', 'as' => 'ajax.'], function () {
     Route::get('article/you-may-also-like/{article}', [AjaxController::class, 'youMayAlsoLike'])->name('youMayAlsoLike');
     Route::get('home-page-ajax', [AjaxController::class, 'getHomePageAjax'])->name('getHomePageAjax');
     Route::get('read-more/{article?}', [AjaxController::class, 'readMoreSection'])->name('readMoreSectionAjax');
-    Route::post('more-on-category/{article?}', [AjaxController::class, 'moreOnCategory'])->name('moreOnCategory');
+    Route::get('more-on-category/{article?}', [AjaxController::class, 'moreOnCategory'])->name('moreOnCategory');
 
     Route::post("/update-views", [AjaxController::class, 'update_views'])->name('update_views');
 

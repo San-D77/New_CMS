@@ -44,8 +44,15 @@
         <section class="category-section">
             <div class="container">
                 @include('frontend.pages.articles', [
-                    'articles' => $category->articles()->orderBy('published_at')->limit(9)->get(),
+                    'articles' => $category->articles()->orderBy('published_at')->limit(12)->get(),
                 ])
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-center load">
+                        <button id="loadMore" class="btn">Load More</button>
+                    </h2>
+                </div>
             </div>
 
             <div class="container">

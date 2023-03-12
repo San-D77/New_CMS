@@ -79,7 +79,7 @@ class FrontendController extends Controller
     }
 
     public function ourAuthors(){
-        
+
         $authors = User::where('status','1')->with('articles')->get();
         return view("frontend.pages.author.list", [
             'authors' => $authors
