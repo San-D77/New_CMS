@@ -120,6 +120,12 @@
                                 <button type="button" class="btn btn-success btn-block form-submit" id="submit">
                                     Submit
                                 </button>
+
+                            @elseif($article->task_status == 'published')
+                                <button type="button" data-target=".bd-republish-modal" data-bs-toggle="modal"
+                                href="#republish-modal" class="btn btn-md btn-secondary col-md-5">
+                                    Re-Publish
+                                </button>
                             @elseif($article->task_status == 'autopublish')
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                     data-bs-target="#publish-article">
@@ -528,6 +534,39 @@
     </div>
 
 </form>
+{{-- Republish Confirmation Modal --}}
+
+<div class="modal fade bd-republish-modal" id="republish-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Republish Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mx-auto">
+                    <div class="card mb-2">
+                        <div class="card-body" style="color:red;">
+
+                                Are You Sure You Want To Republish Article?
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <form action="{{ route('backend.article-republish',$article->slug) }}" method="post">
+                    @csrf
+                    <input type="submit" value="Re-Publish" class="btn btn-success"/>
+                </form>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                    aria-label="Close">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- End of republish modal --}}
 
 @push('styles')
     <style>

@@ -10,6 +10,7 @@ use App\Models\Backend\Article;
 use App\Models\Backend\ArticleLog;
 use App\Models\Seo;
 use App\Services\ImageUpload;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
@@ -145,7 +146,7 @@ class ArticleController extends Controller
     public function update(ArticleRequest $request, Article $article)
     {
 
-        $message = 'Article saved by ' . auth()->user()->name;
+        $message = 'Article updated by ' . auth()->user()->name;
         $published_at = null;
 
 
@@ -236,6 +237,16 @@ class ArticleController extends Controller
         }
     }
 
+    public function republish($slug){
+        $article = Article::where('slug',$slug)->first();
+
+        $article->update([
+            'published_at' => Carbon::now(),
+        ]);
+        return redirect()
+        ->back()
+        ->with('success', 'Article Republished Successfully.');
+    }
 
     public function add_faq(Request $request){
 

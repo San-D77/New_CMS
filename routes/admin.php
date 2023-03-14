@@ -77,6 +77,9 @@ Route::group(['prefix' => 'article', "as" => "article-"], function () {
 
     Route::post("/update/{article}", [ArticleController::class, "update"])->name("update");
 
+    // Republish route
+
+    Route::post('/republish/{article_slug}', [ArticleController::class, 'republish'])->name('republish');
 
     Route::post("/add-faq", [ArticleController::class, "add_faq"])->name("add_faq");
 

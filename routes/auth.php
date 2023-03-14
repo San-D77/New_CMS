@@ -17,7 +17,7 @@ use PharIo\Manifest\AuthorCollection;
 |
 */
 
-$login_url = env("ADMIN_URL", 0320);
+$login_url = env("ADMIN_URL", '0320');
 
 Route::get("$login_url", function () {
     session()->put("valid-user", "true");
