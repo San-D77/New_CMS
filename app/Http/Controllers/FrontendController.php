@@ -47,8 +47,10 @@ class FrontendController extends Controller
     {
         $article = Article::activeAndPublish()->where("slug", $slug)->where("task_status", "published")->first();
         if ($article) {
+            $sidebar_articles = getArticles($article);
             return view("frontend.pages.article.index", [
                 "article" => $article,
+                "sidebar_articles" => $sidebar_articles
             ]);
         }
         if (getSetting($slug)) {

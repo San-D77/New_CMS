@@ -4,7 +4,7 @@
             <img src="{{ asset(getSettingValue('favicon')) }}" class="logo-icon" alt="logo icon">
         </div>
         <div>
-            <img style="width: 160px; height:60px; padding: 10px;" src="{{ asset(getSettingValue('logo'))}} " alt="">
+            <a href="{{ route('backend.dashboard') }}"><img style="width: 160px; height:60px; padding: 10px;" src="{{ asset(getSettingValue('logo'))}} " alt=""></a>
         </div>
         <div class="toggle-icon ms-auto">
             <ion-icon name="menu-sharp"></ion-icon>
@@ -12,6 +12,15 @@
     </div>
     <!--navigation-->
     <ul class="metismenu" id="menu">
+
+        <li>
+            <a href="{{ route('home') }}" rel="noopener" target="new">
+                <div class="parent-icon">
+                    <i class="bi bi-eye"></i>
+                </div>
+                <div class="menu-title">View Site</div>
+            </a>
+        </li>
 
         <li>
             <a href="{{ route('backend.dashboard') }}">

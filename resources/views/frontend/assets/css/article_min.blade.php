@@ -296,5 +296,5 @@ tr:nth-child(even){background-color:#d6d4d4;}
 tr:nth-child(1){background-color:#aaf8d8;font-weight:700!important;font-size:18px;}
 tr:hover{background-color:rgb(178, 178, 178);}
 #myBtn{position:fixed;bottom:20px;right:30px;z-index:99;border:none;outline:0;background-color:#878787!important;color:#fff;cursor:pointer;padding:1rem;border-radius:50px;width:50px;height:50px;-webkit-transition:.2s;transition:.2s;}
-#myBtn:hover{background-color:#888!important;}
+#myBtn:hover{background-color:#888!important;}.readmore-container{border:1px solid #ccc;border-radius:5px;margin:7px 2px;padding:10px;background:#e9f8fa}.readmore-title,.readmore-title a,.readmore-title a:visited{font-size:17px;margin-top:5px;font-weight:700;color:#000;text-decoration:none!important;line-height:25px;text-align:left!important}.readmore-title{margin:0;padding:0;display:-webkit-box;-webkit-line-clamp:3;overflow:hidden;-webkit-box-orient:vertical}@media(max-width:520px){.readmore-title{display:-webkit-box;-webkit-line-clamp:3;overflow:hidden;-webkit-box-orient:vertical}}.readmore-text{margin-left:2px;font-size:22px;font-weight:700;color:#c41111}.readmore-image{display:flex;flex-direction:row;gap:10px;margin-bottom:10px}.readmore-image-img{width:100px!important;height:80px!important}
 </style>

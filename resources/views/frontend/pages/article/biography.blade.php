@@ -76,7 +76,9 @@
                 </div>
                 <div class="col-lg-3 sidebar-section">
                     <div class="sidebar-section-wrap">
-
+                        @if (count($sidebar_articles)>0)
+                            @include('frontend.pages.article.components.sidebar')
+                        @endif
                     </div>
                 </div>
             </div>
