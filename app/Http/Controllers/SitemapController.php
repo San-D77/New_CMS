@@ -15,6 +15,15 @@ class SitemapController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function robots(){
+        $output = "User-agent: *\n";
+        $output .= "Disallow:\n\n";
+        $output .= "Sitemap: " . url('sitemap.xml') . "\n"; // Add the sitemap URL
+
+        return response($output)->header('Content-Type', 'text/plain');
+     }
+
     public function index()
     {
         $static_routes = ["home"];
@@ -25,4 +34,6 @@ class SitemapController extends Controller
         $articles = Article::where('status','1')->where('task_status','published')->select('slug','updated_at')->get();
         return response()->view("frontend.pages.sitemap.index", compact("static_routes", "categories", "articles", "privacy_policy","contact_us","about_us"))->header('Content-Type', 'text/xml');
     }
+
+
 }
