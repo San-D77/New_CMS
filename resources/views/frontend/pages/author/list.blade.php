@@ -44,12 +44,12 @@
                                <div class="wrap">
 
                                     <div class="image">
-                                        <a href="{{ route('authorArticle', $author->slug) }}">
+                                        <a href="{{ route('authorArticle', $author->slug) }}/">
                                             <img src="{{ asset($author->avatar) }}" alt="" class="image_img">
                                         </a>
                                     </div>
                                     <div class="title">
-                                        <a href="{{ route('authorArticle', $author->slug) }}">
+                                        <a href="{{ route('authorArticle', $author->slug) }}/">
                                             {{ $author->alias_name }}
                                         </a>
                                     </div>

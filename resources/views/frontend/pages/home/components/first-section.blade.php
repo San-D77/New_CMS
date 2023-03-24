@@ -17,7 +17,7 @@
                                 <div class="biography-single">
                                     <div class="col-4 image">
                                         <figure class="m-0">
-                                            <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
+                                            <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}/">
                                                 <img src="{{ asset('/uploads/thumbnail/'.$article->image) }}"
                                                     alt="{{ $article->title }}" class="image_img">
                                             </a>
@@ -26,7 +26,7 @@
                                     <div class="col-8 biography-title">
 
                                         <h2>
-                                            <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
+                                            <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}/">
                                                 {{ $article->category->slug == "biography" ? $article->seo->meta_title : $article->title }}
                                             </a>
                                         </h2>
@@ -34,7 +34,7 @@
                                         <div class="meta">
                                             <p class="article-date">{{ carbon($article->published_at)->format('M d, Y') }}
                                                 | </p> <a
-                                                href="{{ route('authorArticle', ['author' => $article->writer->slug]) }}">
+                                                href="{{ route('authorArticle', ['author' => $article->writer->slug]) }}/">
                                                 <p class="article-author">
                                                     {{ $article->writer->alias_name }}
                                                 </p>
@@ -54,7 +54,7 @@
                     <div class="biography-right col-lg-6 mt-3">
                         @foreach ($section as $article)
                             @if ($loop->iteration > 6)
-                                <a class="text-white" href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
+                                <a class="text-white" href="{{ route('singleArticle', ['slug' => $article->slug]) }}/">
                                     <figure class="textover">
                                         <img width="50" height="50"
                                         src="{{ asset('/uploads/medium/'.$article->image) }}" alt="{{ $article->title }}"
@@ -72,7 +72,7 @@
             <div class="row">
                 <div class="col-12">
                     <h2 class="text-center load">
-                        <a href="{{ route('singleArticle', ['slug' => $section[0]->category->slug]) }}" class="btn">View
+                        <a href="{{ route('singleArticle', ['slug' => $section[0]->category->slug]) }}/" class="btn">View
                             All</a>
                     </h2>
                 </div>
@@ -92,7 +92,7 @@
                         <div class="trending-single col-md-6 col-lg-12">
                             <div class="image">
                                 <figure class="m-0">
-                                    <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
+                                    <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}/">
                                         <img width="50" height="50"
                                         src="{{ asset('/uploads/thumbnail/'.$article->image) }}" alt="{{ $article->title }}"
                                             class="image_img">
@@ -101,13 +101,13 @@
                             </div>
                             <div class="trending-title">
                                 <h2>
-                                    <a class="" href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
+                                    <a class="" href="{{ route('singleArticle', ['slug' => $article->slug]) }}/">
                                         {{ $article->title }}
                                     </a>
                                 </h2>
                                 <div class="meta">
                                     <p class="article-date">{{ carbon($article->published_at)->format('M d, Y') }} | </p>
-                                    <a href="{{ route('authorArticle', ['author' => $article->writer->slug]) }}">
+                                    <a href="{{ route('authorArticle', ['author' => $article->writer->slug]) }}/">
                                         <p class="article-author">
                                             {{ $article->writer->alias_name }}
                                         </p>

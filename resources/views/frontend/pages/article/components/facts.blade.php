@@ -46,7 +46,7 @@
                                                 @if(isset($articleTable['birth-day']) && isset($articleTable['birth-month']))
 
                                                     <a style="color: #4da7df"
-                                                        href="{{ route('facts.search', ['birth', str_slug($articleTable['birth-month']['value'].' '.$articleTable['birth-day']['value'])]) }}"
+                                                        href="{{ route('facts.search', ['birth', str_slug($articleTable['birth-month']['value'].' '.$articleTable['birth-day']['value'])]) }}/"
                                                     >
 
                                                         @if (isset($articleTable['birth-year']))
@@ -59,14 +59,14 @@
 
                                                     @elseif (!isset($articleTable['birth-day']) && isset($articleTable['birth-month']))
 
-                                                    <a style="color: #4da7df" href="{{ route('facts.search', [$factsFields, $articleTable[$factsFields]['value']]) }}">
+                                                    <a style="color: #4da7df" href="{{ route('facts.search', [$factsFields, $articleTable[$factsFields]['value']]) }}/">
                                                         {{ $articleTable['birth-month']['value']}}
                                                     </a>
 
                                                 @endif
 
                                                 @if (isset($articleTable['birth-year']))
-                                                    <a style="color: #fa6237" href="{{ route('facts.search', ['birth-year', ($articleTable['birth-year']['value'])]) }}">
+                                                    <a style="color: #fa6237" href="{{ route('facts.search', ['birth-year', ($articleTable['birth-year']['value'])]) }}/">
                                                        {{ $articleTable['birth-year']['value']}}
                                                     </a>
                                                 @endif
@@ -101,7 +101,7 @@
                                                 @if(isset($articleTable['death-day']) && isset($articleTable['death-month']))
 
                                                     <a style="color: #4da7df"
-                                                        href="{{ route('facts.search', ['death', str_slug($articleTable['death-month']['value'].' '.$articleTable['death-day']['value'])]) }}"
+                                                        href="{{ route('facts.search', ['death', str_slug($articleTable['death-month']['value'].' '.$articleTable['death-day']['value'])]) }}/"
                                                     >
 
                                                         @if (isset($articleTable['death-year']))
@@ -114,14 +114,14 @@
 
                                                     @elseif (!isset($articleTable['death-day']) && isset($articleTable['death-month']))
 
-                                                    <a style="color: #4da7df" href="{{ route('facts.search', [$factsFields, $articleTable[$factsFields]['value']]) }}">
+                                                    <a style="color: #4da7df" href="{{ route('facts.search', [$factsFields, $articleTable[$factsFields]['value']]) }}/">
                                                         {{ $articleTable['death-month']['value']}}
                                                     </a>
 
                                                 @endif
 
                                                 @if (isset($articleTable['death-year']))
-                                                    <a style="color: #fa6237" href="{{ route('facts.search', ['death-year', ($articleTable['death-year']['value'])]) }}">
+                                                    <a style="color: #fa6237" href="{{ route('facts.search', ['death-year', ($articleTable['death-year']['value'])]) }}/">
                                                     {{ $articleTable['death-year']['value']}}
                                                     </a>
                                                 @endif
@@ -166,7 +166,7 @@
                                 @foreach ($allFields as $tbFields)
                                     @if ( $articleTable[$factsFields]['title'] == $tbFields['title'])
                                         @if($tbFields['searchable'] == 1)
-                                            <a style="color: #4da7df" href="{{ route('facts.search', [$factsFields, ($articleTable[$factsFields]['value'])]) }}">{{ $articleTable[$factsFields]['value'] }}</a>
+                                            <a style="color: #4da7df" href="{{ route('facts.search', [$factsFields, ($articleTable[$factsFields]['value'])]) }}/">{{ $articleTable[$factsFields]['value'] }}</a>
                                         @else
                                             {{ $articleTable[$factsFields]['value'] }}
                                         @endif

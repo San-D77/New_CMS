@@ -13,7 +13,7 @@
                 </span>
             @endif
             <span class="article-author"><a
-                    href="{{ route('authorArticle', $article->author->slug) }}"><img src="{{ asset('frontend/svgs/person-svgrepo-com.svg') }}" width="25" height="20" alt="" style="width: 16px;"> {{ $article->author->alias_name }}</a>
+                    href="{{ route('authorArticle', $article->author->slug) }}/"><img src="{{ asset('frontend/svgs/person-svgrepo-com.svg') }}" width="25" height="20" alt="" style="width: 16px;"> {{ $article->author->alias_name }}</a>
             </span>
         </div>
         <div class="social-share">

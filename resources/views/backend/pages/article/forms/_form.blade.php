@@ -673,7 +673,7 @@
                                 <div class="flex-column">
                                     ${article.title}
                                     <div>
-                                        <span class="btn btn-sm btn-info copy-url" data-url="${article.value}">Copy Url</span>
+                                        <span class="btn btn-sm btn-info copy-url" data-url="${article.value}/">Copy Url</span>
                                         <span class="btn btn-sm btn-info copy-image" data-url="/uploads/medium/${article.image}">Copy Image</span>
                                     </div>
                                 </div>

@@ -40,7 +40,7 @@
                <img src=" {{ asset(getSettingValue('logo')) }}" height="50" width="150" alt="">
             </a>
             @php
-                $current_url = isset($article) ? route('singleArticle', ['slug' => $article->category?->slug ?? 'nu']) : Request::url();
+                $current_url = isset($article) ? route('singleArticle', ['slug' => $article->category?->slug ?? 'null']) : Request::url();
             @endphp
 
             <div class="collapse navbar-collapse d-none d-lg-block menu-items" id="navbarSupportedContent">
@@ -48,7 +48,7 @@
                     @foreach ($soloCategories as $category)
                         <li class="nav-item">
                             <a class="nav-link {{ $current_url == route('singleArticle', ['slug' => $category->slug]) ? 'active' : '' }}"
-                                href="{{ route('singleArticle', ['slug' => $category->slug]) }}">
+                                href="{{ route('singleArticle', ['slug' => $category->slug]) }}/">
                                 {{ $category->title }}
                             </a>
                         </li>
@@ -64,7 +64,7 @@
                                         @if ($cat->id == $c->parent_id)
                                             <li >
                                                 <a class=" {{ $current_url == route('singleArticle', ['slug' => $c->slug]) ? 'active' : '' }}"
-                                                    href="{{ route('singleArticle', ['slug' => $c->slug]) }}">
+                                                    href="{{ route('singleArticle', ['slug' => $c->slug]) }}/">
                                                     {{ $c->title }}
                                                 </a>
                                             </li>
@@ -91,7 +91,7 @@
                     @foreach ($soloCategories as $category)
                         <li class="nav-item">
                             <a class="nav-link {{ $current_url == route('singleArticle', ['slug' => $category->slug]) ? 'active' : '' }}"
-                                href="{{ route('singleArticle', ['slug' => $category->slug]) }}">
+                                href="{{ route('singleArticle', ['slug' => $category->slug]) }}/">
                                 {{ $category->title }}
                             </a>
                         </li>
@@ -106,7 +106,7 @@
                                     @if ($cat->id == $c->parent_id)
                                         <li >
                                             <a class=""
-                                                href="{{ route('singleArticle', ['slug' => $c->slug]) }}">
+                                                href="{{ route('singleArticle', ['slug' => $c->slug]) }}/">
                                                 {{ $c->title }}
                                             </a>
                                         </li>

@@ -84,7 +84,7 @@ function getArticleSchema($article){
         "@type"=>"Article",
         "@id"=>route('singleArticle', ($article->slug))."/#article",
         "isPartOf"=> [
-            "@id"=>route('singleArticle', ($article->slug))
+            "@id"=>route('singleArticle', ($article->slug))."/"
         ],
         "headline"=> $article->seo->meta_title,
         "description"=> $article->seo->meta_description,
@@ -113,7 +113,7 @@ function getArticleSchema($article){
         'keywords' => $article->seo->meta_keywords,
         "mainEntityOfPage"=> [
             "@type"=> ["WebPage"],
-            "@id"=> route('singleArticle', $article->slug)
+            "@id"=> route('singleArticle', $article->slug)."/"
         ]
     ];
     $breadcrumbSchema = [
@@ -131,7 +131,7 @@ function getArticleSchema($article){
                 '@type' => 'ListItem',
                 'position' => 2,
                 'item' => [
-                    '@id' => route('singleArticle', $article->category->slug),
+                    '@id' => route('singleArticle', $article->category->slug)."/",
                     'name' => $article->category->title,
                 ],
             ],
@@ -139,7 +139,7 @@ function getArticleSchema($article){
                 '@type' => 'ListItem',
                 'position' => 3,
                 'item' => [
-                    '@id' => route('singleArticle', $article->slug),
+                    '@id' => route('singleArticle', $article->slug)."/",
                     'name' => $article->title,
                 ],
             ],
@@ -172,8 +172,8 @@ function getCategorySchema($category){
 
     $collectionPage = [
         "@type"=>"CollectionPage",
-        "@id"=>route('singleArticle', $category->slug),
-        "url"=>route('singleArticle', $category->slug),
+        "@id"=>route('singleArticle', $category->slug)."/",
+        "url"=>route('singleArticle', $category->slug)."/",
         "name"=>$category->title,
         "isPartOf"=>[ "@id"=>route('home')."/#website" ],
         "primaryImageOfPage"=>[
@@ -215,7 +215,7 @@ function getCategorySchema($category){
                 '@type' => 'ListItem',
                 'position' => 2,
                 'item' => [
-                    '@id' => route('singleArticle', $category->slug),
+                    '@id' => route('singleArticle', $category->slug)."/",
                     'name' => $category->title,
                 ],
             ]

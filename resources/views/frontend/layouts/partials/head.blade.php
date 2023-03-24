@@ -34,4 +34,4 @@ $type = isset($type) ? $type : "website";
 <meta property="twitter:description" content="{{ $meta_description }}">
 <meta property="twitter:domain" content="{{ getSettingValue('website_title') }}">
 <meta property="twitter:image" content="{{ asset('/uploads/featured/'.$image) }}">
-<link href="{{ Request::url() }}" rel="canonical">
+<link href="{{ Request::url() }}/" rel="canonical" />

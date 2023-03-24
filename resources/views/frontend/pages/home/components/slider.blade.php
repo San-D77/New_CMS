@@ -6,18 +6,18 @@
                     @foreach ($data['featured_articles'] as $article)
                         <li class="splide__slide">
                             <figure class="slider-image">
-                                <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
+                                <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}/">
                                     <img src="{{ asset('/uploads/medium/'.$article->image) }}"
                                         alt="{{ $article->title }}" class="slider-image-img">
                                 </a>
                                 <p class="slider-category">
 
-                                    <a href="{{ route('singleArticle', ['slug' => $article->category->slug]) }}"
+                                    <a href="{{ route('singleArticle', ['slug' => $article->category->slug]) }}/"
                                         class="text-white">{{ $article->category->title }}</a>
                                 </p>
                                 <div class="title-section">
                                     <p class="slider-title">
-                                        <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
+                                        <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}/">
                                             {{ $article->title }}
                                         </a>
                                     </p>
@@ -25,7 +25,7 @@
                                         {{ carbon($article->published_at)->format('M d, Y') }} |
                                         <span class="article-author">
                                             <a
-                                                href="{{ route('authorArticle', ['author' => $article->writer->slug]) }}">{{ $article->writer->alias_name }}</a>
+                                                href="{{ route('authorArticle', ['author' => $article->writer->slug]) }}/">{{ $article->writer->alias_name }}</a>
                                         </span>
                                     </p>
                                 </div>

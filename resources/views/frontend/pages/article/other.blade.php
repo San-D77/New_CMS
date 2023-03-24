@@ -15,7 +15,7 @@
                     </li>
                     ⇢
                     <li class="breadcrumb">
-                        <a href="{{ route('singleArticle', $article->category->slug) }}"
+                        <a href="{{ route('singleArticle', $article->category->slug) }}/"
                             class="text-capitalize">
                             {{ $article->category->slug }}
                         </a>

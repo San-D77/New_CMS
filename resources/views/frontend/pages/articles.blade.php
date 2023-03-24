@@ -4,14 +4,14 @@
             <div class="category-post">
                 <div class="image">
                     <figure class="m-0">
-                        <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
+                        <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}/">
                             <img src="{{ asset('/uploads/medium/'.$article->image) }}" alt="" class="image_img">
                         </a>
                     </figure>
                 </div>
                 <div class="category-post-title">
                     <div class="title">
-                        <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
+                        <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}/">
                             {{ $article->title }}
                         </a>
                     </div>
@@ -20,11 +20,11 @@
                         <p class="article-date"> {{ dateFormat($article->published_at) }} | </p>
                         <p class="article-author">
                             @isset($author)
-                                <a href="{{ route('singleArticle', $article->category->slug) }}">
+                                <a href="{{ route('singleArticle', $article->category->slug) }}/">
                                     {{ $article->category->title }}
                                 </a>
                             @else
-                                <a href="{{ route('authorArticle', $article->writer->slug) }}">
+                                <a href="{{ route('authorArticle', $article->writer->slug) }}/">
                                     {{ $article->writer->alias_name }}
                                 </a>
                             @endisset

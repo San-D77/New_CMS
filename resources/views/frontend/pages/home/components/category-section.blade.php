@@ -12,12 +12,12 @@
         @if ($loop->iteration < 7)
             <div class="col-md-4">
                 <figure class="textover">
-                    <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
+                    <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}/">
                         <img src="{{ asset('/uploads/medium/'.$article->image) }}"
                             alt="{{ $article->title }}" class="image_img img-fluid">
                     </a>
                     <figcaption>
-                        <a class="text-white" href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
+                        <a class="text-white" href="{{ route('singleArticle', ['slug' => $article->slug]) }}/">
                             {{ ($article['tables']['quick-facts']['full-name']['value'])??$article->title }}
                         </a>
                     </figcaption>
@@ -35,7 +35,7 @@
     <div class="row">
         <div class="col-12">
             <h2 class="text-center load">
-                <a href="{{ route('singleArticle', ['slug' => $section[0]->category->slug]) }}" class="btn">View
+                <a href="{{ route('singleArticle', ['slug' => $section[0]->category->slug]) }}/" class="btn">View
                     All</a>
             </h2>
         </div>

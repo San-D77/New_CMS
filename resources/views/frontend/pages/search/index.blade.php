@@ -24,7 +24,7 @@
             @foreach ($articles as $article)
             <div class="single-article">
                 <div class="image-section">
-                    <a href="{{ route('singleArticle',$article->slug)}}">
+                    <a href="{{ route('singleArticle',$article->slug)}}/">
                         <img src="{{asset('/uploads/medium/'.$article->image)}}" width="300" alt="">
                     </a>
                 </div>
@@ -40,7 +40,7 @@
             @foreach ($subArticles as $article)
             <div class="single-article">
                 <div class="image-section">
-                    <a href="{{ route('singleArticle',$article->slug)}}">
+                    <a href="{{ route('singleArticle',$article->slug)}}/">
                         <img src="{{asset('/uploads/medium/'.$article->image)}}" width="300" alt="">
                     </a>
                 </div>

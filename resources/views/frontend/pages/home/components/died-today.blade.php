@@ -9,12 +9,12 @@
     @forelse ($died_today as $article)
         <div class="col-md-4">
             <figure class="textover">
-                <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
+                <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}/">
                     <img src="{{ asset('/uploads/medium/'.$article->image) }}" alt="{{ $article->title }}"
                         class="image_img img-fluid">
                 </a>
                 <figcaption>
-                    <a class="text-white" href="{{ route('singleArticle', ['slug' => $article->slug]) }}">
+                    <a class="text-white" href="{{ route('singleArticle', ['slug' => $article->slug]) }}/">
                         {{ $article->title }}
                     </a>
                 </figcaption>
@@ -22,7 +22,7 @@
                     <p class="image_description">
                         {{ $article->summary }}
                     </p>
-                    <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}" class="btn btn-info btn-sm m-2 text-white">Read More</a>
+                    <a href="{{ route('singleArticle', ['slug' => $article->slug]) }}/" class="btn btn-info btn-sm m-2 text-white">Read More</a>
                 </div>
             </figure>
         </div>
