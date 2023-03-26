@@ -37,21 +37,23 @@
             </div>
             @endforeach
 
-            @foreach ($subArticles as $article)
-            <div class="single-article">
-                <div class="image-section">
-                    <a href="{{ route('singleArticle',$article->slug)}}/">
-                        <img src="{{asset('/uploads/medium/'.$article->image)}}" width="300" alt="">
-                    </a>
-                </div>
-                <div class="title-section">
-                    <a href="/{{$article->slug}}">
-                        <h2 class="article-title">{{ $article->title }}</h2>
-                    </a>
-                    <p>{!! $article->summary !!}</p>
-                </div>
-            </div>
-            @endforeach
+            @if(count($subArticles) > 0 )
+                @foreach ($subArticles as $article)
+                    <div class="single-article">
+                        <div class="image-section">
+                            <a href="{{ route('singleArticle',$article->slug)}}/">
+                                <img src="{{asset('/uploads/medium/'.$article->image)}}" width="300" alt="">
+                            </a>
+                        </div>
+                        <div class="title-section">
+                            <a href="/{{$article->slug}}">
+                                <h2 class="article-title">{{ $article->title }}</h2>
+                            </a>
+                            <p>{!! $article->summary !!}</p>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
         </section>
     </main>
 @endsection

@@ -39,7 +39,7 @@ class FrontendController extends Controller
         return view("frontend.pages.search.index", [
             "search_for" => $request->q,
             "articles" => $articles,
-            "subArticles" => $subArticles
+            "subArticles" => isset($subArticles)? $subArticles:[]
         ]);
     }
 
